@@ -1,0 +1,72 @@
+package br.edu.infnet.gerenciadorpersonagens.model.domain;
+
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
+public class Personagem {
+    private final UUID Id = UUID.randomUUID();
+    private Criador criador;
+    private ArrayList<Caracteristica> caracteristicas;
+    private String nome;
+    private boolean isHuman;
+    private String historia;
+
+    public UUID getId() {
+        return Id;
+    }
+
+    public Criador getCriador() {
+        return criador;
+    }
+
+    public void setCriador(Criador criador) {
+        this.criador = criador;
+    }
+
+    public ArrayList<Caracteristica> getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(ArrayList<Caracteristica> caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public boolean isHuman() {
+        return isHuman;
+    }
+
+    public void setHuman(boolean human) {
+        isHuman = human;
+    }
+
+    public String getHistoria() {
+        return historia;
+    }
+
+    public void setHistoria(String historia) {
+        this.historia = historia;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s",criador)
+                + String.format(";%s",caracteristicas)
+                + String.format(";%s",nome)
+                + String.format(";%s",isHuman)
+                + String.format(";%s",historia);
+    }
+
+    /*
+    String.format(";%s",caracteristicas) +
+     */
+}
