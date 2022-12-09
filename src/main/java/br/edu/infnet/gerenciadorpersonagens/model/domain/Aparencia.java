@@ -1,5 +1,8 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
+import br.edu.infnet.gerenciadorpersonagens.model.exceptions.BiotipoInvalidoException;
+import br.edu.infnet.gerenciadorpersonagens.model.exceptions.TipoHabilidadeInvalidoException;
+
 public class Aparencia extends Caracteristica {
     private double altura = 1.70;
     private double peso = 75;
@@ -74,8 +77,17 @@ public class Aparencia extends Caracteristica {
         return biotipo;
     }
 
-    public void setBiotipo(String biotipo) {
-        this.biotipo = biotipo;
+    public void setBiotipo(String biotipo) throws BiotipoInvalidoException {
+        if (!biotipo.equalsIgnoreCase("mesomorfo") &&
+                !biotipo.equalsIgnoreCase("endomorfo") &&
+                !biotipo.equalsIgnoreCase("ectomorfo")) {
+            throw new BiotipoInvalidoException(
+                    "Tipo físico informado inválido! Por favor, insira apenas as opções: Ectomorfo, Mesomorfo ou Endomorfo."
+            );
+        }
+        else {
+            this.biotipo = biotipo;
+        }
     }
 
     public String getCorPele() {

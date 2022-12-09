@@ -1,5 +1,7 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
+import br.edu.infnet.gerenciadorpersonagens.model.exceptions.TipoHabilidadeInvalidoException;
+
 public class Habilidade extends Caracteristica {
     private String nome;
     private String tipo;
@@ -37,8 +39,22 @@ public class Habilidade extends Caracteristica {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipo(String tipo) throws TipoHabilidadeInvalidoException {
+        if (!tipo.equalsIgnoreCase("física") &&
+            !tipo.equalsIgnoreCase("fisica") &&
+            !tipo.equalsIgnoreCase("intelectual") &&
+            !tipo.equalsIgnoreCase("musical") &&
+            !tipo.equalsIgnoreCase("emocional") &&
+            !tipo.equalsIgnoreCase("intuitiva") &&
+            !tipo.equalsIgnoreCase("Outro")) {
+            throw new TipoHabilidadeInvalidoException(
+                    "Tipo de habilidade informada inválida! Por favor, insira apenas as opções: " +
+                            "Física, Intelectual, Musical, Emocional, Intuitiva ou Outro."
+            );
+        }
+        else {
+            this.tipo = tipo;
+        }
     }
 
     public String getMaestria() {
