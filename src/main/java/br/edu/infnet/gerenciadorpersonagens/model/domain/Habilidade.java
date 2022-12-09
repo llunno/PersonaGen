@@ -5,21 +5,24 @@ public class Habilidade extends Caracteristica {
     private String tipo;
     private String maestria;
 
-    public Habilidade() {
-
-    }
-
-    public Habilidade(String nome, String tipo, String maestria) {
-        super();
+    public Habilidade(String descricao, String pontoDeDestaque, String inspiracao, String nome, String tipo, String maestria) {
+        super(descricao, pontoDeDestaque, inspiracao);
         this.nome = nome;
         this.tipo = tipo;
         this.maestria = maestria;
     }
 
     @Override
-    public String formatDescricao() {
+    public String formatarExibicao() {
         StringBuilder stbuilder = new StringBuilder();
         return String.valueOf(stbuilder.append(nome).append(": ").append(getDescricao()));
+    }
+
+    public String toString() {
+        return super.toString()
+                + ";" + nome
+                + ";" + tipo
+                + ";" + maestria;
     }
 
     public String getNome() {

@@ -1,26 +1,27 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
 public abstract class Caracteristica {
-    private String descricao;
-    private String intensidade;
-    private String inspiracao;
+    private final String descricao;
+    private final String pontoDeDestaque;
+    private final String inspiracao;
 
+    //private String beneficio;
 
-    public Caracteristica() {}
+    //private String maleficio
 
-    public Caracteristica(String descricao, String intensidade, String inspiracao) {
+    public Caracteristica(String descricao, String pontoDeDestaque, String inspiracao) {
         this.descricao = descricao;
-        this.intensidade = intensidade;
+        this.pontoDeDestaque = pontoDeDestaque;
         this.inspiracao = inspiracao;
     }
 
-    public abstract String formatDescricao();
+    public abstract String formatarExibicao();
 
     @Override
     public String toString() {
         StringBuilder caracteristicas = new StringBuilder();
         return String.valueOf(caracteristicas.append(descricao)
-                .append(";").append(intensidade)
+                .append(";").append(pontoDeDestaque)
                 .append(";").append(inspiracao));
     }
 
@@ -28,8 +29,8 @@ public abstract class Caracteristica {
         return descricao;
     }
 
-    public String getIntensidade() {
-        return intensidade;
+    public String getPontoDeDestaque() {
+        return pontoDeDestaque;
     }
 
     public String getInspiracao() {

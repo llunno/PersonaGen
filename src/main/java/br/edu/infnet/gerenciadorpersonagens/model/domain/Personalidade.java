@@ -15,7 +15,7 @@ public class Personalidade extends Caracteristica{
 
     public Personalidade(
             String descricao,
-            String intensidade,
+            String pontoDeDestaque,
             String inspiracao,
             String palavraDefinicao,
             String tipoExpressao,
@@ -26,7 +26,7 @@ public class Personalidade extends Caracteristica{
             ArrayList<String> interesses,
             ArrayList<String> desinteresses
     ) {
-        super(descricao,intensidade,inspiracao);
+        super(descricao,pontoDeDestaque,inspiracao);
         this.palavraDefinicao = palavraDefinicao;
         this.tipoExpressao = tipoExpressao;
         this.religiao = religiao;
@@ -37,9 +37,11 @@ public class Personalidade extends Caracteristica{
         this.desinteresses = desinteresses;
     }
 
+    //TODO: A implementar metodo abstrato
     @Override
-    public String formatDescricao() {
-        return '"' + super.getDescricao() + '"';
+    public String formatarExibicao() {
+        StringBuilder stbuilder = new StringBuilder();
+        return String.valueOf(stbuilder.append(palavraDefinicao).append(": ").append(getDescricao()));
     }
 
     @Override

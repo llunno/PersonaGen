@@ -10,7 +10,7 @@ public class PersonalidadeTeste {
         Personalidade person1 = new Personalidade(
             "É um rapaz confiante e observador, com desejo de explorar o mundo e conhecer seus próprios" +
                     " limites",
-            "Muito presente",
+            "Espírito aventureiro",
             "Han Solo",
             "Explorador",
             "Introvertido",
@@ -23,5 +23,6 @@ public class PersonalidadeTeste {
         );
 
         System.out.println(person1);
+        System.out.println(person1.formatarExibicao());
     }
 }

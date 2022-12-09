@@ -14,6 +14,11 @@ public class Personagem {
     private String genero;
     private String historia;
 
+    @Override
+    public String toString() {
+        return Id + ";" + criador + ";" + caracteristicas + ";" + nome + ";" + isHuman + ";" + genero + ";" + historia;
+    }
+
     public UUID getId() {
         return Id;
     }
@@ -64,15 +69,6 @@ public class Personagem {
 
     public void setHistoria(String historia) {
         this.historia = historia;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%s",criador)
-                + String.format(";%s",caracteristicas)
-                + String.format(";%s",nome)
-                + String.format(";%s",isHuman)
-                + String.format(";%s",historia);
     }
 
     /*
