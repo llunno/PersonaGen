@@ -8,7 +8,7 @@ public class Aparencia extends Caracteristica {
     private String corOlhos = "castanhos";
     private String corCabelo = "preto";
     private String tipoCabelo = "liso";
-    private String especie = "Não se aplica";
+    private String especie = "Humano";
 
     public double getAltura() {
         return altura;

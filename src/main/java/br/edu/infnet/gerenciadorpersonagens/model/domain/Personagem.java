@@ -11,6 +11,7 @@ public class Personagem {
     private ArrayList<Caracteristica> caracteristicas;
     private String nome;
     private boolean isHuman;
+    private String genero;
     private String historia;
 
     public UUID getId() {
@@ -47,6 +48,14 @@ public class Personagem {
 
     public void setHuman(boolean human) {
         isHuman = human;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public String getHistoria() {
