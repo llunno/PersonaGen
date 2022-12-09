@@ -14,9 +14,14 @@ public class Personagem {
     private String genero;
     private String historia;
 
-    @Override
     public String toString() {
-        return Id + ";" + criador + ";" + caracteristicas + ";" + nome + ";" + isHuman + ";" + genero + ";" + historia;
+        return String.format("%s",criador)
+                + String.format(";Total de características registradas: %s",caracteristicas.size())
+                + String.format(";%s",caracteristicas)
+                + String.format(";%s",nome)
+                + String.format(";%s",isHuman)
+                + String.format(";%s",genero)
+                + String.format(";%s",historia);
     }
 
     public UUID getId() {
