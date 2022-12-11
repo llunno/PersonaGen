@@ -24,6 +24,17 @@ public class Personagem {
                 + String.format(";%s",historia);
     }
 
+    public String gerarLinhaGravacao() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.getNome());
+        sb.append(";");
+        sb.append(this.getCriador().getNickname());
+        sb.append(";");
+        sb.append(this.getCaracteristicas().size());
+        sb.append("\r\n");
+        return sb.toString();
+    }
+
     public UUID getId() {
         return Id;
     }
