@@ -2,7 +2,6 @@ package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
 import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Constante;
 import br.edu.infnet.gerenciadorpersonagens.model.exceptions.BiotipoInvalidoException;
-import br.edu.infnet.gerenciadorpersonagens.model.exceptions.TipoHabilidadeInvalidoException;
 
 public class Aparencia extends Caracteristica {
     private double altura = 1.70;
