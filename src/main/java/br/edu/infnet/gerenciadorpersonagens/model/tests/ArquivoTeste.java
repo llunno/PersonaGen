@@ -2,7 +2,6 @@ package br.edu.infnet.gerenciadorpersonagens.model.tests;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.*;
 import br.edu.infnet.gerenciadorpersonagens.model.exceptions.ExpressaoInvalidaException;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -39,9 +38,10 @@ public class ArquivoTeste {
                         ));
                         personagem.setCaracteristicas(caracteristicasPersonagem);
                         personagem.setNome(camposPorLinha[5]);
-                        personagem.setHuman(Boolean.parseBoolean(camposPorLinha[6]));
-                        personagem.setGenero(camposPorLinha[7]);
-                        personagem.setHistoria(camposPorLinha[8]);
+                        personagem.setIdade(Integer.parseInt(camposPorLinha[6]));
+                        personagem.setHuman(Boolean.parseBoolean(camposPorLinha[7]));
+                        personagem.setGenero(camposPorLinha[8]);
+                        personagem.setHistoria(camposPorLinha[9]);
                         break;
                     case "PERSONALIDADE":
                         Personalidade personalidade = new Personalidade(camposPorLinha[1], camposPorLinha[2], camposPorLinha[3]);
@@ -58,7 +58,6 @@ public class ArquivoTeste {
                         personalidade.setInteresses(new ArrayList<>(List.of(camposPorLinha[10].split(","))));
                         personalidade.setDesinteresses(new ArrayList<>(List.of(camposPorLinha[11].split(","))));
                         caracteristicasPersonagem.add(personalidade);
-                        //System.out.println("Personalidade: " + personalidade);
                         break;
                     case "APARENCIA":
                         Aparencia aparencia = new Aparencia(
@@ -74,7 +73,6 @@ public class ArquivoTeste {
                                 camposPorLinha[10]
                         );
                         caracteristicasPersonagem.add(aparencia);
-                        //System.out.println("Aparência: " + aparencia);
                         break;
                     case "HABILIDADE":
                         Habilidade habilidade = new Habilidade(
@@ -86,14 +84,11 @@ public class ArquivoTeste {
                                 camposPorLinha[6]
                         );
                         caracteristicasPersonagem.add(habilidade);
-                        //System.out.println("Habilidade: " + habilidade);
                         break;
                     default:
                         System.out.println("Inexistente!!!");
                         break;
                 }
-                System.out.println();
-                //System.out.println(Arrays.toString(camposPorLinha));
                 linha = leituraArquivo.readLine();
             }
             System.out.println("Personagem completo: " + personagem);

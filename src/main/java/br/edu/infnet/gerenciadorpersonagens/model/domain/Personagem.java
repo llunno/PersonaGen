@@ -1,7 +1,5 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -10,6 +8,7 @@ public class Personagem {
     private Criador criador;
     private ArrayList<Caracteristica> caracteristicas;
     private String nome;
+    private int idade;
     private boolean isHuman;
     private String genero;
     private String historia;
@@ -19,6 +18,7 @@ public class Personagem {
                 + String.format(";Total de características registradas: %s",caracteristicas.size())
                 + String.format(";%s",caracteristicas)
                 + String.format(";%s",nome)
+                + String.format(";%s",idade)
                 + String.format(";%s",isHuman)
                 + String.format(";%s",genero)
                 + String.format(";%s",historia);
@@ -87,7 +87,11 @@ public class Personagem {
         this.historia = historia;
     }
 
-    /*
-    String.format(";%s",caracteristicas) +
-     */
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
 }

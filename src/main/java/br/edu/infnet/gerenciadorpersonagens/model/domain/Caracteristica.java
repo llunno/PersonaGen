@@ -5,10 +5,6 @@ public abstract class Caracteristica {
     private final String pontoDeDestaque;
     private final String inspiracao;
 
-    //private String beneficio;
-
-    //private String maleficio
-
     public Caracteristica(String descricao, String pontoDeDestaque, String inspiracao) {
         this.descricao = descricao;
         this.pontoDeDestaque = pontoDeDestaque;

@@ -44,7 +44,6 @@ public class Personalidade extends Caracteristica{
         this.desinteresses = desinteresses;
     }
 
-    //TODO: A implementar metodo abstrato
     @Override
     public String formatarExibicao() {
         StringBuilder stbuilder = new StringBuilder();

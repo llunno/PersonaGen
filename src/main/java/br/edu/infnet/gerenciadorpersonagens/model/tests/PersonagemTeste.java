@@ -75,6 +75,7 @@ public class PersonagemTeste {
                 )
         ));
         p1.setNome("Wilson");
+        p1.setIdade(25);
         p1.setHuman(true);
         p1.setGenero("Masculino");
         p1.setHistoria(
