@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Personalidade extends Caracteristica{
 
     private String palavraDefinicao;
-    private String tipoExpressao;
+    private String tipoExpressao = "Não informado";
     private String religiao;
     private String temperamento;
     private ArrayList<String> qualidades;
@@ -35,7 +35,11 @@ public class Personalidade extends Caracteristica{
     ) {
         super(descricao,pontoDeDestaque,inspiracao);
         this.palavraDefinicao = palavraDefinicao;
-        this.tipoExpressao = tipoExpressao;
+        try {
+            this.setTipoExpressao(tipoExpressao);
+        } catch (ExpressaoInvalidaException e) {
+            System.out.println("[ERRO]" + e.getMessage());
+        }
         this.religiao = religiao;
         this.temperamento = temperamento;
         this.qualidades = qualidades;

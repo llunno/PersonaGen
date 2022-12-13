@@ -4,7 +4,7 @@ import br.edu.infnet.gerenciadorpersonagens.model.domain.Aparencia;
 import br.edu.infnet.gerenciadorpersonagens.model.exceptions.BiotipoInvalidoException;
 
 public class AparenciaTeste {
-    public static void main(String[] args) throws BiotipoInvalidoException {
+    public static void main(String[] args) {
         Aparencia aparencia = new Aparencia(
                 "Rosto de forma arredondada, com barba a fazer e nariz levemente avantajado",
                 "Olhos",
@@ -17,9 +17,15 @@ public class AparenciaTeste {
                 "ruivo",
                 "Cacheado"
         );
-        aparencia.setBiotipo(aparencia.getBiotipo());
+        try {
+            aparencia.setBiotipo("Gordo");
+        } catch (BiotipoInvalidoException e) {
+            System.out.println("Biotipo informado é inválido");
+        }
         System.out.println(aparencia);
         System.out.println();
         System.out.println(aparencia.formatarExibicao());
+
+
     }
 }

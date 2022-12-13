@@ -1,6 +1,7 @@
 package br.edu.infnet.gerenciadorpersonagens.model.tests;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Habilidade;
+import br.edu.infnet.gerenciadorpersonagens.model.exceptions.TipoHabilidadeInvalidoException;
 
 public class HabilidadeTeste {
     public static void main(String[] args) {
@@ -14,5 +15,11 @@ public class HabilidadeTeste {
         );
         System.out.println(skill);
         System.out.println(skill.formatarExibicao());
+
+        try {
+            skill.setTipo("Aleatório");
+        } catch (TipoHabilidadeInvalidoException e) {
+            System.out.println("[ERRO]" + e.getMessage());
+        }
     }
 }
