@@ -1,10 +1,13 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class Personagem {
     private final UUID Id = UUID.randomUUID();
+    private final LocalDateTime dataCriacao = LocalDateTime.now();
     private Criador criador;
     private ArrayList<Caracteristica> caracteristicas;
     private String nome;
@@ -19,9 +22,15 @@ public class Personagem {
                 + String.format(";%s",caracteristicas)
                 + String.format(";%s",nome)
                 + String.format(";%s",idade)
-                + String.format(";%s",isHuman)
+                + String.format(";%s",isHuman ? "Humano = Sim" : "Humano = Não")
                 + String.format(";%s",genero)
-                + String.format(";%s",historia);
+                + String.format(";%s",historia)
+                + String.format(";%s", formatarData());
+    }
+
+    private String formatarData() {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return dataCriacao.format(formato);
     }
 
     public String gerarLinhaGravacao() {
@@ -93,5 +102,9 @@ public class Personagem {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
     }
 }
