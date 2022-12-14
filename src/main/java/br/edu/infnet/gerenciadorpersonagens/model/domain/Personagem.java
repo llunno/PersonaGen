@@ -30,11 +30,13 @@ public class Personagem {
 
     private String formatarData() {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        return dataCriacao.format(formato);
+        return this.dataCriacao.format(formato);
     }
 
     public String gerarLinhaGravacao() {
         StringBuilder sb = new StringBuilder();
+        sb.append(this.formatarData());
+        sb.append(";");
         sb.append(this.getNome());
         sb.append(";");
         sb.append(this.getCriador().getNickname());
