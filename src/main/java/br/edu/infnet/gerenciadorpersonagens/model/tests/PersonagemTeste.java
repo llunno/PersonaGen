@@ -12,7 +12,9 @@ public class PersonagemTeste {
         p1.setCriador(new Criador(
                 "Carlos Alberto",
                 "crlerto23",
-                32,
+                "rapinha3453&d2",
+                "carlosAlbr@email.com",
+                "32",
                 new ArrayList<>(
                         List.of("Fantasia", "Romance", "Cinema", "Personas", "Quadrinhos")
                 )

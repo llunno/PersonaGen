@@ -10,7 +10,9 @@ public class CriadorTeste {
         Criador criador1 = new Criador (
                 "Carlos Alberto Santos",
                 "carlosAlbos",
-                45,
+                "rapinha3453&d2",
+                "carlosAlbr@email.com",
+                "45",
                 new ArrayList<>(
                         Arrays.asList("Novelas", "Ficção", "Arte")
                 )
@@ -19,7 +21,9 @@ public class CriadorTeste {
         Criador criador2 = new Criador (
                 "Roberto Manoel Gomes",
                 "RobertoGomes",
-                31,
+                "rapinha3453&d2",
+                "carlosAlbr@email.com",
+                "31",
                 new ArrayList<>(
                         Arrays.asList("Terror", "Suspense", "Histórias policiais", "Jogos RPG")
                 )

@@ -33,15 +33,17 @@ public class ArquivoTeste {
                         personagem.setCriador(new Criador(
                                 camposPorLinha[1],
                                 camposPorLinha[2],
-                                Integer.parseInt(camposPorLinha[3]),
-                                new ArrayList<>(List.of(camposPorLinha[4]))
+                                camposPorLinha[3],
+                                camposPorLinha[4],
+                                camposPorLinha[5],
+                                new ArrayList<>(List.of(camposPorLinha[6]))
                         ));
                         personagem.setCaracteristicas(caracteristicasPersonagem);
-                        personagem.setNome(camposPorLinha[5]);
-                        personagem.setIdade(Integer.parseInt(camposPorLinha[6]));
-                        personagem.setHuman(Boolean.parseBoolean(camposPorLinha[7]));
-                        personagem.setGenero(camposPorLinha[8]);
-                        personagem.setHistoria(camposPorLinha[9]);
+                        personagem.setNome(camposPorLinha[7]);
+                        personagem.setIdade(Integer.parseInt(camposPorLinha[8]));
+                        personagem.setHuman(Boolean.parseBoolean(camposPorLinha[9]));
+                        personagem.setGenero(camposPorLinha[10]);
+                        personagem.setHistoria(camposPorLinha[11]);
                         break;
                     case "PERSONALIDADE":
                         Personalidade personalidade = new Personalidade(camposPorLinha[1], camposPorLinha[2], camposPorLinha[3]);
