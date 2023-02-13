@@ -1,27 +1,12 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.bind.ConstructorBinding;
-import org.springframework.context.annotation.Primary;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class Criador {
-    private final String nomeCompleto;
-    private final String nickname;
-    private final String senhaCriador;
-    private final String email;
+public class Criador  extends Usuario {
     private final int idade;
     private final ArrayList<String> interesses;
 
-    public String getNomeCompleto() {
-        return nomeCompleto;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
 
     public int getIdade() {
         return idade;
@@ -31,11 +16,8 @@ public class Criador {
         return interesses;
     }
 
-    public Criador(String nomeCompleto, String nickname, String senhaCriador, String email, String idade, ArrayList<String> interesses) {
-        this.nomeCompleto = nomeCompleto;
-        this.nickname = nickname;
-        this.senhaCriador = senhaCriador;
-        this.email = email;
+    public Criador(String nomeCompleto, String nickname, String senha, String email, String idade, ArrayList<String> interesses) {
+        super(email, senha, nomeCompleto, nickname);
         this.idade = Integer.parseInt(idade);
         if (interesses.size() == 1) {
             this.interesses = formatInteresses(interesses.get(0));
@@ -60,11 +42,8 @@ public class Criador {
     @Override
     public String toString() {
         StringBuilder dadosCriador = new StringBuilder();
-        return String.valueOf(dadosCriador.append(nomeCompleto)
-                .append(";").append(email)
-                .append(";").append(nickname)
-                .append(";").append(idade)
-                .append(";").append(interesses)) + interesses.size();
+        return super.toString() +
+                dadosCriador.append(";").append(idade).append(";").append(interesses) + interesses.size();
     }
 
     public ArrayList<String> formatInteresses(String interesses) {
