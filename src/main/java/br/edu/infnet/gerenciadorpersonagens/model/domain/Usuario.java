@@ -1,16 +1,24 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
 public class Usuario {
-    private final String email;
-    private final String senha;
-    private final String nomeCompleto;
-    private final String nickname;
+    private String email;
+    private String senha;
+    private String nomeCompleto;
+    private String nickname;
 
-    protected Usuario(String email, String senha, String nomeCompleto, String nickname) {
+    public Usuario() {}
+
+    public Usuario(String email, String senha, String nomeCompleto, String nickname) {
         this.email = email;
         this.senha = senha;
         this.nomeCompleto = nomeCompleto;
         this.nickname = nickname;
+    }
+
+    public Usuario(String email, String senha) {
+        this();
+        this.email = email;
+        this.senha = senha;
     }
 
     public String toString() {
@@ -31,5 +39,21 @@ public class Usuario {
 
     public String getNickname() {
         return nickname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }

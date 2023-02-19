@@ -9,7 +9,7 @@
 <body>
     <div class="container mx-2 my-2">
         <h1>Gerenciador de Personagens</h1>
-        <p>Clique <a href="/usuario">aqui</a> para ir para o cadastro de usuários</p>
+        <p>Clique <a href="/usuario/lista">aqui</a> para ir para o cadastro de usuários</p>
     </div>
 </body>
 </html>

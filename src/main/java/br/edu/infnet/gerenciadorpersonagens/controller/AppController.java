@@ -9,6 +9,11 @@ public class AppController {
 
     @GetMapping(value = "/")
     public String exibirTelaIndex() {
+        return "redirect:/login";
+    }
+
+    @GetMapping(value = "/home")
+    public String exibirTelaHome() {
         return "index";
     }
 
