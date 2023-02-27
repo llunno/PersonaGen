@@ -7,20 +7,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
+
+<c:import url="/WEB-INF/jsp/menu.jsp"/>
+
 <div class="container">
-    <form action="/usuario" method="get">
-        <h3>Listagem de usuários do sistema</h3>
 
-        <c:if test="${not empty mensagemInclusao}">
-            <c:if test="${not empty listaUsuarios}">
-                <div class="alert alert-success" role="alert">
-                    <strong>Sucesso! </strong> ${mensagemInclusao}
-                </div>
-            </c:if>
+    <h3>Listagem de usuários do sistema</h3>
+
+    <c:if test="${not empty mensagemInclusao}">
+        <c:if test="${not empty listaUsuarios}">
+            <div class="alert alert-success" role="alert">
+                <strong>Sucesso! </strong> ${mensagemInclusao}
+            </div>
         </c:if>
-
-        <button class="btn btn-primary" type="submit">Novo</button>
-    </form>
+    </c:if>
 
     <c:if test="${empty listaUsuarios}">
         <div class="alert alert-info" role="alert">

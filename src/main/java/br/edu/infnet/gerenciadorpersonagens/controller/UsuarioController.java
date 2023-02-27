@@ -42,7 +42,7 @@ public class UsuarioController {
 
         msg = "Usuário " + usuario.getNomeCompleto() + " incluído com sucesso!";
 
-        return "redirect:/usuario/lista";
+        return "redirect:/";
     }
 
     @GetMapping(value = "/usuario/{id}/excluir")
