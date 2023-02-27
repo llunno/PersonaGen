@@ -1,11 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Lucas
-  Date: 13/02/2023
-  Time: 16:47
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Listagem de usuários</title>
@@ -15,25 +10,50 @@
 <div class="container">
     <form action="/usuario" method="get">
         <h3>Listagem de usuários do sistema</h3>
+
+        <c:if test="${not empty mensagemInclusao}">
+            <c:if test="${not empty listaUsuarios}">
+                <div class="alert alert-success" role="alert">
+                    <strong>Sucesso! </strong> ${mensagemInclusao}
+                </div>
+            </c:if>
+        </c:if>
+
         <button class="btn btn-primary" type="submit">Novo</button>
     </form>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Nickname</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Carlos</td>
-                <td>Carlin06</td>
-                <td>carlin06@gmail.com</td>
-            </tr>
-        </tbody>
-    </table>
+    <c:if test="${empty listaUsuarios}">
+        <div class="alert alert-info" role="alert">
+            <strong>Atenção! </strong>Não existem usuários cadastrados!
+        </div>
+    </c:if>
+
+    <c:if test="${not empty listaUsuarios}">
+        <h5>Quantidade de usuários cadastrados: ${listaUsuarios.size()}</h5>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Nickname</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="usuario" items="${listaUsuarios}">
+                <tr>
+                    <td>${usuario.id}</td>
+                    <td>${usuario.nomeCompleto}</td>
+                    <td>${usuario.nickname}</td>
+                    <td>${usuario.email}</td>
+                    <td><a href="/usuario/${usuario.id}/excluir">Excluir</a></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </c:if>
 </div>
 </body>
 </html>

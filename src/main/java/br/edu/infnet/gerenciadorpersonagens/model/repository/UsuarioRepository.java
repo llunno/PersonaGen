@@ -2,22 +2,29 @@ package br.edu.infnet.gerenciadorpersonagens.model.repository;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class UsuarioRepository {
-    private static List<Usuario> lista = new ArrayList<Usuario>();
+
+    private static Integer id = 1;
+
+    private static Map<Integer,Usuario> mapaUsuarios = new HashMap<>();
 
     public static boolean incluir(Usuario usuario) {
         try {
-            lista.add(usuario);
+            usuario.setId(id++);
+            mapaUsuarios.put(usuario.getId(), usuario);
             return true;
         } catch (Exception e) {
             return false;
         }
     }
 
-    public static List<Usuario> obterLista() {
-        return lista;
+    public static Collection<Usuario> obterLista() {
+        return mapaUsuarios.values();
+    }
+
+    public static Usuario excluir(Integer key) {
+        return mapaUsuarios.remove(key);
     }
 }

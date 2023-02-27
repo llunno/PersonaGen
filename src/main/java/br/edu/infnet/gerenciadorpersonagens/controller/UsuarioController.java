@@ -3,13 +3,18 @@ package br.edu.infnet.gerenciadorpersonagens.controller;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario;
 import br.edu.infnet.gerenciadorpersonagens.model.repository.UsuarioRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
+import java.util.Collection;
 
 @Controller
 public class UsuarioController {
+
+    private static String msg;
 
     @GetMapping(value="/usuario")
     public String exibirTelaCadastro() {
@@ -17,15 +22,14 @@ public class UsuarioController {
     }
 
     @GetMapping(value="/usuario/lista")
-    public String exibirTelaLista() {
+    public String exibirTelaLista(Model model) {
 
-        List<Usuario> lista = UsuarioRepository.obterLista();
+        Collection<Usuario> lista = UsuarioRepository.obterLista();
 
-        System.out.println("Quantidade de usuários: " + lista.size());
+        model.addAttribute("listaUsuarios", lista);
+        model.addAttribute("mensagemInclusao", msg);
 
-        for (Usuario usuario : lista) {
-            System.out.println("A inclusão do usuário " + usuario.getNomeCompleto() + "foi realizada com sucesso!");
-        }
+        msg = null;
 
         return "usuario/lista";
     }
@@ -36,8 +40,15 @@ public class UsuarioController {
 
         UsuarioRepository.incluir(usuario);
 
+        msg = "Usuário " + usuario.getNomeCompleto() + " incluído com sucesso!";
+
         return "redirect:/usuario/lista";
     }
 
-
+    @GetMapping(value = "/usuario/{id}/excluir")
+    public String excluir(@PathVariable Integer id) {
+        Usuario usuario = UsuarioRepository.excluir(id);
+        msg = "Usuário " + usuario.getNomeCompleto() + " excluído com sucesso!";
+        return "redirect:/usuario/lista";
+    }
 }

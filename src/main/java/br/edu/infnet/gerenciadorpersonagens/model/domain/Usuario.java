@@ -1,6 +1,7 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
 public class Usuario {
+    private Integer id;
     private String email;
     private String senha;
     private String nomeCompleto;
@@ -55,5 +56,13 @@ public class Usuario {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
