@@ -1,6 +1,8 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
 public abstract class Caracteristica {
+
+    private Integer id = 0;
     private final String descricao;
     private final String pontoDeDestaque;
     private final String inspiracao;
@@ -31,5 +33,13 @@ public abstract class Caracteristica {
 
     public String getInspiracao() {
         return inspiracao;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

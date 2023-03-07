@@ -16,10 +16,6 @@ public class Personalidade extends Caracteristica{
     private ArrayList<String> interesses;
     private ArrayList<String> desinteresses;
 
-    public Personalidade(String descricao, String pontoDestaque, String inspiracao) {
-        super(descricao,pontoDestaque,inspiracao);
-    }
-
     public Personalidade(
             String descricao,
             String pontoDeDestaque,

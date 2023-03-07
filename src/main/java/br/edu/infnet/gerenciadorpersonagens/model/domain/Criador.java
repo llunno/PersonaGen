@@ -19,12 +19,7 @@ public class Criador  extends Usuario {
     public Criador(String nomeCompleto, String nickname, String senha, String email, String idade, ArrayList<String> interesses) {
         super(email, senha, nomeCompleto, nickname);
         this.idade = Integer.parseInt(idade);
-        if (interesses.size() == 1) {
-            this.interesses = formatInteresses(interesses.get(0));
-        }
-        else {
-            this.interesses = interesses;
-        }
+        this.interesses = interesses;
     }
 
     /*
@@ -44,11 +39,6 @@ public class Criador  extends Usuario {
         StringBuilder dadosCriador = new StringBuilder();
         return super.toString() +
                 dadosCriador.append(";").append(idade).append(";").append(interesses) + interesses.size();
-    }
-
-    public ArrayList<String> formatInteresses(String interesses) {
-        String[] interessesClean = interesses.trim().split(",");
-        return new ArrayList<>(List.of(interessesClean));
     }
 
 }

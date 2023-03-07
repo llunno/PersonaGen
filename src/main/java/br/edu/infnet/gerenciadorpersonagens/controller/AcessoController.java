@@ -2,12 +2,16 @@ package br.edu.infnet.gerenciadorpersonagens.controller;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario;
 import br.edu.infnet.gerenciadorpersonagens.model.repository.AcessoRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
+@SessionAttributes("usuario")
 public class AcessoController {
     @GetMapping(value="/login")
     public String exibirTelaLogin() {
@@ -20,14 +24,18 @@ public class AcessoController {
         Usuario usuario1 = new Usuario(usuario.getEmail(), usuario.getSenha());
 
         if (AcessoRepository.autenticar(usuario1) != null) {
-            return "redirect:/home";
+            model.addAttribute("usuario", usuario1);
+            return "redirect:/";
         } else {
-
             model.addAttribute("mensagem", "As credenciais para o email " + usuario1.getEmail() + " não batem!");
-
-            //return exibirTelaLogin(); - poderia ser este também
             return exibirTelaLogin();
         }
     }
 
+    @GetMapping(value = "/logout")
+    public String logout(HttpSession session, SessionStatus status) {
+        status.setComplete();
+        session.removeAttribute("usuario");
+        return "redirect:/";
+    }
 }

@@ -46,19 +46,18 @@ public class ArquivoTeste {
                         personagem.setHistoria(camposPorLinha[11]);
                         break;
                     case "PERSONALIDADE":
-                        Personalidade personalidade = new Personalidade(camposPorLinha[1], camposPorLinha[2], camposPorLinha[3]);
-                        personalidade.setPalavraDefinicao(camposPorLinha[4]);
-                        try {
-                            personalidade.setTipoExpressao(camposPorLinha[5]);
-                        } catch (ExpressaoInvalidaException e) {
-                            System.out.println(e.getMessage());
-                        }
-                        personalidade.setReligiao(camposPorLinha[6]);
-                        personalidade.setTemperamento(camposPorLinha[7]);
-                        personalidade.setQualidades(new ArrayList<>(List.of(camposPorLinha[8].split(","))));
-                        personalidade.setDefeitos(new ArrayList<>(List.of(camposPorLinha[9].split(","))));
-                        personalidade.setInteresses(new ArrayList<>(List.of(camposPorLinha[10].split(","))));
-                        personalidade.setDesinteresses(new ArrayList<>(List.of(camposPorLinha[11].split(","))));
+                        Personalidade personalidade = new Personalidade(
+                                camposPorLinha[1],
+                                camposPorLinha[2],
+                                camposPorLinha[3],
+                                camposPorLinha[4],
+                                camposPorLinha[5],
+                                camposPorLinha[6],
+                                camposPorLinha[7],
+                                new ArrayList<>(List.of(camposPorLinha[8].split(","))),
+                                new ArrayList<>(List.of(camposPorLinha[9].split(","))),
+                                new ArrayList<>(List.of(camposPorLinha[10].split(","))),
+                                new ArrayList<>(List.of(camposPorLinha[11].split(","))));
                         caracteristicasPersonagem.add(personalidade);
                         break;
                     case "APARENCIA":

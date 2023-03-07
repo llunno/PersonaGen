@@ -4,7 +4,6 @@ import br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario;
 import br.edu.infnet.gerenciadorpersonagens.model.repository.UsuarioRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +15,7 @@ public class UsuarioController {
 
     private static String msg;
 
-    @GetMapping(value="/usuario")
+    @GetMapping(value="/usuario/cadastro")
     public String exibirTelaCadastro() {
         return "usuario/cadastro";
     }
