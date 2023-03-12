@@ -1,3 +1,4 @@
+<%@ page import="br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -8,7 +9,7 @@
 <body>
 <c:import url="/WEB-INF/jsp/menu.jsp"/>
 
-<div class="container">
+<div class="container-fluid container-body">
 
     <h3>Listagem de criadores</h3>
 
@@ -29,6 +30,7 @@
     <c:if test="${not empty listaCriadores}">
         <h5>Quantidade de criadores cadastrados: ${listaCriadores.size()}</h5>
 
+    <section class="overflow-auto mx-2" id="table-wrapper">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -43,20 +45,34 @@
             </thead>
             <tbody>
             <c:forEach var="criador" items="${listaCriadores}">
-                <tr>
-                    <td>${criador.id}</td>
-                    <td>${criador.nomeCompleto}</td>
-                    <td>${criador.nickname}</td>
-                    <td>${criador.email}</td>
-                    <td>${criador.idade}</td>
-                    <td>${criador.interesses}</td>
-                    <td><a href="/criador/${criador.id}/excluir">Excluir</a></td>
+                <c:set var="interessesConcat" value="${Utils.concatenarExibicaoLista(criador.interesses)}"/>
+                <tr class>
+                    <td class="td-id">
+                        <p class="id-cell">${criador.id}</p>
+                    </td>
+                    <td>
+                        <p>${criador.nomeCompleto}</p>
+                    </td>
+                    <td>
+                        <p>${criador.nickname}</p>
+                    </td>
+                    <td>
+                        <p>${criador.email}</p>
+                    </td>
+                    <td>
+                        <p>${criador.idade}</p>
+                    </td>
+                    <td class="long-cel-need">
+                        <p>${interessesConcat}</p>
+                    </td>
+                    <td><a href="/criador/${criador.id}/excluir" class="excluir-item-link">Excluir</a></td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
+    </section>
     </c:if>
-    <button class="btn btn-secondary" onclick="adicionar()">Adicionar +</button>
+    <button class="btn btn-secondary btn-adicionar-item" onclick="adicionar()">Adicionar +</button>
 </div>
 
 <script>

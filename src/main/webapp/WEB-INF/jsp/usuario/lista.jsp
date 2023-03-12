@@ -10,7 +10,7 @@
 
 <c:import url="/WEB-INF/jsp/menu.jsp"/>
 
-<div class="container">
+<div class="container-fluid container-body">
 
     <h3>Listagem de usuários do sistema</h3>
 
@@ -31,7 +31,8 @@
     <c:if test="${not empty listaUsuarios}">
         <h5>Quantidade de usuários cadastrados: ${listaUsuarios.size()}</h5>
 
-        <table class="table table-striped">
+    <section class="overflow-auto mx-2" id="table-wrapper">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -44,17 +45,32 @@
             <tbody>
             <c:forEach var="usuario" items="${listaUsuarios}">
                 <tr>
-                    <td>${usuario.id}</td>
-                    <td>${usuario.nomeCompleto}</td>
-                    <td>${usuario.nickname}</td>
-                    <td>${usuario.email}</td>
-                    <td><a href="/usuario/${usuario.id}/excluir">Excluir</a></td>
+                    <td class="td-id">
+                        <p class="id-cell">${usuario.id}</p>
+                    </td>
+                    <td>
+                        <p>${usuario.nomeCompleto}</p>
+                    </td>
+                    <td>
+                        <p>${usuario.nickname}</p>
+                    </td>
+                    <td>
+                        <p>${usuario.email}</p>
+                    </td>
+                    <td><a href="/usuario/${usuario.id}/excluir" class="excluir-item-link">Excluir</a></td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
-        <button></button>
+    </section>
+        <button class="btn btn-secondary btn-adicionar-item" onclick="adicionar()">Adicionar +</button>
     </c:if>
 </div>
+
+<script>
+    function adicionar() {
+        window.location.href = "/usuario/cadastro";
+    }
+</script>
 </body>
 </html>

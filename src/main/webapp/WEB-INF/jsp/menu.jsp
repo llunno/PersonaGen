@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
-<nav class="navbar navbar-dark bg-dark navbar-expand-lg jus mb-4" data-bs-theme="dark">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg jus mb-4 sticky-top" data-bs-theme="dark">
   <div class="container-fluid d-flex justify-content-between">
     <div class="d-flex justify-content-between">
         <a class="navbar-brand text-bg-dark" href="${pageContext.request.contextPath}/">PersonaGen</a>

@@ -1,7 +1,55 @@
-/*@import url(bootstrap/css/bootstrap.min.css);*/
-
 .btn-navbar {
-    color: white;
-    background-color: rgba(255,255,255,0);
-    border: 0;
+  color: white;
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
 }
+
+table {
+  text-align: center;
+  vertical-align: middle !important;
+}
+table thead {
+  background-color: #2a2929;
+  color: white;
+}
+table th {
+  white-space: nowrap;
+}
+table .long-cel-need {
+  min-width: 20rem;
+}
+table td {
+  line-height: 3rem;
+}
+table td p {
+  display: inline;
+  line-height: normal;
+}
+
+.td-id {
+  background-color: #2a2929 !important;
+  width: 2.4rem;
+}
+
+.btn-adicionar-item {
+  margin-top: 0.7rem;
+}
+
+.container-body {
+  width: 95%;
+}
+
+.excluir-item-link {
+  text-decoration: none;
+  color: red;
+  font-weight: bold;
+}
+.excluir-item-link:hover {
+  color: darkred;
+}
+
+.id-cell {
+  color: white;
+}
+
+/*# sourceMappingURL=styles.css.map */

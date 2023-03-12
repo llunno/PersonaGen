@@ -8,9 +8,9 @@
 <body>
 <c:import url="/WEB-INF/jsp/menu.jsp"/>
 
-<div class="container">
+<div class="container-fluid container-body">
 
-    <h3>Listagem de Habilidades</h3>
+    <h3>Listagem de Aparências</h3>
 
     <c:if test="${not empty mensagemInclusao}">
         <c:if test="${not empty listaAparencia}">
@@ -29,6 +29,7 @@
     <c:if test="${not empty listaAparencia}">
         <h5>Quantidade de aparências cadastradas: ${listaAparencia.size()}</h5>
 
+    <section class="overflow-auto mx-2" id="table-wrapper">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -49,24 +50,47 @@
             <tbody>
             <c:forEach var="aparencia" items="${listaAparencia}">
                 <tr>
-                    <td>${aparencia.id}</td>
-                    <td>${aparencia.altura}</td>
-                    <td>${aparencia.peso}</td>
-                    <td>${aparencia.biotipo}</td>
-                    <td>${aparencia.corPele}</td>
-                    <td>${aparencia.corOlhos}</td>
-                    <td>${aparencia.corCabelo}</td>
-                    <td>${aparencia.tipoCabelo}</td>
-                    <td>${aparencia.pontoDeDestaque}</td>
-                    <td>${aparencia.inspiracao}</td>
-                    <td>${aparencia.descricao}</td>
-                    <td><a href="/aparencia/${aparencia.id}/excluir">Excluir</a></td>
+                    <td class="td-id">
+                        <p class="id-cell">${aparencia.id}</p>
+                    </td>
+                    <td>
+                        <p>${aparencia.altura}</p>
+                    </td>
+                    <td>
+                        <p>${aparencia.peso}</p>
+                    </td>
+                    <td>
+                        <p>${aparencia.biotipo}</p>
+                    </td>
+                    <td>
+                        <p>${aparencia.corPele}</p>
+                    </td>
+                    <td>
+                        <p>${aparencia.corOlhos}</p>
+                    </td>
+                    <td>
+                        <p>${aparencia.corCabelo}</p>
+                    </td>
+                    <td>
+                        <p>${aparencia.tipoCabelo}</p>
+                    </td>
+                    <td>
+                        <p>${aparencia.pontoDeDestaque}</p>
+                    </td>
+                    <td>
+                        <p>${aparencia.inspiracao}</p>
+                    </td>
+                    <td>
+                        <p>${aparencia.descricao}</p>
+                    </td>
+                    <td><a href="/aparencia/${aparencia.id}/excluir" class="excluir-item-link">Excluir</a></td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
+    </section>
     </c:if>
-    <button class="btn btn-secondary" onclick="adicionar()">Adicionar +</button>
+    <button class="btn btn-secondary btn-adicionar-item" onclick="adicionar()">Adicionar +</button>
 </div>
 
 <script>

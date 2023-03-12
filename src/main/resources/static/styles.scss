@@ -1,0 +1,57 @@
+.btn-navbar {
+  color: white;
+  background-color: rgba(255,255,255,0);
+  border: 0;
+}
+table {
+
+  text-align: center;
+  vertical-align: middle !important;
+
+  thead {
+    background-color: #2a2929;
+    color: white;
+  }
+
+  th {
+    white-space: nowrap;
+  }
+  .long-cel-need {
+    min-width: 20rem;
+  }
+
+  td {
+    line-height: 3rem;
+    p {
+      display: inline;
+      line-height: normal;
+    }
+  }
+}
+
+.td-id{
+  background-color: #2a2929 !important;
+  width: 2.4rem;
+}
+
+.btn-adicionar-item {
+  margin-top: 0.7rem;
+}
+
+.container-body {
+  width: 95%;
+}
+
+.excluir-item-link {
+  text-decoration: none;
+  color: red;
+  font-weight: bold;
+
+  &:hover {
+    color: darkred;
+  }
+}
+
+.id-cell {
+  color: white;
+}

@@ -1,3 +1,4 @@
+<%@ page import="br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -8,7 +9,7 @@
 <body>
 <c:import url="/WEB-INF/jsp/menu.jsp"/>
 
-<div class="container">
+<div class="container-fluid container-body">
 
     <h3>Listagem de Personalidades</h3>
 
@@ -29,46 +30,76 @@
     <c:if test="${not empty listaPersonalidade}">
         <h5>Quantidade de personalidades cadastradas: ${listaPersonalidade.size()}</h5>
 
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Palavra Definição</th>
-                <th>Tipo de Expressão</th>
-                <th>Religião</th>
-                <th>Temperamento</th>
-                <th>Qualidades</th>
-                <th>Defeitos</th>
-                <th>Interesses</th>
-                <th>Desinteresses</th>
-                <th>Ponto de Destaque</th>
-                <th>Inspiração</th>
-                <th>Descrição</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="personalidade" items="${listaPersonalidade}">
+        <section class="overflow-auto mx-2" id="table-wrapper">
+            <table class="table table-striped table-hover">
+                <thead>
                 <tr>
-                    <td>${personalidade.id}</td>
-                    <td>${personalidade.palavraDefinicao}</td>
-                    <td>${personalidade.tipoExpressao}</td>
-                    <td>${personalidade.religiao}</td>
-                    <td>${personalidade.temperamento}</td>
-                    <td>${personalidade.qualidades}</td>
-                    <td>${personalidade.defeitos}</td>
-                    <td>${personalidade.interesses}</td>
-                    <td>${personalidade.desinteresses}</td>
-                    <td>${personalidade.pontoDeDestaque}</td>
-                    <td>${personalidade.inspiracao}</td>
-                    <td>${personalidade.descricao}</td>
-                    <td><a href="/personalidade/${personalidade.id}/excluir">Excluir</a></td>
+                    <th>ID</th>
+                    <th>Palavra Definição</th>
+                    <th>Tipo de Expressão</th>
+                    <th>Religião</th>
+                    <th>Temperamento</th>
+                    <th>Qualidades</th>
+                    <th>Defeitos</th>
+                    <th>Interesses</th>
+                    <th>Desinteresses</th>
+                    <th>Ponto de Destaque</th>
+                    <th>Inspiração</th>
+                    <th>Descrição</th>
+                    <th></th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <c:forEach var="personalidade" items="${listaPersonalidade}">
+                    <c:set var="qualidadesConcat" value="${Utils.concatenarExibicaoLista(personalidade.qualidades)}"/>
+                    <c:set var="defeitosConcat" value="${Utils.concatenarExibicaoLista(personalidade.defeitos)}"/>
+                    <c:set var="interessesConcat" value="${Utils.concatenarExibicaoLista(personalidade.interesses)}"/>
+                    <c:set var="desinteressesConcat" value="${Utils.concatenarExibicaoLista(personalidade.desinteresses)}"/>
+                    <tr>
+                        <td class="td-id">
+                            <p class="id-cell">${personalidade.id}</p>
+                        </td>
+                        <td>
+                            <p>${personalidade.palavraDefinicao}</p>
+                        </td>
+                        <td>
+                            <p>${personalidade.tipoExpressao}</p>
+                        </td>
+                        <td>
+                            <p>${personalidade.religiao}</p>
+                        </td>
+                        <td>
+                            <p>${personalidade.temperamento}</p>
+                        </td>
+                        <td class="long-cel-need">
+                            <p>${qualidadesConcat}</p>
+                        </td>
+                        <td class="long-cel-need">
+                            <p>${defeitosConcat}</p>
+                        </td>
+                        <td class="long-cel-need">
+                            <p>${interessesConcat}</p>
+                        </td>
+                        <td class="long-cel-need">
+                            <p>${desinteressesConcat}</p>
+                        </td>
+                        <td>
+                            <p>${personalidade.pontoDeDestaque}</p>
+                        </td>
+                        <td>
+                            <p>${personalidade.inspiracao}</p>
+                        </td>
+                        <td class="long-cel-need">
+                            <p>${personalidade.descricao}</p>
+                        </td>
+                        <td><a href="/personalidade/${personalidade.id}/excluir" class="excluir-item-link">Excluir</a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </section>
     </c:if>
-    <button class="btn btn-secondary" onclick="adicionar()">Adicionar +</button>
+    <button class="btn btn-secondary btn-adicionar-item" onclick="adicionar()">Adicionar +</button>
 </div>
 
 <script>

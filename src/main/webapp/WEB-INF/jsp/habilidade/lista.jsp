@@ -9,7 +9,7 @@
 <body>
 <c:import url="/WEB-INF/jsp/menu.jsp"/>
 
-<div class="container">
+<div class="container-fluid container-body">
 
     <h3>Listagem de Habilidades</h3>
 
@@ -30,6 +30,7 @@
     <c:if test="${not empty listaHabilidades}">
         <h5>Quantidade de habilidades cadastradas: ${listaHabilidades.size()}</h5>
 
+    <section class="overflow-auto mx-2" id="table-wrapper">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -46,20 +47,35 @@
             <tbody>
             <c:forEach var="habilidade" items="${listaHabilidades}">
                 <tr>
-                    <td>${habilidade.id}</td>
-                    <td>${habilidade.nome}</td>
-                    <td>${habilidade.tipo}</td>
-                    <td>${habilidade.maestria}</td>
-                    <td>${habilidade.pontoDeDestaque}</td>
-                    <td>${habilidade.inspiracao}</td>
-                    <td>${habilidade.descricao}</td>
-                    <td><a href="/habilidade/${habilidade.id}/excluir">Excluir</a></td>
+                    <td class="td-id">
+                        <p class="id-cell">${habilidade.id}</p>
+                    </td>
+                    <td>
+                        <p>${habilidade.nome}</p>
+                    </td>
+                    <td>
+                        <p>${habilidade.tipo}</p>
+                    </td>
+                    <td>
+                        <p>${habilidade.maestria}</p>
+                    </td>
+                    <td>
+                        <p>${habilidade.pontoDeDestaque}</p>
+                    </td>
+                    <td>
+                        <p>${habilidade.inspiracao}</p>
+                    </td>
+                    <td>
+                        <p>${habilidade.descricao}</p>
+                    </td>
+                    <td><a href="/habilidade/${habilidade.id}/excluir" class="excluir-item-link">Excluir</a></td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
+    </section>
     </c:if>
-    <button class="btn btn-secondary" onclick="adicionar()">Adicionar +</button>
+    <button class="btn btn-secondary btn-adicionar-item" onclick="adicionar()">Adicionar +</button>
 </div>
 
 <script>

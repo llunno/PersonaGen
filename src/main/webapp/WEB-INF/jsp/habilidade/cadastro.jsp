@@ -69,7 +69,7 @@
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="maestria" id="Muito Domínio" value="Muito Domínio">
                 <label class="form-check-label" for="Muito Domínio">
-                    Outros
+                    Domínio Completo
                 </label>
             </div>
         </div>
