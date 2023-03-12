@@ -1,6 +1,6 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
-import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Constante;
+import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils;
 import br.edu.infnet.gerenciadorpersonagens.model.exceptions.TipoHabilidadeInvalidoException;
 
 public class Habilidade extends Caracteristica {
@@ -41,13 +41,13 @@ public class Habilidade extends Caracteristica {
     }
 
     public void setTipo(String tipo) throws TipoHabilidadeInvalidoException {
-        if (!tipo.equalsIgnoreCase(Constante.TIPO_HABILIDADE[0]) &&
-            !tipo.equalsIgnoreCase(Constante.TIPO_HABILIDADE[1]) &&
-            !tipo.equalsIgnoreCase(Constante.TIPO_HABILIDADE[2]) &&
-            !tipo.equalsIgnoreCase(Constante.TIPO_HABILIDADE[3]) &&
-            !tipo.equalsIgnoreCase(Constante.TIPO_HABILIDADE[4]) &&
-            !tipo.equalsIgnoreCase(Constante.TIPO_HABILIDADE[5]) &&
-            !tipo.equalsIgnoreCase(Constante.TIPO_HABILIDADE[6])) {
+        if (!tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[0]) &&
+            !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[1]) &&
+            !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[2]) &&
+            !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[3]) &&
+            !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[4]) &&
+            !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[5]) &&
+            !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[6])) {
             throw new TipoHabilidadeInvalidoException(
                     "Tipo de habilidade informada inválida! Por favor, insira apenas as opções: " +
                             "Física, Intelectual, Musical, Emocional, Intuitiva ou Outro."

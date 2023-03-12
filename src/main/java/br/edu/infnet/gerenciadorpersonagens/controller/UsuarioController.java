@@ -2,6 +2,8 @@ package br.edu.infnet.gerenciadorpersonagens.controller;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario;
 import br.edu.infnet.gerenciadorpersonagens.model.repository.UsuarioRepository;
+import br.edu.infnet.gerenciadorpersonagens.model.service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,9 @@ import java.util.Collection;
 @Controller
 public class UsuarioController {
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     private static String msg;
 
     @GetMapping(value="/usuario/cadastro")
@@ -23,7 +28,7 @@ public class UsuarioController {
     @GetMapping(value="/usuario/lista")
     public String exibirTelaLista(Model model) {
 
-        Collection<Usuario> lista = UsuarioRepository.obterLista();
+        Collection<Usuario> lista = usuarioService.obterLista();
 
         model.addAttribute("listaUsuarios", lista);
         model.addAttribute("mensagemInclusao", msg);
@@ -37,7 +42,7 @@ public class UsuarioController {
     public String incluir(Usuario usuario) {
         System.out.println("Inclusão realizada com sucesso: " + usuario);
 
-        UsuarioRepository.incluir(usuario);
+        usuarioService.incluir(usuario);
 
         msg = "Usuário " + usuario.getNomeCompleto() + " incluído com sucesso!";
 
@@ -46,7 +51,7 @@ public class UsuarioController {
 
     @GetMapping(value = "/usuario/{id}/excluir")
     public String excluir(@PathVariable Integer id) {
-        Usuario usuario = UsuarioRepository.excluir(id);
+        Usuario usuario = usuarioService.excluir(id);
         msg = "Usuário " + usuario.getNomeCompleto() + " excluído com sucesso!";
         return "redirect:/usuario/lista";
     }

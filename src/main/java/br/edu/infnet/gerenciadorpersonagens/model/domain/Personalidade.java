@@ -1,6 +1,6 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
-import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Constante;
+import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils;
 import br.edu.infnet.gerenciadorpersonagens.model.exceptions.ExpressaoInvalidaException;
 
 import java.util.ArrayList;
@@ -63,17 +63,15 @@ public class Personalidade extends Caracteristica{
                 + ";" + desinteresses;
     }
 
-
-
     public String getTipoExpressao() {
         return tipoExpressao;
     }
 
     public void setTipoExpressao(String tipoExpressao) throws ExpressaoInvalidaException {
-        if (!tipoExpressao.equalsIgnoreCase(Constante.TIPO_EXPRESSAO[0]) &&
-                !tipoExpressao.equalsIgnoreCase(Constante.TIPO_EXPRESSAO[1]) &&
-                !tipoExpressao.equalsIgnoreCase(Constante.TIPO_EXPRESSAO[2]) &&
-                !tipoExpressao.equalsIgnoreCase(Constante.TIPO_EXPRESSAO[3])
+        if (!tipoExpressao.equalsIgnoreCase(Utils.TIPO_EXPRESSAO[0]) &&
+                !tipoExpressao.equalsIgnoreCase(Utils.TIPO_EXPRESSAO[1]) &&
+                !tipoExpressao.equalsIgnoreCase(Utils.TIPO_EXPRESSAO[2]) &&
+                !tipoExpressao.equalsIgnoreCase(Utils.TIPO_EXPRESSAO[3])
         ) {
             throw new ExpressaoInvalidaException("Expressão inserida inválida! por favor, insira apenas Extrovertido ou Introvertido");
         }

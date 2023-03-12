@@ -1,16 +1,18 @@
 package br.edu.infnet.gerenciadorpersonagens.model.repository;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class UsuarioRepository {
 
     private static Integer id = 1;
 
-    private static Map<Integer,Usuario> mapaUsuarios = new HashMap<>();
+    private static final Map<Integer,Usuario> mapaUsuarios = new HashMap<>();
 
-    public static boolean incluir(Usuario usuario) {
+    public boolean incluir(Usuario usuario) {
         try {
             usuario.setId(id++);
             mapaUsuarios.put(usuario.getId(), usuario);
@@ -20,11 +22,11 @@ public class UsuarioRepository {
         }
     }
 
-    public static Collection<Usuario> obterLista() {
+    public Collection<Usuario> obterLista() {
         return mapaUsuarios.values();
     }
 
-    public static Usuario excluir(Integer key) {
+    public Usuario excluir(Integer key) {
         return mapaUsuarios.remove(key);
     }
 }

@@ -1,30 +1,32 @@
 package br.edu.infnet.gerenciadorpersonagens.model.repository;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Aparencia;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+@Repository
 public class AparenciaRepository {
     private static Integer id = 1;
     private static final Map<Integer, Aparencia> mapaAparencias = new HashMap<>();
 
-    public static String incluir(Aparencia aparencia) {
+    public boolean incluir(Aparencia aparencia) {
         try {
             aparencia.setId(id++);
             mapaAparencias.put(aparencia.getId(), aparencia);
-            return null;
+            return true;
         } catch (Exception e) {
-            return "Um problema foi detectado, por favor, tente novamente mais tarde! " + e.getMessage();
+            return false;
         }
     }
 
-    public static Collection<Aparencia> obterLista() {
+    public Collection<Aparencia> obterLista() {
         return mapaAparencias.values();
     }
 
-    public static Aparencia excluir(Integer id) {
+    public Aparencia excluir(Integer id) {
         return mapaAparencias.remove(id);
     }
 }
