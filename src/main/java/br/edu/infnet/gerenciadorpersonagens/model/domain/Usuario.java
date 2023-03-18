@@ -1,6 +1,17 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String email;
     private String senha;
@@ -10,6 +21,7 @@ public class Usuario {
     public Usuario() {}
 
     public Usuario(String email, String senha, String nomeCompleto, String nickname) {
+        this();
         this.email = email;
         this.senha = senha;
         this.nomeCompleto = nomeCompleto;
@@ -26,43 +38,4 @@ public class Usuario {
         return email + ";" + nomeCompleto + ";" + nickname;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public String getNomeCompleto() {
-        return nomeCompleto;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public void setNomeCompleto(String nomeCompleto) {
-        this.nomeCompleto = nomeCompleto;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

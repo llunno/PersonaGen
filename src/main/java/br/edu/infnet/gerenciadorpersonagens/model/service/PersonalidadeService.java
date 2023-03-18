@@ -1,7 +1,7 @@
 package br.edu.infnet.gerenciadorpersonagens.model.service;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Personalidade;
-import br.edu.infnet.gerenciadorpersonagens.model.repository.PersonalidadeRepository;
+import br.edu.infnet.gerenciadorpersonagens.model.repository.IPersonalidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,17 +11,21 @@ import java.util.Collection;
 public class PersonalidadeService {
 
     @Autowired
-    private PersonalidadeRepository personalidadeRepository;
+    private IPersonalidadeRepository personalidadeRepository;
 
-    public boolean incluir(Personalidade personalidade) {
-        return personalidadeRepository.incluir(personalidade);
+    public Personalidade incluir(Personalidade personalidade) {
+        return personalidadeRepository.save(personalidade);
     }
 
     public Collection<Personalidade> obterLista() {
-        return personalidadeRepository.obterLista();
+        return (Collection<Personalidade>) personalidadeRepository.findAll();
     }
 
-    public Personalidade excluir(Integer id) {
-        return personalidadeRepository.excluir(id);
+    public void excluir(Integer id) {
+        personalidadeRepository.deleteById(id);
+    }
+
+    public Personalidade obterPorId(Integer id) {
+        return personalidadeRepository.findById(id).orElse(null);
     }
 }

@@ -1,12 +1,12 @@
 package br.edu.infnet.gerenciadorpersonagens.model.auxiliar;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
-import br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario;
 import br.edu.infnet.gerenciadorpersonagens.model.service.CriadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -40,7 +40,8 @@ public class CriadorLoader implements ApplicationRunner {
                         camposPorLinha[2],
                         camposPorLinha[3],
                         camposPorLinha[4],
-                        new ArrayList<>(List.of(camposPorLinha[5].split(",")))
+                        new ArrayList<>(List.of(StringUtils.trimAllWhitespace(camposPorLinha[5]).split(",")))
+
                 );
                 criadorService.incluir(criador);
                 System.out.println("Inclusão do Criador " + criador.getNomeCompleto() + " realizada com sucesso!");

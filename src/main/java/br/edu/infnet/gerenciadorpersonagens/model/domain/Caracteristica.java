@@ -1,16 +1,29 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Caracteristica {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id = 0;
-    private final String descricao;
-    private final String pontoDeDestaque;
-    private final String inspiracao;
+    private String descricao;
+    private String pontoDeDestaque;
+    private String inspiracao;
 
     public Caracteristica(String descricao, String pontoDeDestaque, String inspiracao) {
         this.descricao = descricao;
         this.pontoDeDestaque = pontoDeDestaque;
         this.inspiracao = inspiracao;
+    }
+
+    protected Caracteristica() {
     }
 
     public abstract String formatarExibicao();
@@ -23,23 +36,4 @@ public abstract class Caracteristica {
                 .append(";").append(inspiracao));
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public String getPontoDeDestaque() {
-        return pontoDeDestaque;
-    }
-
-    public String getInspiracao() {
-        return inspiracao;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

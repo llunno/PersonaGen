@@ -2,19 +2,33 @@ package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
 import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils;
 import br.edu.infnet.gerenciadorpersonagens.model.exceptions.ExpressaoInvalidaException;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.ArrayList;
+import java.util.List;
 
+@Setter
+@Getter
+@Entity
 public class Personalidade extends Caracteristica{
 
     private String palavraDefinicao;
     private String tipoExpressao = "Não informado";
     private String religiao;
     private String temperamento;
-    private ArrayList<String> qualidades;
-    private  ArrayList<String> defeitos;
-    private ArrayList<String> interesses;
-    private ArrayList<String> desinteresses;
+
+    @ElementCollection
+    private List<String> qualidades;
+    @ElementCollection
+    private  List<String> defeitos;
+    @ElementCollection
+    private List<String> interesses;
+    @ElementCollection
+    private List<String> desinteresses;
+
+    public Personalidade() {}
 
     public Personalidade(
             String descricao,
@@ -24,10 +38,10 @@ public class Personalidade extends Caracteristica{
             String tipoExpressao,
             String religiao,
             String temperamento,
-            ArrayList<String> qualidades,
-            ArrayList<String> defeitos,
-            ArrayList<String> interesses,
-            ArrayList<String> desinteresses
+            List<String> qualidades,
+            List<String> defeitos,
+            List<String> interesses,
+            List<String> desinteresses
     ) {
         super(descricao,pontoDeDestaque,inspiracao);
         this.palavraDefinicao = palavraDefinicao;
@@ -63,10 +77,6 @@ public class Personalidade extends Caracteristica{
                 + ";" + desinteresses;
     }
 
-    public String getTipoExpressao() {
-        return tipoExpressao;
-    }
-
     public void setTipoExpressao(String tipoExpressao) throws ExpressaoInvalidaException {
         if (!tipoExpressao.equalsIgnoreCase(Utils.TIPO_EXPRESSAO[0]) &&
                 !tipoExpressao.equalsIgnoreCase(Utils.TIPO_EXPRESSAO[1]) &&
@@ -80,59 +90,4 @@ public class Personalidade extends Caracteristica{
         }
     }
 
-    public String getReligiao() {
-        return religiao;
-    }
-
-    public void setReligiao(String religiao) {
-        this.religiao = religiao;
-    }
-
-    public String getTemperamento() {
-        return temperamento;
-    }
-
-    public void setTemperamento(String temperamento) {
-        this.temperamento = temperamento;
-    }
-
-    public ArrayList<String> getQualidades() {
-        return qualidades;
-    }
-
-    public void setQualidades(ArrayList<String> qualidades) {
-        this.qualidades = qualidades;
-    }
-
-    public ArrayList<String> getDefeitos() {
-        return defeitos;
-    }
-
-    public void setDefeitos(ArrayList<String> defeitos) {
-        this.defeitos = defeitos;
-    }
-
-    public ArrayList<String> getInteresses() {
-        return interesses;
-    }
-
-    public void setInteresses(ArrayList<String> interesses) {
-        this.interesses = interesses;
-    }
-
-    public ArrayList<String> getDesinteresses() {
-        return desinteresses;
-    }
-
-    public void setDesinteresses(ArrayList<String> desinteresses) {
-        this.desinteresses = desinteresses;
-    }
-
-    public String getPalavraDefinicao() {
-        return palavraDefinicao;
-    }
-
-    public void setPalavraDefinicao(String palavraDefinicao) {
-        this.palavraDefinicao = palavraDefinicao;
-    }
 }

@@ -2,7 +2,11 @@ package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
 import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils;
 import br.edu.infnet.gerenciadorpersonagens.model.exceptions.TipoHabilidadeInvalidoException;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 public class Habilidade extends Caracteristica {
     private String nome;
     private String tipo;
@@ -28,26 +32,14 @@ public class Habilidade extends Caracteristica {
                 + ";" + maestria;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
     public void setTipo(String tipo) throws TipoHabilidadeInvalidoException {
         if (!tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[0]) &&
-            !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[1]) &&
-            !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[2]) &&
-            !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[3]) &&
-            !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[4]) &&
-            !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[5]) &&
-            !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[6])) {
+                !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[1]) &&
+                !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[2]) &&
+                !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[3]) &&
+                !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[4]) &&
+                !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[5]) &&
+                !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[6])) {
             throw new TipoHabilidadeInvalidoException(
                     "Tipo de habilidade informada inválida! Por favor, insira apenas as opções: " +
                             "Física, Intelectual, Musical, Emocional, Intuitiva ou Outro."
@@ -56,13 +48,5 @@ public class Habilidade extends Caracteristica {
         else {
             this.tipo = tipo;
         }
-    }
-
-    public String getMaestria() {
-        return maestria;
-    }
-
-    public void setMaestria(String maestria) {
-        this.maestria = maestria;
     }
 }

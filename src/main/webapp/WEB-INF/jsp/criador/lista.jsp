@@ -1,3 +1,4 @@
+<%@ page trimDirectiveWhitespaces="true" %>
 <%@ page import="br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>

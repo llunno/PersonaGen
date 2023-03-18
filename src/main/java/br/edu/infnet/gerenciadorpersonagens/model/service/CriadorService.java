@@ -1,7 +1,7 @@
 package br.edu.infnet.gerenciadorpersonagens.model.service;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
-import br.edu.infnet.gerenciadorpersonagens.model.repository.CriadorRepository;
+import br.edu.infnet.gerenciadorpersonagens.model.repository.ICriadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,17 +11,21 @@ import java.util.Collection;
 public class CriadorService {
 
     @Autowired
-    private CriadorRepository criadorRepository;
+    private ICriadorRepository criadorRepository;
 
-    public boolean incluir(Criador criador) {
-        return criadorRepository.incluir(criador);
+    public Criador incluir(Criador criador) {
+        return criadorRepository.save(criador);
     }
 
     public Collection<Criador> obterLista() {
-        return criadorRepository.obterLista();
+        return (Collection<Criador>) criadorRepository.findAll();
     }
 
-    public Criador excluir(Integer id) {
-        return  criadorRepository.excluir(id);
+    public void excluir(Integer id) {
+        criadorRepository.deleteById(id);
+    }
+
+    public Criador obterPorId(Integer id) {
+        return criadorRepository.findById(id).orElse(null);
     }
 }

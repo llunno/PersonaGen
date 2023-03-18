@@ -1,7 +1,7 @@
 package br.edu.infnet.gerenciadorpersonagens.model.service;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario;
-import br.edu.infnet.gerenciadorpersonagens.model.repository.UsuarioRepository;
+import br.edu.infnet.gerenciadorpersonagens.model.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,17 +10,25 @@ import java.util.Collection;
 @Service
 public class UsuarioService {
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private IUsuarioRepository usuarioRepository;
 
-    public boolean incluir(Usuario usuario) {
-        return usuarioRepository.incluir(usuario);
+    public Usuario incluir(Usuario usuario) {
+        return usuarioRepository.save(usuario);
     }
 
-    public Usuario excluir(Integer id) {
-        return usuarioRepository.excluir(id);
+    public void excluir(Integer id) {
+        usuarioRepository.deleteById(id);
     }
 
     public Collection<Usuario> obterLista() {
-        return usuarioRepository.obterLista();
+        return (Collection<Usuario>) usuarioRepository.findAll();
+    }
+
+    public Usuario obterPorId(Integer id) {
+        return usuarioRepository.findById(id).orElse(null);
+    }
+
+    public Usuario autenticar(Usuario usuario) {
+        return usuarioRepository.autenticar(usuario.getEmail(), usuario.getSenha());
     }
 }

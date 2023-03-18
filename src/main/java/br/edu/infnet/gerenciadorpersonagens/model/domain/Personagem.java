@@ -1,10 +1,15 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.UUID;
 
+@Setter
+@Getter
 public class Personagem {
     private final UUID Id = UUID.randomUUID();
     private final LocalDateTime dataCriacao = LocalDateTime.now();
@@ -50,30 +55,6 @@ public class Personagem {
         return Id;
     }
 
-    public Criador getCriador() {
-        return criador;
-    }
-
-    public void setCriador(Criador criador) {
-        this.criador = criador;
-    }
-
-    public ArrayList<Caracteristica> getCaracteristicas() {
-        return caracteristicas;
-    }
-
-    public void setCaracteristicas(ArrayList<Caracteristica> caracteristicas) {
-        this.caracteristicas = caracteristicas;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public boolean isHuman() {
         return isHuman;
     }
@@ -82,31 +63,4 @@ public class Personagem {
         isHuman = human;
     }
 
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public String getHistoria() {
-        return historia;
-    }
-
-    public void setHistoria(String historia) {
-        this.historia = historia;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public LocalDateTime getDataCriacao() {
-        return dataCriacao;
-    }
 }

@@ -1,7 +1,6 @@
 package br.edu.infnet.gerenciadorpersonagens.controller;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario;
-import br.edu.infnet.gerenciadorpersonagens.model.repository.UsuarioRepository;
 import br.edu.infnet.gerenciadorpersonagens.model.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,13 +44,13 @@ public class UsuarioController {
         usuarioService.incluir(usuario);
 
         msg = "Usuário " + usuario.getNomeCompleto() + " incluído com sucesso!";
-
         return "redirect:/";
     }
 
     @GetMapping(value = "/usuario/{id}/excluir")
     public String excluir(@PathVariable Integer id) {
-        Usuario usuario = usuarioService.excluir(id);
+        Usuario usuario = usuarioService.obterPorId(id);
+        usuarioService.excluir(id);
         msg = "Usuário " + usuario.getNomeCompleto() + " excluído com sucesso!";
         return "redirect:/usuario/lista";
     }
