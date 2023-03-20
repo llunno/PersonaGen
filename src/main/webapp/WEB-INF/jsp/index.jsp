@@ -102,7 +102,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-dark bg-gray-900 topbar mb-4 sticky-top shadow">
+                <nav class="navbar navbar-expand navbar-dark bg-white topbar mb-4 sticky-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">

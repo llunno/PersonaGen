@@ -43,7 +43,8 @@ a {
   display: none;
   width: 2.75rem;
   height: 2.75rem;
-  text-align: center;
+  text-align: center !important;
+  align-items: center;
   color: $white;
   background: fade-out($gray-800, .5);
   line-height: 46px;
