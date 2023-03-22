@@ -1,4 +1,4 @@
-package br.edu.infnet.gerenciadorpersonagens.model.auxiliar;
+package br.edu.infnet.gerenciadorpersonagens.model.auxiliar.loaders;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Aparencia;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AparenciaService;

@@ -9,5 +9,4 @@ public class GerenciadorpersonagensApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GerenciadorpersonagensApplication.class, args);
 	}
-
 }
