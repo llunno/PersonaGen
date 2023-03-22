@@ -1,7 +1,7 @@
-package br.edu.infnet.gerenciadorpersonagens.model.auxiliar;
+package br.edu.infnet.gerenciadorpersonagens.model.auxiliar.loaders;
 
-import br.edu.infnet.gerenciadorpersonagens.model.domain.Habilidade;
-import br.edu.infnet.gerenciadorpersonagens.model.service.HabilidadeService;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario;
+import br.edu.infnet.gerenciadorpersonagens.model.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -12,36 +12,33 @@ import java.io.FileReader;
 import java.io.IOException;
 
 @Component
-public class HabilidadeLoader implements ApplicationRunner {
+public class UsuarioLoader implements ApplicationRunner {
 
     @Autowired
-    private HabilidadeService habilidadeService;
-
+    private UsuarioService usuarioService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
         String dir = "src/main/java/br/edu/infnet/gerenciadorpersonagens/model/auxiliar/";
-        String arq = "HabilidadeMock";
+        String arq = "UsuarioMock";
 
         try {
             FileReader fileR = new FileReader(dir+arq);
             BufferedReader leituraArquivo = new BufferedReader(fileR);
 
-            //int i = 0;
             String linha = leituraArquivo.readLine();
             String[] camposPorLinha;
             while (linha != null) {
                 camposPorLinha = linha.split(";");
-                Habilidade habilidade = new Habilidade(
+                Usuario usuario = new Usuario(
                         camposPorLinha[0],
                         camposPorLinha[1],
                         camposPorLinha[2],
-                        camposPorLinha[3],
-                        camposPorLinha[4],
-                        camposPorLinha[5]
+                        camposPorLinha[3]
                 );
-                habilidadeService.incluir(habilidade);
-                System.out.println("Inclusão da habilidade " + habilidade.getNome() + " realizada com sucesso!");
+                usuarioService.incluir(usuario);
+                System.out.println("Inclusão do usuário " + usuario.getNomeCompleto() + " realizada com sucesso!");
                 linha = leituraArquivo.readLine();
             }
             leituraArquivo.close();

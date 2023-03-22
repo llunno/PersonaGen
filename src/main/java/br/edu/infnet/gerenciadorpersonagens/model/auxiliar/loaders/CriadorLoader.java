@@ -1,7 +1,7 @@
-package br.edu.infnet.gerenciadorpersonagens.model.auxiliar;
+package br.edu.infnet.gerenciadorpersonagens.model.auxiliar.loaders;
 
-import br.edu.infnet.gerenciadorpersonagens.model.domain.Personalidade;
-import br.edu.infnet.gerenciadorpersonagens.model.service.PersonalidadeService;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
+import br.edu.infnet.gerenciadorpersonagens.model.service.CriadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -15,39 +15,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class PersonalidadeLoader implements ApplicationRunner {
+public class CriadorLoader implements ApplicationRunner {
 
     @Autowired
-    private PersonalidadeService personalidadeService;
+    CriadorService criadorService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         String dir = "src/main/java/br/edu/infnet/gerenciadorpersonagens/model/auxiliar/";
-        String arq = "PersonalidadeMock";
+        String arq = "CriadorMock";
 
         try {
             FileReader fileR = new FileReader(dir+arq);
             BufferedReader leituraArquivo = new BufferedReader(fileR);
 
+            //int i = 0;
             String linha = leituraArquivo.readLine();
             String[] camposPorLinha;
             while (linha != null) {
                 camposPorLinha = linha.split(";");
-                Personalidade personalidade = new Personalidade(
+                Criador criador = new Criador(
                         camposPorLinha[0],
                         camposPorLinha[1],
                         camposPorLinha[2],
                         camposPorLinha[3],
                         camposPorLinha[4],
-                        camposPorLinha[5],
-                        camposPorLinha[6],
-                        new ArrayList<>(List.of(StringUtils.trimAllWhitespace(camposPorLinha[7]).split(","))),
-                        new ArrayList<>(List.of(StringUtils.trimAllWhitespace(camposPorLinha[8]).split(","))),
-                        new ArrayList<>(List.of(StringUtils.trimAllWhitespace(camposPorLinha[9]).split(","))),
-                        new ArrayList<>(List.of(StringUtils.trimAllWhitespace(camposPorLinha[10]).split(",")))
+                        new ArrayList<>(List.of(StringUtils.trimAllWhitespace(camposPorLinha[5]).split(",")))
+
                 );
-                personalidadeService.incluir(personalidade);
-                System.out.println("Inclusão da personalidade " + personalidade.getPalavraDefinicao() + " realizada com sucesso!");
+                criadorService.incluir(criador);
+                System.out.println("Inclusão do Criador " + criador.getNomeCompleto() + " realizada com sucesso!");
                 linha = leituraArquivo.readLine();
             }
             leituraArquivo.close();
