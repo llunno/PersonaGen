@@ -506,7 +506,7 @@ kbd {
   padding: 0.2rem 0.4rem;
   font-size: 87.5%;
   color: #fff;
-  background-color: #3a3b45;
+  background-color: #2a2929;
   border-radius: 0.2rem;
 }
 kbd kbd {
@@ -518,7 +518,7 @@ kbd kbd {
 pre {
   display: block;
   font-size: 87.5%;
-  color: #3a3b45;
+  color: #2a2929;
 }
 pre code {
   font-size: inherit;
@@ -2417,33 +2417,33 @@ fieldset:disabled a.btn {
 }
 
 .btn-light {
-  color: #3a3b45;
+  color: #2a2929;
   background-color: #f8f9fc;
   border-color: #f8f9fc;
 }
 .btn-light:hover {
-  color: #3a3b45;
+  color: #2a2929;
   background-color: #dde2f1;
   border-color: #d4daed;
 }
 .btn-light:focus, .btn-light.focus {
-  color: #3a3b45;
+  color: #2a2929;
   background-color: #dde2f1;
   border-color: #d4daed;
-  box-shadow: 0 0 0 0.2rem rgba(220, 221, 225, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(217, 218, 220, 0.5);
 }
 .btn-light.disabled, .btn-light:disabled {
-  color: #3a3b45;
+  color: #2a2929;
   background-color: #f8f9fc;
   border-color: #f8f9fc;
 }
 .btn-light:not(:disabled):not(.disabled):active, .btn-light:not(:disabled):not(.disabled).active, .show > .btn-light.dropdown-toggle {
-  color: #3a3b45;
+  color: #2a2929;
   background-color: #d4daed;
   border-color: #cbd3e9;
 }
 .btn-light:not(:disabled):not(.disabled):active:focus, .btn-light:not(:disabled):not(.disabled).active:focus, .show > .btn-light.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(220, 221, 225, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(217, 218, 220, 0.5);
 }
 
 .btn-dark {
@@ -2631,7 +2631,7 @@ fieldset:disabled a.btn {
   border-color: #f8f9fc;
 }
 .btn-outline-light:hover {
-  color: #3a3b45;
+  color: #2a2929;
   background-color: #f8f9fc;
   border-color: #f8f9fc;
 }
@@ -2643,7 +2643,7 @@ fieldset:disabled a.btn {
   background-color: transparent;
 }
 .btn-outline-light:not(:disabled):not(.disabled):active, .btn-outline-light:not(:disabled):not(.disabled).active, .show > .btn-outline-light.dropdown-toggle {
-  color: #3a3b45;
+  color: #2a2929;
   background-color: #f8f9fc;
   border-color: #f8f9fc;
 }
@@ -2937,14 +2937,14 @@ input[type=button].btn-block {
   padding: 0.25rem 1.5rem;
   clear: both;
   font-weight: 400;
-  color: #3a3b45;
+  color: #2a2929;
   text-align: inherit;
   white-space: nowrap;
   background-color: transparent;
   border: 0;
 }
 .dropdown-item:hover, .dropdown-item:focus {
-  color: #2e2f37;
+  color: #1d1c1c;
   text-decoration: none;
   background-color: #eaecf4;
 }
@@ -2975,7 +2975,7 @@ input[type=button].btn-block {
 .dropdown-item-text {
   display: block;
   padding: 0.25rem 1.5rem;
-  color: #3a3b45;
+  color: #2a2929;
 }
 
 .btn-group,
@@ -4561,11 +4561,11 @@ a.badge-danger:focus, a.badge-danger.focus {
 }
 
 .badge-light {
-  color: #3a3b45;
+  color: #2a2929;
   background-color: #f8f9fc;
 }
 a.badge-light:hover, a.badge-light:focus {
-  color: #3a3b45;
+  color: #2a2929;
   background-color: #d4daed;
 }
 a.badge-light:focus, a.badge-light.focus {
@@ -6973,11 +6973,11 @@ button.bg-dark:focus {
 }
 
 .shadow-sm {
-  box-shadow: 0 0.125rem 0.25rem 0 rgba(58, 59, 69, 0.2) !important;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(42, 41, 41, 0.2) !important;
 }
 
 .shadow {
-  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(42, 41, 41, 0.15) !important;
 }
 
 .shadow-lg {
@@ -9346,7 +9346,7 @@ a:focus {
 }
 
 .bg-gray-900 {
-  background-color: #3a3b45 !important;
+  background-color: #2a2929 !important;
 }
 
 .o-hidden {
@@ -9394,7 +9394,7 @@ a:focus {
 }
 
 .text-gray-900 {
-  color: #3a3b45 !important;
+  color: #2a2929 !important;
 }
 
 .icon-circle {
@@ -9618,7 +9618,7 @@ a:focus {
 }
 .topbar .dropdown-list .dropdown-item:active {
   background-color: #eaecf4;
-  color: #3a3b45;
+  color: #2a2929;
 }
 @media (min-width: 576px) {
   .topbar .dropdown {
@@ -9686,7 +9686,7 @@ a:focus {
 }
 .sidebar .nav-item .collapse .collapse-inner {
   border-radius: 0.35rem;
-  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(42, 41, 41, 0.15);
 }
 .sidebar .nav-item .collapsing {
   display: none;
@@ -9714,7 +9714,7 @@ a:focus {
   padding: 0.5rem 1rem;
   margin: 0 0.5rem;
   display: block;
-  color: #3a3b45;
+  color: #2a2929;
   text-decoration: none;
   border-radius: 0.35rem;
   white-space: nowrap;
@@ -9888,7 +9888,7 @@ a:focus {
     animation-timing-function: transform cubic-bezier(0.18, 1.25, 0.4, 1), opacity cubic-bezier(0, 1, 0.4, 1);
   }
   .sidebar.toggled .nav-item .collapse .collapse-inner {
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(42, 41, 41, 0.15);
     border-radius: 0.35rem;
   }
   .sidebar.toggled .nav-item .collapsing {
@@ -10122,7 +10122,7 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+  background: url("../img/login_image.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -10223,67 +10223,67 @@ form.user .btn-user {
 
 @keyframes noise-anim {
   0% {
-    clip: rect(82px, 9999px, 83px, 0);
+    clip: rect(85px, 9999px, 57px, 0);
   }
   5% {
-    clip: rect(87px, 9999px, 51px, 0);
+    clip: rect(51px, 9999px, 99px, 0);
   }
   10% {
-    clip: rect(33px, 9999px, 40px, 0);
+    clip: rect(17px, 9999px, 32px, 0);
   }
   15% {
-    clip: rect(24px, 9999px, 9px, 0);
+    clip: rect(41px, 9999px, 3px, 0);
   }
   20% {
-    clip: rect(24px, 9999px, 16px, 0);
+    clip: rect(75px, 9999px, 14px, 0);
   }
   25% {
-    clip: rect(38px, 9999px, 64px, 0);
+    clip: rect(79px, 9999px, 23px, 0);
   }
   30% {
-    clip: rect(15px, 9999px, 27px, 0);
+    clip: rect(49px, 9999px, 72px, 0);
   }
   35% {
-    clip: rect(19px, 9999px, 10px, 0);
+    clip: rect(79px, 9999px, 35px, 0);
   }
   40% {
-    clip: rect(88px, 9999px, 90px, 0);
+    clip: rect(75px, 9999px, 4px, 0);
   }
   45% {
-    clip: rect(50px, 9999px, 12px, 0);
+    clip: rect(95px, 9999px, 20px, 0);
   }
   50% {
-    clip: rect(70px, 9999px, 30px, 0);
+    clip: rect(51px, 9999px, 3px, 0);
   }
   55% {
-    clip: rect(92px, 9999px, 100px, 0);
+    clip: rect(83px, 9999px, 35px, 0);
   }
   60% {
-    clip: rect(54px, 9999px, 26px, 0);
+    clip: rect(51px, 9999px, 4px, 0);
   }
   65% {
-    clip: rect(63px, 9999px, 69px, 0);
+    clip: rect(35px, 9999px, 98px, 0);
   }
   70% {
-    clip: rect(80px, 9999px, 37px, 0);
+    clip: rect(49px, 9999px, 48px, 0);
   }
   75% {
-    clip: rect(8px, 9999px, 96px, 0);
+    clip: rect(69px, 9999px, 92px, 0);
   }
   80% {
-    clip: rect(54px, 9999px, 66px, 0);
+    clip: rect(46px, 9999px, 33px, 0);
   }
   85% {
-    clip: rect(52px, 9999px, 24px, 0);
+    clip: rect(54px, 9999px, 23px, 0);
   }
   90% {
-    clip: rect(28px, 9999px, 99px, 0);
+    clip: rect(74px, 9999px, 52px, 0);
   }
   95% {
-    clip: rect(52px, 9999px, 85px, 0);
+    clip: rect(48px, 9999px, 91px, 0);
   }
   100% {
-    clip: rect(33px, 9999px, 6px, 0);
+    clip: rect(53px, 9999px, 26px, 0);
   }
 }
 .error:after {
@@ -10301,67 +10301,67 @@ form.user .btn-user {
 
 @keyframes noise-anim-2 {
   0% {
-    clip: rect(90px, 9999px, 14px, 0);
+    clip: rect(96px, 9999px, 99px, 0);
   }
   5% {
-    clip: rect(9px, 9999px, 88px, 0);
+    clip: rect(64px, 9999px, 82px, 0);
   }
   10% {
-    clip: rect(74px, 9999px, 55px, 0);
+    clip: rect(61px, 9999px, 96px, 0);
   }
   15% {
-    clip: rect(86px, 9999px, 33px, 0);
+    clip: rect(75px, 9999px, 14px, 0);
   }
   20% {
-    clip: rect(99px, 9999px, 46px, 0);
+    clip: rect(67px, 9999px, 100px, 0);
   }
   25% {
-    clip: rect(8px, 9999px, 4px, 0);
+    clip: rect(42px, 9999px, 96px, 0);
   }
   30% {
-    clip: rect(56px, 9999px, 32px, 0);
+    clip: rect(95px, 9999px, 13px, 0);
   }
   35% {
-    clip: rect(60px, 9999px, 85px, 0);
+    clip: rect(98px, 9999px, 5px, 0);
   }
   40% {
-    clip: rect(67px, 9999px, 47px, 0);
+    clip: rect(21px, 9999px, 79px, 0);
   }
   45% {
-    clip: rect(37px, 9999px, 93px, 0);
+    clip: rect(36px, 9999px, 29px, 0);
   }
   50% {
-    clip: rect(99px, 9999px, 15px, 0);
+    clip: rect(1px, 9999px, 56px, 0);
   }
   55% {
-    clip: rect(80px, 9999px, 31px, 0);
+    clip: rect(2px, 9999px, 50px, 0);
   }
   60% {
-    clip: rect(100px, 9999px, 2px, 0);
+    clip: rect(98px, 9999px, 36px, 0);
   }
   65% {
-    clip: rect(41px, 9999px, 28px, 0);
+    clip: rect(9px, 9999px, 87px, 0);
   }
   70% {
-    clip: rect(19px, 9999px, 75px, 0);
+    clip: rect(19px, 9999px, 86px, 0);
   }
   75% {
-    clip: rect(2px, 9999px, 64px, 0);
+    clip: rect(73px, 9999px, 54px, 0);
   }
   80% {
-    clip: rect(40px, 9999px, 57px, 0);
+    clip: rect(20px, 9999px, 22px, 0);
   }
   85% {
-    clip: rect(61px, 9999px, 42px, 0);
+    clip: rect(27px, 9999px, 53px, 0);
   }
   90% {
-    clip: rect(84px, 9999px, 41px, 0);
+    clip: rect(43px, 9999px, 85px, 0);
   }
   95% {
-    clip: rect(17px, 9999px, 6px, 0);
+    clip: rect(8px, 9999px, 27px, 0);
   }
   100% {
-    clip: rect(64px, 9999px, 82px, 0);
+    clip: rect(54px, 9999px, 2px, 0);
   }
 }
 .error:before {
