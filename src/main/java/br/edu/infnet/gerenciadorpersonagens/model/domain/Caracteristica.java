@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter
 @Getter
 @Entity
@@ -12,10 +14,17 @@ public abstract class Caracteristica {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id = 0;
+    private Integer id;
     private String descricao;
     private String pontoDeDestaque;
     private String inspiracao;
+    
+    @ManyToOne
+    @JoinColumn(name = "criador_id")
+    private Criador criador;
+
+    @ManyToMany(mappedBy = "caracteristicas")
+    private List<Personagem> personagensAssociados;
 
     public Caracteristica(String descricao, String pontoDeDestaque, String inspiracao) {
         this.descricao = descricao;

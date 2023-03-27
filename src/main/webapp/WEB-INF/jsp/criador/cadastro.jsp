@@ -22,12 +22,12 @@
             <input name="email" type="text" class="form-control" id="email" required>
         </div>
         <div class="mb-3">
-            <label for="senhaCriador" class="form-label">Senha</label>
-            <input name="senhaCriador" type="password" class="form-control" id="senhaCriador" required>
+            <label for="senha" class="form-label">Senha</label>
+            <input name="senha" type="password" class="form-control" id="senha" required>
         </div>
         <div class="mb-3">
             <label for="idade" class="form-label">Idade</label>
-            <input name="idade" type="text" class="form-control" id="idade" required>
+            <input name="idade" type="number" class="form-control" id="idade" required>
         </div>
         <div class="mb-3">
             <label for="interesses" class="form-label">Interesses Criativos</label>

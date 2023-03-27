@@ -1,7 +1,7 @@
 package br.edu.infnet.gerenciadorpersonagens.model.service;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Aparencia;
-import br.edu.infnet.gerenciadorpersonagens.model.repository.AparenciaRepository;
+import br.edu.infnet.gerenciadorpersonagens.model.repository.IAparenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,17 +11,25 @@ import java.util.Collection;
 public class AparenciaService {
 
     @Autowired
-    private AparenciaRepository aparenciaRepository;
+    private IAparenciaRepository aparenciaRepository;
 
-    public boolean incluir(Aparencia aparencia) {
-        return aparenciaRepository.incluir(aparencia);
+    public Aparencia incluir(Aparencia aparencia) {
+        return aparenciaRepository.save(aparencia);
     }
 
     public Collection<Aparencia> obterLista() {
-        return aparenciaRepository.obterLista();
+        return (Collection<Aparencia>) aparenciaRepository.findAll();
     }
 
-    public Aparencia excluir(Integer id) {
-        return aparenciaRepository.excluir(id);
+    public void excluir(Integer id) {
+        aparenciaRepository.deleteById(id);
+    }
+
+    public Aparencia obterPorId(Integer id) {
+        return aparenciaRepository.findById(id).orElse(null);
+    }
+
+    public Collection<Aparencia> obterListaPorCriador(Integer creatorId) {
+        return aparenciaRepository.findAllByCreator(creatorId);
     }
 }

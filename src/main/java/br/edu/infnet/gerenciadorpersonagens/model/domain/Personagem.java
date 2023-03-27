@@ -1,25 +1,37 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Setter
 @Getter
+@Entity
 public class Personagem {
+
+    @Id
     private final UUID Id = UUID.randomUUID();
     private final LocalDateTime dataCriacao = LocalDateTime.now();
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "criador_id")
     private Criador criador;
-    private ArrayList<Caracteristica> caracteristicas;
+    @ManyToMany(cascade = CascadeType.DETACH)
+    @JoinTable(name = "personagem_caracteristica",
+            joinColumns = @JoinColumn(name = "personagem_id"),
+            inverseJoinColumns = @JoinColumn(name = "caracteristica_id"))
+    private List<Caracteristica> caracteristicas;
     private String nome;
     private int idade;
     private boolean isHuman;
     private String genero;
     private String historia;
+
+    public Personagem() {}
 
     public String toString() {
         return String.format("%s",criador)
@@ -51,16 +63,8 @@ public class Personagem {
         return sb.toString();
     }
 
-    public UUID getId() {
-        return Id;
-    }
-
     public boolean isHuman() {
         return isHuman;
-    }
-
-    public void setHuman(boolean human) {
-        isHuman = human;
     }
 
 }

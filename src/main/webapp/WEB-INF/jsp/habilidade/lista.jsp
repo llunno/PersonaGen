@@ -41,6 +41,7 @@
                 <th>Ponto de Destaque</th>
                 <th>Inspiração</th>
                 <th>Descrição</th>
+                <th>Criador</th>
                 <th></th>
             </tr>
             </thead>
@@ -67,6 +68,9 @@
                     </td>
                     <td>
                         <p>${habilidade.descricao}</p>
+                    </td>
+                    <td>
+                        <p>${habilidade.criador.nomeCompleto}</p>
                     </td>
                     <td><a href="/habilidade/${habilidade.id}/excluir" class="excluir-item-link">Excluir</a></td>
                 </tr>

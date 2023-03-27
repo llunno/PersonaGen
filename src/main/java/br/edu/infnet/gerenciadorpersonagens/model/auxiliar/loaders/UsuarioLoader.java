@@ -1,15 +1,10 @@
 package br.edu.infnet.gerenciadorpersonagens.model.auxiliar.loaders;
 
-import br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario;
 import br.edu.infnet.gerenciadorpersonagens.model.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
 @Component
 public class UsuarioLoader implements ApplicationRunner {
@@ -19,7 +14,7 @@ public class UsuarioLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-
+/*
         String dir = "src/main/java/br/edu/infnet/gerenciadorpersonagens/model/auxiliar/";
         String arq = "UsuarioMock";
 
@@ -46,5 +41,7 @@ public class UsuarioLoader implements ApplicationRunner {
         } catch (IOException e) {
             System.out.println("Erro de leitura no arquivo");
         }
+
+ */
     }
 }

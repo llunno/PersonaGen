@@ -1,5 +1,6 @@
 package br.edu.infnet.gerenciadorpersonagens.model.auxiliar.loaders;
 
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Habilidade;
 import br.edu.infnet.gerenciadorpersonagens.model.service.HabilidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,9 @@ public class HabilidadeLoader implements ApplicationRunner {
                         camposPorLinha[4],
                         camposPorLinha[5]
                 );
+                Criador criador = new Criador();
+                criador.setId(Integer.parseInt(camposPorLinha[6]));
+                habilidade.setCriador(criador);
                 habilidadeService.incluir(habilidade);
                 System.out.println("Inclusão da habilidade " + habilidade.getNome() + " realizada com sucesso!");
                 linha = leituraArquivo.readLine();

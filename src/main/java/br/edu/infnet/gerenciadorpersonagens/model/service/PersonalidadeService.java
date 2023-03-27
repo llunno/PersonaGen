@@ -28,4 +28,8 @@ public class PersonalidadeService {
     public Personalidade obterPorId(Integer id) {
         return personalidadeRepository.findById(id).orElse(null);
     }
+
+    public Collection<Personalidade> obterListaPorCriador(Integer creatorId) {
+        return personalidadeRepository.findAllByCreator(creatorId);
+    }
 }

@@ -1,6 +1,9 @@
 package br.edu.infnet.gerenciadorpersonagens.controller;
 
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Administrador;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario;
+import br.edu.infnet.gerenciadorpersonagens.model.service.AuthService;
 import br.edu.infnet.gerenciadorpersonagens.model.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,8 @@ public class AcessoController {
 
     @Autowired
     private UsuarioService usuarioService;
+    @Autowired
+    private AuthService authService;
 
     @GetMapping(value="/login")
     public String exibirTelaLogin() {
@@ -26,21 +31,32 @@ public class AcessoController {
     @PostMapping(value="/login")
     public String login(Usuario usuario, Model model) {
 
-        Usuario usuario1 = new Usuario(usuario.getEmail(), usuario.getSenha());
+        Usuario userToLogin = usuarioService.autenticar(usuario);
+        if (userToLogin != null) {
 
-        if (usuarioService.autenticar(usuario1) != null) {
-            model.addAttribute("usuario", usuario1);
+            if (userToLogin instanceof Administrador admin) {
+                System.out.println("Administrador logado: " + admin);
+                model.addAttribute("usuario", admin);
+            }
+            else if (userToLogin instanceof Criador criador) {
+                System.out.println("Criador logado: " + criador);
+                model.addAttribute("usuario", criador);
+            }
+            else {
+                System.out.println("Usuário logado: " + userToLogin);
+                model.addAttribute("usuario", userToLogin);
+            }
             return "redirect:/";
+
         } else {
-            model.addAttribute("mensagem", "As credenciais para o email " + usuario1.getEmail() + " não batem!");
+            model.addAttribute("mensagem", "As credenciais para o email " + usuario.getEmail() + " não batem!");
             return exibirTelaLogin();
         }
     }
 
     @GetMapping(value = "/logout")
     public String logout(HttpSession session, SessionStatus status) {
-        status.setComplete();
-        session.removeAttribute("usuario");
-        return "redirect:/";
+        authService.logout(session, status);
+        return "redirect:/login";
     }
 }

@@ -1,6 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ page import = "br.edu.infnet.gerenciadorpersonagens.model.domain.Administrador, br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario"%>
 
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg jus mb-4 sticky-top" data-bs-theme="dark">
   <div class="container-fluid d-flex justify-content-between">
@@ -12,9 +13,12 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <c:if test="${not empty usuario}">
-                <a class="nav-link" href="${pageContext.request.contextPath}/usuario/lista">Usuário</a>
                 <a class="nav-link" href="${pageContext.request.contextPath}/personagem/lista">Personagem</a>
-                <a class="nav-link" href="${pageContext.request.contextPath}/criador/lista">Criador</a>
+                <%
+                    if (session.getAttribute("usuario") instanceof Administrador){%>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/administrador/lista">Administrador</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/criador/lista">Criador</a>
+                <%}%>
                 <a class="nav-link" href="${pageContext.request.contextPath}/personalidade/lista">Personalidade</a>
                 <a class="nav-link" href="${pageContext.request.contextPath}/aparencia/lista">Aparência</a>
                 <a class="nav-link" href="${pageContext.request.contextPath}/habilidade/lista">Habilidades</a>
@@ -45,6 +49,7 @@
     window.location.href = "/login";
   }
   function signOut() {
+    location.reload();
     window.location.href = "/logout";
   }
   function signUp() {

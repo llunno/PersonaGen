@@ -1,3 +1,4 @@
+<%@ page import="br.edu.infnet.gerenciadorpersonagens.model.domain.Administrador" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
@@ -58,7 +59,10 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Cadastros:</h6>
-                        <a class="collapse-item" href="/">Perfil</a>
+                        <% if (session.getAttribute("usuario") instanceof Administrador) { %>
+                            <a class="collapse-item" href="administrador/cadastro">Administrador</a>
+                            <a class="collapse-item" href="criador/cadastro">Criador</a>
+                        <%}%>
                         <a class="collapse-item" href="personalidade/cadastro">Personalidade</a>
                         <a class="collapse-item" href="aparencia/cadastro">Aparência</a>
                         <a class="collapse-item" href="habilidade/cadastro">Habilidade</a>
@@ -78,6 +82,10 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Consultas:</h6>
+                        <% if (session.getAttribute("usuario") instanceof Administrador) { %>
+                            <a class="collapse-item" href="administrador/lista">Consultar Administradores</a>
+                            <a class="collapse-item" href="criador/lista">Consultar Criadores</a>
+                        <%}%>
                         <a class="collapse-item" href="personalidade/lista">Consultar Personalidade</a>
                         <a class="collapse-item" href="aparencia/lista">Consultar Aparência</a>
                         <a class="collapse-item" href="habilidade/lista">Consultar Habilidade</a>

@@ -73,7 +73,7 @@
                                         <a class="small" href="/">Esqueceu a senha?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="/">Criar uma conta!</a>
+                                        <a class="small" href="/criador/cadastro">Criar uma conta!</a>
                                     </div>
                                 </div>
                             </div>

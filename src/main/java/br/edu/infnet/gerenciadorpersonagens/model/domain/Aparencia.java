@@ -2,11 +2,13 @@ package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
 import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils;
 import br.edu.infnet.gerenciadorpersonagens.model.exceptions.BiotipoInvalidoException;
+import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
+@Entity
 public class Aparencia extends Caracteristica {
     private double altura;
     private double peso;
@@ -15,6 +17,9 @@ public class Aparencia extends Caracteristica {
     private String corOlhos;
     private String corCabelo;
     private String tipoCabelo;
+
+    public Aparencia() {
+    }
 
     public Aparencia(
             String descricao,

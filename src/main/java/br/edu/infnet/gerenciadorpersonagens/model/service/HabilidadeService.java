@@ -1,7 +1,7 @@
 package br.edu.infnet.gerenciadorpersonagens.model.service;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Habilidade;
-import br.edu.infnet.gerenciadorpersonagens.model.repository.HabilidadeRepository;
+import br.edu.infnet.gerenciadorpersonagens.model.repository.IHabilidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,17 +11,25 @@ import java.util.Collection;
 public class HabilidadeService {
 
     @Autowired
-    private HabilidadeRepository habilidadeRepository;
+    private IHabilidadeRepository habilidadeRepository;
 
-    public boolean incluir(Habilidade habilidade) {
-        return habilidadeRepository.incluir(habilidade);
+    public Habilidade incluir(Habilidade habilidade) {
+        return habilidadeRepository.save(habilidade);
     }
 
     public Collection<Habilidade> obterLista() {
-        return habilidadeRepository.obterLista();
+        return (Collection<Habilidade>) habilidadeRepository.findAll();
     }
 
-    public Habilidade excluir(Integer id) {
-        return habilidadeRepository.excluir(id);
+    public void excluir(Integer id) {
+         habilidadeRepository.deleteById(id);
+    }
+
+    public Habilidade obterPorId(Integer id) {
+        return habilidadeRepository.findById(id).orElse(null);
+    }
+
+    public Collection<Habilidade> obterListaPorCriador(Integer creatorId) {
+        return habilidadeRepository.findAllByCreator(creatorId);
     }
 }
