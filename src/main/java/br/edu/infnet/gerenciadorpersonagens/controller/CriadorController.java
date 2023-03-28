@@ -26,7 +26,7 @@ public class CriadorController {
 
     @GetMapping(value = "/criador/cadastro")
     public String exibirTelaCadastro(HttpSession session) {
-        if (!Objects.equals(authService.getLoggedUserType(session), authService.adminUser)) {
+        if (!(authService.isLoggedIn(session)) || Objects.equals(authService.getLoggedUserType(session), authService.adminUser)) {
             return "redirect:/login";
         }
         else {

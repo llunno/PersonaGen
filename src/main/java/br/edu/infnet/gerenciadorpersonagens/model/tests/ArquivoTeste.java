@@ -1,7 +1,6 @@
 package br.edu.infnet.gerenciadorpersonagens.model.tests;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.*;
-import br.edu.infnet.gerenciadorpersonagens.model.exceptions.ExpressaoInvalidaException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -41,7 +40,7 @@ public class ArquivoTeste {
                         personagem.setCaracteristicas(caracteristicasPersonagem);
                         personagem.setNome(camposPorLinha[7]);
                         personagem.setIdade(Integer.parseInt(camposPorLinha[8]));
-                        personagem.setHuman(Boolean.parseBoolean(camposPorLinha[9]));
+                        personagem.setIsHuman(Boolean.parseBoolean(camposPorLinha[9]));
                         personagem.setGenero(camposPorLinha[10]);
                         personagem.setHistoria(camposPorLinha[11]);
                         break;

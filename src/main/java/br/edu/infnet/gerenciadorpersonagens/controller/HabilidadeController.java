@@ -20,11 +20,15 @@ import java.util.Objects;
 @RequestMapping(value = "/habilidade")
 public class HabilidadeController {
 
-    @Autowired
-    private HabilidadeService habilidadeService;
-    @Autowired
-    private AuthService authService;
+    private final HabilidadeService habilidadeService;
+    private final AuthService authService;
     private static String msg;
+
+    @Autowired
+    public HabilidadeController(HabilidadeService habilidadeService, AuthService authService) {
+        this.habilidadeService = habilidadeService;
+        this.authService = authService;
+    }
 
     @GetMapping(value = "/cadastro")
     public String exibirTelaCadastro(HttpSession session){

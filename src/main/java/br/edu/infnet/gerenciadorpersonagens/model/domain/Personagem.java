@@ -28,10 +28,22 @@ public class Personagem {
     private String nome;
     private int idade;
     private boolean isHuman;
+    private String especie;
     private String genero;
     private String historia;
 
     public Personagem() {}
+
+    public Personagem(Criador criador, List<Caracteristica> caracteristicas, String nome, int idade, boolean isHuman, String especie, String genero, String historia) {
+        this.criador = criador;
+        this.caracteristicas = caracteristicas;
+        this.nome = nome;
+        this.idade = idade;
+        this.isHuman = isHuman;
+        this.especie = especie;
+        this.genero = genero;
+        this.historia = historia;
+    }
 
     public String toString() {
         return String.format("%s",criador)
@@ -40,12 +52,13 @@ public class Personagem {
                 + String.format(";%s",nome)
                 + String.format(";%s",idade)
                 + String.format(";%s",isHuman ? "Humano = Sim" : "Humano = Não")
+                + String.format(";%s",especie)
                 + String.format(";%s",genero)
                 + String.format(";%s",historia)
                 + String.format(";%s", formatarData());
     }
 
-    private String formatarData() {
+    public String formatarData() {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         return this.dataCriacao.format(formato);
     }
@@ -63,8 +76,19 @@ public class Personagem {
         return sb.toString();
     }
 
-    public boolean isHuman() {
-        return isHuman;
+    public String formatIsHuman() {
+        if (this.isHuman) {
+            return "Sim";
+        }
+        else {
+            return "Não";
+        }
     }
 
+    public void setIsHuman(boolean isHuman) {
+        if (isHuman) {
+            this.especie = "Humano";
+        }
+        this.isHuman = isHuman;
+    }
 }
