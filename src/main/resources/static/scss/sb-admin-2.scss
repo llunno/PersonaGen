@@ -18,3 +18,38 @@
 @import "login";
 @import "error";
 @import "footer";
+
+.border-left-brown {
+  border-left: 0.25rem solid $brown !important;
+}
+
+.border-bottom-brown {
+  border-bottom: 0.25rem solid $brown !important;
+}
+
+.text-brown {
+  color: $brown !important;
+}
+
+#dashboard-info-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    align-items: stretch;
+    margin-bottom: 4rem;
+    row-gap: 2rem;
+    column-gap: 0.75rem;
+
+    .card-info-item {
+      //width: 49%;
+      margin: 0;
+      height: auto;
+      flex: 1 1 48%;
+    }
+}
+
+#body-card-log {
+  min-height: 10rem;
+}
+

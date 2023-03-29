@@ -30,6 +30,7 @@ $cyan: #36b9cc !default;
 // Custom Colors
 $brand-google: #ea4335 !default;
 $brand-facebook: #3b5998 !default;
+$brown: #5b4545 !default;
 
 // Set Contrast Threshold
 $yiq-contrasted-threshold: 195 !default;
@@ -77,5 +78,5 @@ $dropdown-border-color: $border-color !default;
 
 // Images
 $login-image: '../img/login_image.jpg' !default;
-$register-image: 'https://source.unsplash.com/Mv9hjnEUHR4/600x800' !default;
+$register-image: '/img/signup_image2.jpg' !default;
 $password-image: 'https://source.unsplash.com/oWTW-jNGl9I/600x800' !default;
