@@ -1,10 +1,14 @@
 package br.edu.infnet.gerenciadorpersonagens.controller;
 
+import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Administrador;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Log;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AuthService;
+import br.edu.infnet.gerenciadorpersonagens.model.service.LogService;
 import br.edu.infnet.gerenciadorpersonagens.model.service.UsuarioService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +22,16 @@ import org.springframework.web.bind.support.SessionStatus;
 @SessionAttributes("usuario")
 public class AcessoController {
 
+    private final UsuarioService usuarioService;
+    private final AuthService authService;
+    private final LogService logService;
+
     @Autowired
-    private UsuarioService usuarioService;
-    @Autowired
-    private AuthService authService;
+    public AcessoController(UsuarioService usuarioService, AuthService authService, LogService logService) {
+        this.usuarioService = usuarioService;
+        this.authService = authService;
+        this.logService = logService;
+    }
 
     @GetMapping(value="/login")
     public String exibirTelaLogin() {
@@ -29,11 +39,10 @@ public class AcessoController {
     }
 
     @PostMapping(value="/login")
-    public String login(Usuario usuario, Model model) {
+    public String login(Usuario usuario, Model model, HttpServletRequest request) {
 
-        Usuario userToLogin = usuarioService.autenticar(usuario);
+        Usuario userToLogin = authService.autenticar(usuario);
         if (userToLogin != null) {
-
             if (userToLogin instanceof Administrador admin) {
                 System.out.println("Administrador logado: " + admin);
                 model.addAttribute("usuario", admin);
@@ -46,8 +55,13 @@ public class AcessoController {
                 System.out.println("Usuário logado: " + userToLogin);
                 model.addAttribute("usuario", userToLogin);
             }
-            return "redirect:/";
 
+            String msgLog = "Efetuado login como " + userToLogin.getNomeCompleto() + " com id " + usuarioService.obterPorId(userToLogin.getId()).getId();
+
+            Log log = new Log(request.getRemoteAddr(), Utils.TIPO_ACAO_LOG[3], msgLog, userToLogin);
+            logService.incluir(log);
+
+            return "redirect:/";
         } else {
             model.addAttribute("mensagem", "As credenciais para o email " + usuario.getEmail() + " não batem!");
             return exibirTelaLogin();
@@ -55,8 +69,15 @@ public class AcessoController {
     }
 
     @GetMapping(value = "/logout")
-    public String logout(HttpSession session, SessionStatus status) {
+    public String logout(HttpSession session, SessionStatus status, HttpServletRequest request) {
+        Usuario usuarioLogado = (Usuario) authService.getSessionObject(session);
+
+        String msgLog = "Efetuado logout como " + usuarioLogado.getNomeCompleto() + " com id " + usuarioLogado.getId();
+        Log log = new Log(request.getRemoteAddr(), Utils.TIPO_ACAO_LOG[4], msgLog, usuarioLogado);
+        logService.incluir(log);
+
         authService.logout(session, status);
+
         return "redirect:/login";
     }
 }

@@ -3,6 +3,8 @@ package br.edu.infnet.gerenciadorpersonagens.controller;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AuthService;
 import br.edu.infnet.gerenciadorpersonagens.model.service.CriadorService;
+import br.edu.infnet.gerenciadorpersonagens.model.service.LogService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,12 +19,17 @@ import java.util.Objects;
 @Controller
 public class CriadorController {
 
-    @Autowired
-    private CriadorService criadorService;
-    @Autowired
-    private AuthService authService;
-
+    private final CriadorService criadorService;
+    private final AuthService authService;
+    private final LogService logService;
     private static String msg;
+
+    @Autowired
+    public CriadorController(CriadorService criadorService, AuthService authService, LogService logService) {
+        this.criadorService = criadorService;
+        this.authService = authService;
+        this.logService = logService;
+    }
 
     @GetMapping(value = "/criador/cadastro")
     public String exibirTelaCadastro(HttpSession session) {
@@ -51,7 +58,7 @@ public class CriadorController {
     }
 
     @PostMapping(value = "/criador/incluir")
-    public String incluir(Criador criador) {
+    public String incluir(Criador criador, HttpSession session, HttpServletRequest request) {
         criadorService.incluir(criador);
         msg = "Criador " + criador.getNomeCompleto() + " incluido com sucesso!";
         return "redirect:/criador/lista";
@@ -59,7 +66,7 @@ public class CriadorController {
 
     @GetMapping(value = "/criador/{id}/excluir")
     public String excluir(HttpSession session,@PathVariable Integer id) {
-        if (!(authService.isLoggedIn(session) && Objects.equals(authService.getLoggedUserType(session), authService.adminUser))) {
+        if (!(authService.isLoggedIn(session) || Objects.equals(authService.getLoggedUserType(session), authService.adminUser))) {
             return "redirect:/login";
         }
         Criador criador = criadorService.obterPorId(id);

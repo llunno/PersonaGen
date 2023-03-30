@@ -322,7 +322,7 @@
                 <!-- Content Row -->
                 <div class="row">
                     <div class="card-log-container col-lg-12">
-                        <div class="card shadow mb-4">
+                        <div class="card shadow">
                             <!-- Card Header - Accordion -->
                             <a href="#collapseCardLog" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardLog">
                                 <h6 class="m-0 font-weight-bold text-primary">Registro de ações do sistema</h6>
@@ -330,17 +330,32 @@
                             <!-- Card Content - Collapse -->
                             <div class="collapse show" id="collapseCardLog">
                                 <div class="card-body" id="body-card-log">
-                                    This is a collapsable card example using Bootstrap's built in collapse
-                                    functionality. Click on the card header to see the card body
-                                    collapse and expand! This is a collapsable card example using Bootstrap's built in collapse
-                                    functionality. Click on the card header to see the card body
-                                    collapse and expand! This is a collapsable card example using Bootstrap's built in collapse
-                                    functionality. Click on the card header to see the card body
-                                    collapse and expand! This is a collapsable card example using Bootstrap's built in collapse
-                                    functionality. Click on the card header to see the card body
-                                    collapse and expand! This is a collapsable card example using Bootstrap's built in collapse
-                                    functionality. Click on the card header to see the card body
-                                    collapse and expand!
+                                    <table class="table table-sm" id="dataTableLog">
+                                        <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Usuário</th>
+                                            <th>Ação</th>
+                                            <th>Descrição</th>
+                                            <th>Data</th>
+                                            <th>IP</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:if test="${listaLogs != null}">
+                                            <c:forEach var="log" items="${listaLogs}">
+                                                <tr>
+                                                    <td>${log.id}</td>
+                                                    <td>${log.usuario.nomeCompleto}</td>
+                                                    <td>${log.acao}</td>
+                                                    <td>${log.descricao}</td>
+                                                    <td>${log.formatarData()}</td>
+                                                    <td>${log.ip}</td>
+                                                </tr>
+                                            </c:forEach>
+                                        </c:if>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -395,16 +410,12 @@
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>
-
 <!-- Page level plugins -->
 <script src="vendor/chart.js/Chart.min.js"></script>
-
 <!-- Page level custom scripts -->
 <script src="js/demo/chart-pie-demo.js"></script>
 

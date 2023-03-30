@@ -2,7 +2,9 @@ package br.edu.infnet.gerenciadorpersonagens.model.service;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Administrador;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Usuario;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -12,6 +14,8 @@ public class AuthService {
     public String loggedUserSessionAttr = "usuario";
     public String adminUser = "Administrador";
     public String criadorUser = "Criador";
+    @Autowired
+    public UsuarioService usuarioService;
 
     public boolean isLoggedIn(HttpSession session) {
         Object loggedUserObject = session.getAttribute(loggedUserSessionAttr);
@@ -34,6 +38,10 @@ public class AuthService {
 
     public Object getSessionObject(HttpSession session) {
         return session.getAttribute(loggedUserSessionAttr);
+    }
+
+    public Usuario autenticar(Usuario usuario) {
+        return usuarioService.autenticar(usuario);
     }
 
     public void logout(HttpSession session, SessionStatus sessionStatus) {

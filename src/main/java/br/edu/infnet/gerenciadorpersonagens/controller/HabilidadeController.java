@@ -1,9 +1,13 @@
 package br.edu.infnet.gerenciadorpersonagens.controller;
 
+import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Habilidade;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Log;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AuthService;
 import br.edu.infnet.gerenciadorpersonagens.model.service.HabilidadeService;
+import br.edu.infnet.gerenciadorpersonagens.model.service.LogService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,12 +26,14 @@ public class HabilidadeController {
 
     private final HabilidadeService habilidadeService;
     private final AuthService authService;
+    private final LogService logService;
     private static String msg;
 
     @Autowired
-    public HabilidadeController(HabilidadeService habilidadeService, AuthService authService) {
+    public HabilidadeController(HabilidadeService habilidadeService, AuthService authService, LogService logService) {
         this.habilidadeService = habilidadeService;
         this.authService = authService;
+        this.logService = logService;
     }
 
     @GetMapping(value = "/cadastro")
@@ -41,12 +47,20 @@ public class HabilidadeController {
     }
 
     @PostMapping(value = "/incluir")
-    public String incluir(HttpSession session, Habilidade habilidade) {
+    public String incluir(HttpSession session, Habilidade habilidade, HttpServletRequest request) {
         if (!Objects.equals(authService.getLoggedUserType(session), authService.criadorUser)) {
             return "redirect:/login";
         }
-        habilidade.setCriador((Criador) authService.getSessionObject(session));
+        Criador criadorLogado = (Criador) authService.getSessionObject(session);
+
+        habilidade.setCriador(criadorLogado);
         habilidadeService.incluir(habilidade);
+
+        String msgLog = "Cadastrada habilidade " + habilidade.getNome() + " com id " + habilidadeService.obterPorId(habilidade.getId()).getId();
+
+        Log log = new Log(request.getRemoteAddr(), Utils.TIPO_ACAO_LOG[0], msgLog, criadorLogado);
+        logService.incluir(log);
+
         msg = "Habilidade " + habilidade.getNome() + " incluida com sucesso!";
         return "redirect:/habilidade/lista";
     }
@@ -72,10 +86,22 @@ public class HabilidadeController {
     }
 
     @GetMapping(value = "/{id}/excluir")
-    public String excluir(@PathVariable Integer id) {
+    public String excluir(@PathVariable Integer id, HttpSession session, HttpServletRequest request) {
+        if (!Objects.equals(authService.getLoggedUserType(session), authService.criadorUser)) {
+            msg = "Você não tem permissão para excluir uma Habilidade! Entre como um criador para isto.";
+            return "redirect:/aparencia/lista";
+        }
+        Criador criadorLogado = (Criador) authService.getSessionObject(session);
+
         Habilidade habilidade = habilidadeService.obterPorId(id);
         habilidadeService.excluir(id);
+
+        String msgLog = "Excluída habilidade " + habilidade.getNome() + " com id " + habilidade.getId();
+        Log log = new Log(request.getRemoteAddr(), Utils.TIPO_ACAO_LOG[1], msgLog, criadorLogado);
+        logService.incluir(log);
+
         msg = "Habilidade " + habilidade.getNome() + " excluída com sucesso!";
+
         return "redirect:/habilidade/lista";
     }
 }

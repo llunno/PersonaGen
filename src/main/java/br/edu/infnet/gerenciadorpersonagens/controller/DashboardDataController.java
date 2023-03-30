@@ -29,44 +29,41 @@ public class DashboardDataController {
     public String getDashboardData(HttpSession session) {
         Gson gson = new Gson();
         if (authService.isLoggedIn(session)) {
+
+            int quantityPersonalidades = 0;
+            int quantityHabilidades = 0;
+            int quantityAparencias = 0;
+            int quantityPersonagens = 0;
+            int quantityCriadores = 0;
+            int quantityAdministradores = 0;
+
             if (authService.getLoggedUserType(session).equals(authService.criadorUser)) {
 
-                int quantityPersonalidades = entityServices.personalidadeService.obterListaPorCriador(((Criador) authService.getSessionObject(session)).getId()).size();
-                int quantityHabilidades = entityServices.habilidadeService.obterListaPorCriador(((Criador) authService.getSessionObject(session)).getId()).size();
-                int quantityAparencias = entityServices.aparenciaService.obterListaPorCriador(((Criador) authService.getSessionObject(session)).getId()).size();
-                int quantityPersonagens = entityServices.personalidadeService.obterListaPorCriador(((Criador) authService.getSessionObject(session)).getId()).size();
-                int quantityCriadores = 0;
-                int quantityAdministradores = 0;
+                quantityPersonalidades = entityServices.personalidadeService.obterListaPorCriador(((Criador) authService.getSessionObject(session)).getId()).size();
+                quantityHabilidades = entityServices.habilidadeService.obterListaPorCriador(((Criador) authService.getSessionObject(session)).getId()).size();
+                quantityAparencias = entityServices.aparenciaService.obterListaPorCriador(((Criador) authService.getSessionObject(session)).getId()).size();
+                quantityPersonagens = entityServices.personagemService.obterListaPorCriador(((Criador) authService.getSessionObject(session)).getId()).size();
 
-                HashMap<String, String> mapQuantidades = new HashMap<>();
-                    mapQuantidades.put("quantityPersonalidades", Integer.toString(quantityPersonalidades));
-                    mapQuantidades.put("quantityHabilidades", Integer.toString(quantityHabilidades));
-                    mapQuantidades.put("quantityAparencias", Integer.toString(quantityAparencias));
-                    mapQuantidades.put("quantityPersonagens", Integer.toString(quantityPersonagens));
-                    mapQuantidades.put("quantityCriadores", Integer.toString(quantityCriadores));
-                    mapQuantidades.put("quantityAdministradores", Integer.toString(quantityAdministradores));
-
-                return gson.toJson(mapQuantidades);
             }
             if (authService.getLoggedUserType(session).equals(authService.adminUser)) {
 
-                int quantityPersonalidades = entityServices.personalidadeService.obterLista().size();
-                int quantityHabilidades = entityServices.habilidadeService.obterLista().size();
-                int quantityAparencias = entityServices.aparenciaService.obterLista().size();
-                int quantityPersonagens = entityServices.personalidadeService.obterLista().size();
-                int quantityCriadores = entityServices.criadorService.obterLista().size();
-                int quantityAdministradores = entityServices.adminService.obterLista().size();
+                quantityPersonalidades = entityServices.personalidadeService.obterLista().size();
+                quantityHabilidades = entityServices.habilidadeService.obterLista().size();
+                quantityAparencias = entityServices.aparenciaService.obterLista().size();
+                quantityPersonagens = entityServices.personagemService.obterLista().size();
+                quantityCriadores = entityServices.criadorService.obterLista().size();
+                quantityAdministradores = entityServices.adminService.obterLista().size();
 
-                HashMap<String, String> mapQuantidades = new HashMap<>();
-                    mapQuantidades.put("quantityPersonalidades", Integer.toString(quantityPersonalidades));
-                    mapQuantidades.put("quantityHabilidades", Integer.toString(quantityHabilidades));
-                    mapQuantidades.put("quantityAparencias", Integer.toString(quantityAparencias));
-                    mapQuantidades.put("quantityPersonagens", Integer.toString(quantityPersonagens));
-                    mapQuantidades.put("quantityCriadores", Integer.toString(quantityCriadores));
-                    mapQuantidades.put("quantityAdministradores", Integer.toString(quantityAdministradores));
-
-                return gson.toJson(mapQuantidades);
             }
+            HashMap<String, String> mapQuantidades = new HashMap<>();
+            mapQuantidades.put("quantityPersonalidades", Integer.toString(quantityPersonalidades));
+            mapQuantidades.put("quantityHabilidades", Integer.toString(quantityHabilidades));
+            mapQuantidades.put("quantityAparencias", Integer.toString(quantityAparencias));
+            mapQuantidades.put("quantityPersonagens", Integer.toString(quantityPersonagens));
+            mapQuantidades.put("quantityCriadores", Integer.toString(quantityCriadores));
+            mapQuantidades.put("quantityAdministradores", Integer.toString(quantityAdministradores));
+
+            return gson.toJson(mapQuantidades);
         }
         return null;
     }

@@ -1,9 +1,13 @@
 package br.edu.infnet.gerenciadorpersonagens.controller;
 
+import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Log;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Personalidade;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AuthService;
+import br.edu.infnet.gerenciadorpersonagens.model.service.LogService;
 import br.edu.infnet.gerenciadorpersonagens.model.service.PersonalidadeService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,12 +22,17 @@ import java.util.Objects;
 @Controller
 public class PersonalidadeController {
 
-    @Autowired
-    private PersonalidadeService personalidadeService;
-    @Autowired
-    private AuthService authService;
-
+    private final PersonalidadeService personalidadeService;
+    private final AuthService authService;
+    private final LogService logService;
     private static String msg;
+
+    @Autowired
+    public PersonalidadeController(PersonalidadeService personalidadeService, AuthService authService, LogService logService) {
+        this.personalidadeService = personalidadeService;
+        this.authService = authService;
+        this.logService = logService;
+    }
 
     @GetMapping(value = "/personalidade/cadastro")
     public String exibirTelaCadastro(HttpSession session){
@@ -36,12 +45,20 @@ public class PersonalidadeController {
     }
 
     @PostMapping(value = "/personalidade/incluir")
-    public String incluir(HttpSession session, Personalidade personalidade) {
+    public String incluir(HttpSession session, Personalidade personalidade, HttpServletRequest request) {
         if (!Objects.equals(authService.getLoggedUserType(session), authService.criadorUser)) {
             return "redirect:/login";
         }
+        Criador criadorLogado = (Criador) authService.getSessionObject(session);
+
         personalidade.setCriador((Criador) authService.getSessionObject(session));
         personalidadeService.incluir(personalidade);
+
+        String msgLog = "Cadastrada personalidade " + personalidade.getPalavraDefinicao() + " com id " + personalidadeService.obterPorId(personalidade.getId()).getId();
+
+        Log log = new Log(request.getRemoteAddr(), Utils.TIPO_ACAO_LOG[0], msgLog, criadorLogado);
+        logService.incluir(log);
+
         msg = "Personalidade " + personalidade.getId() + " incluida com sucesso!";
         return "redirect:/personalidade/lista";
     }
@@ -65,9 +82,20 @@ public class PersonalidadeController {
     }
 
     @GetMapping(value = "personalidade/{id}/excluir")
-    public String excluir(@PathVariable Integer id) {
+    public String excluir(@PathVariable Integer id, HttpSession session, HttpServletRequest request) {
+        if (!Objects.equals(authService.getLoggedUserType(session), authService.criadorUser)) {
+            msg = "Você não tem permissão para excluir uma Personalidade! Entre como um criador para isto.";
+            return "redirect:/aparencia/lista";
+        }
+        Criador criadorLogado = (Criador) authService.getSessionObject(session);
+
         Personalidade personalidade = personalidadeService.obterPorId(id);
         personalidadeService.excluir(id);
+
+        String msgLog = "Excluída personalidade " + personalidade.getPalavraDefinicao() + " com id " + personalidade.getId();
+        Log log = new Log(request.getRemoteAddr(), Utils.TIPO_ACAO_LOG[1], msgLog, criadorLogado);
+        logService.incluir(log);
+
         msg = "Personalidade " + personalidade.getId() + " excluída com sucesso!";
         return "redirect:/personalidade/lista";
     }

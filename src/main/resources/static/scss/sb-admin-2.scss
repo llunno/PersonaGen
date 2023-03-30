@@ -48,8 +48,84 @@
       flex: 1 1 48%;
     }
 }
+/*
+#collapseCardLog {
+  max-height: 13rem;
 
-#body-card-log {
-  min-height: 10rem;
+  #body-card-log {
+    overflow-y: auto;
+    min-height: 10rem;
+    max-height: 13rem;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+ */
+
+#collapseCardLog {
+  max-height: 13rem;
+
+  #body-card-log {
+    overflow: auto !important;
+    flex-grow:1;
+    width:100%;
+    min-height: 10rem;
+    max-height: 13rem;
+    padding: 0;
+    margin: 0;
+
+    table {
+      border-collapse: collapse;
+      //width: 100% !important;
+      margin: 0;
+
+      thead tr > th {
+        background:#e5e5e5;
+        position: sticky;
+        padding-left:1.2rem;
+        padding-right:1.2rem;
+        z-index:2;
+        top: 0;
+        border-top: 0;
+        border-bottom: 1px solid #e3e6f0;
+      }
+
+      thead {
+        border-bottom: 1px solid #e3e6f0;
+      }
+
+      tbody tr > td {
+        padding-left:1.2rem;
+        padding-right:1.2rem;
+      }
+      /*
+          thead tr > :first-child {
+            z-index:3 !important;
+            left:0 !important;
+            top:0 !important;
+          }
+
+      tbody tr > :first-child {
+        //background:#ddd;
+        position: sticky;
+        z-index:1;
+        left:0;
+      }
+
+       */
+    }
+  }
+}
+
+html {
+  -ms-scroll-chaining: none !important;
+  overscroll-behavior: contain !important;
+}
+
+body {
+  display:flex !important;
+  flex-direction:column !important;
+  height:100vh !important;
 }
 

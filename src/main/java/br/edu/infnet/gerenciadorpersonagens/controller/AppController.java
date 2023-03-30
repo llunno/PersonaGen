@@ -1,14 +1,17 @@
 package br.edu.infnet.gerenciadorpersonagens.controller;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Log;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AuthService;
 import br.edu.infnet.gerenciadorpersonagens.model.service.EntityServices;
+import br.edu.infnet.gerenciadorpersonagens.model.service.LogService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Collection;
 import java.util.Objects;
 
 @Controller
@@ -16,11 +19,13 @@ public class AppController {
 
     private final AuthService authService;
     private final EntityServices entityServices;
+    private final LogService logService;
 
     @Autowired
-    public AppController(AuthService authService, EntityServices entityServices) {
+    public AppController(AuthService authService, EntityServices entityServices, LogService logService) {
         this.authService = authService;
         this.entityServices = entityServices;
+        this.logService = logService;
     }
 
     @GetMapping(value = "/")
@@ -29,14 +34,19 @@ public class AppController {
             return "redirect:/login";
         }
         else {
+            Collection<Log> listaLogs;
             if (Objects.equals(authService.getLoggedUserType(session), authService.criadorUser)) {
-                model.addAttribute("listaPersonagens", entityServices.personalidadeService.obterListaPorCriador(((Criador) authService.getSessionObject(session)).getId()));
+                listaLogs = logService.obterListaPorUsuario(((Criador) authService.getSessionObject(session)).getId());
+                model.addAttribute("listaLogs", listaLogs);
+                model.addAttribute("listaPersonagens", entityServices.personagemService.obterListaPorCriador(((Criador) authService.getSessionObject(session)).getId()));
                 model.addAttribute("listaPersonalidades", entityServices.personalidadeService.obterListaPorCriador(((Criador) authService.getSessionObject(session)).getId()));
                 model.addAttribute("listaHabilidades", entityServices.habilidadeService.obterListaPorCriador(((Criador) authService.getSessionObject(session)).getId()));
                 model.addAttribute("listaAparencias", entityServices.aparenciaService.obterListaPorCriador(((Criador) authService.getSessionObject(session)).getId()));
             }
             else if (Objects.equals(authService.getLoggedUserType(session), authService.adminUser)) {
-                model.addAttribute("listaPersonagens", entityServices.personalidadeService.obterLista());
+                listaLogs = logService.obterLista();
+                model.addAttribute("listaLogs", listaLogs);
+                model.addAttribute("listaPersonagens", entityServices.personagemService.obterLista());
                 model.addAttribute("listaPersonalidades", entityServices.personalidadeService.obterLista());
                 model.addAttribute("listaHabilidades", entityServices.habilidadeService.obterLista());
                 model.addAttribute("listaAparencias", entityServices.aparenciaService.obterLista());
