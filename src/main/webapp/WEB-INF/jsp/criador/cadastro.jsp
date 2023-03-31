@@ -31,45 +31,38 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input name="nomeCompleto" type="text" class="form-control form-control-user" id="NomeCompleto"
-                                            placeholder="Nome Completo">
+                                            placeholder="Nome Completo" required>
                                     </div>
                                     <div class="col-sm-6">
                                         <input name="nickname" type="text" class="form-control form-control-user" id="nickname"
-                                            placeholder="Nickname">
+                                            placeholder="Nickname" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input name="email" type="email" class="form-control form-control-user" id="email"
-                                        placeholder="Email">
+                                        placeholder="Email" required>
                                 </div>
                                 <div class="form-group">
                                     <input name="idade" type="number" class="form-control form-control-user" id="idade"
-                                           placeholder="Idade">
+                                           placeholder="Idade" required>
                                 </div>
                                 <div class="form-group">
                                     <textarea name="interesses" name="idade" type="text" class="form-control form-control-user" id="interesses"
-                                           placeholder="Insira aqui seus interesses criativos! Separe cada interesse por vírgula."></textarea>
+                                           placeholder="Insira aqui seus interesses criativos! Separe cada interesse por vírgula." required></textarea>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input name="senha" type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Senha">
+                                            id="exampleInputPassword" placeholder="Senha" required>
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="senha" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repita a senha">
+                                            id="exampleRepeatPassword" placeholder="Repita a senha" required>
                                     </div>
                                 </div>
                                 <button type="submit" href="login.html" class="btn btn-primary btn-user btn-block">
                                     Registrar
                                 </button>
-                                <hr>
-                                <a href="/" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="/" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a>
                             </form>
                             <hr>
                             <div class="text-center">

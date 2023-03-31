@@ -1,4 +1,5 @@
 <%@ page import="br.edu.infnet.gerenciadorpersonagens.model.domain.Administrador" %>
+<%@ page import="br.edu.infnet.gerenciadorpersonagens.model.domain.Criador" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
@@ -20,7 +21,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gray-900 sidebar sidebar-dark accordion sticky-top h-100 " id="accordionSidebar">
+    <ul class="navbar-nav bg-gray-900 sidebar sidebar-dark accordion sticky-top" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
@@ -186,7 +187,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Personagens Cadastrados</div>
+                                                Personagens</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${listaPersonagens.size()}</div>
                                         </div>
                                         <div class="col-auto">
@@ -202,7 +203,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Habilidades cadastradas</div>
+                                                Habilidades</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${listaHabilidades.size()}</div>
                                         </div>
                                         <div class="col-auto">
@@ -218,7 +219,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                Aparências cadastradas</div>
+                                                Aparências</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${listaAparencias.size()}</div>
                                         </div>
                                         <div class="col-auto">
@@ -234,7 +235,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                Personalidades cadastradas</div>
+                                                Personalidades</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${listaPersonalidades.size()}</div>
                                         </div>
                                         <div class="col-auto">
@@ -282,6 +283,25 @@
                             </div>
                         </div>
                         <% } %>
+                        <% if (session.getAttribute("usuario") instanceof Criador) {%>
+                        <c:set var="totalEntitys" value="${listaAparencias.size() + listaHabilidades.size() + listaPersonagens.size() + listaPersonalidades.size()}"/>
+                        <div class="card-info-item">
+                            <div class="card border-left-purple shadow py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-total text-uppercase mb-1">
+                                                Total</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${totalEntitys}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-globe fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
                     </div>
 
                     <!-- Pie Chart -->
@@ -321,7 +341,7 @@
 
                 <!-- Content Row -->
                 <div class="row">
-                    <div class="card-log-container col-lg-12">
+                    <div class="card-log-container col-lg-12 mb-2">
                         <div class="card shadow">
                             <!-- Card Header - Accordion -->
                             <a href="#collapseCardLog" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardLog">
@@ -348,7 +368,7 @@
                                                     <td>${log.id}</td>
                                                     <td>${log.usuario.nomeCompleto}</td>
                                                     <td>${log.acao}</td>
-                                                    <td>${log.descricao}</td>
+                                                    <td class="long-cel-need">${log.descricao}</td>
                                                     <td>${log.formatarData()}</td>
                                                     <td>${log.ip}</td>
                                                 </tr>
@@ -381,11 +401,6 @@
 
 </div>
 <!-- End of Page Wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
 
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

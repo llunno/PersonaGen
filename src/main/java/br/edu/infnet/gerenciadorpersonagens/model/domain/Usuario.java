@@ -19,7 +19,7 @@ public class Usuario {
     private String senha;
     private String nomeCompleto;
     private String nickname;
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "usuario")
     private List<Log> logs;
 
     public Usuario() {}

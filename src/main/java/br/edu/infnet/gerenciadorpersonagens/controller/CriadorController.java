@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.support.SessionStatus;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -32,9 +33,9 @@ public class CriadorController {
     }
 
     @GetMapping(value = "/criador/cadastro")
-    public String exibirTelaCadastro(HttpSession session) {
-        if (authService.isLoggedIn(session) && !(Objects.equals(authService.getLoggedUserType(session), authService.adminUser))) {
-            return "redirect:/login";
+    public String exibirTelaCadastro(HttpSession session, SessionStatus status) {
+        if (authService.isLoggedIn(session) && !Objects.equals(authService.getLoggedUserType(session), null)) {
+            return "redirect:/";
         }
         else {
             return "/criador/cadastro";

@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.support.SessionStatus;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -76,17 +77,24 @@ public class AdministradorController {
     }
 
     @GetMapping(value = "administrador/{id}/excluir")
-    public String excluir(@PathVariable Integer id, HttpSession session, HttpServletRequest request) {
+    public String excluir(@PathVariable Integer id, HttpSession session, HttpServletRequest request, SessionStatus status) {
         Administrador admLogado = (Administrador) authService.getSessionObject(session);
 
-        Administrador adm = administradorService.obterPorId(id);
-        administradorService.excluir(id);
+        Administrador admExcluido = administradorService.obterPorId(id);
 
-        String msgLog = "Excluído Administrador " + adm.getNomeCompleto() + " com id " + adm.getId();
+
+        String msgLog = "Excluído Administrador " + admExcluido.getNomeCompleto() + " com id " + admExcluido.getId();
         Log log = new Log(request.getRemoteAddr(), Utils.TIPO_ACAO_LOG[1], msgLog, admLogado);
         logService.incluir(log);
 
-        msg = "Administrador " + id + " excluída com sucesso!";
-        return "redirect:/administrador/lista";
+        if (Objects.equals(admLogado.getId(), admExcluido.getId())) {
+            msg = "Não é possível excluir o próprio usuário! Para excluí-lo, faça login com outro administrador e exclua-o.";
+            return "redirect:/administrador/lista";
+        }
+        else {
+            administradorService.excluir(id);
+            msg = "Administrador " + admExcluido.getNomeCompleto() + " excluída com sucesso!";
+            return "redirect:/administrador/lista";
+        }
     }
 }

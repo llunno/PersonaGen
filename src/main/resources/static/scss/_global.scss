@@ -20,9 +20,13 @@ a {
 #wrapper {
   display: flex;
   #content-wrapper {
-    background-color: $gray-100;
+    background-color: $gray-200;
     width: 100%;
     overflow-x: hidden;
+    background-image: url('../img/wave-right-vertical.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     #content {
       flex: 1 0 auto;
     }

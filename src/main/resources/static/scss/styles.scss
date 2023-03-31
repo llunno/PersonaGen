@@ -1,45 +1,186 @@
+$textColorTables: #cccccc;
+
+.nav-entitys-menu {
+  margin-bottom: 2.5rem;
+  box-shadow: 0 1px 6px 4px rgba(0,0,0,0.3)
+}
+
+body {
+    background-color: #eaecf4;
+    background-image: url('../img/white-horizontal-waves.jpg');
+    background-size: 100% 95%;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+footer.sticky-footer {
+  padding: 2rem 0;
+  flex-shrink: 0;
+  margin-top: 0.5rem;
+  box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.1);
+  .copyright {
+    line-height: 1;
+    font-size: 0.8rem;
+  }
+}
+
+.msg-tela-model {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+
+  p {
+    margin: 0;
+  }
+
+}
+
 .btn-navbar {
   color: white;
   background-color: rgba(255,255,255,0);
   border: 0;
 }
-table {
 
-  text-align: center;
-  vertical-align: middle !important;
+.text-in-field {
+  margin: 0 2rem 1rem 2rem;
+}
 
-  thead {
-    background-color: #2a2929;
-    color: white;
-  }
+.flat-table-background {
+  border-radius: 0.3rem;
+  padding: 5px;
+  background-color: #2a2929;
+  box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.3);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  //flex: 1 1 auto;
+  //height: 100%;
+}
 
-  th {
-    white-space: nowrap;
-  }
-  .long-cel-need {
-    min-width: 20rem;
-  }
+.table-entity-lists-wrapper {
+  overflow: auto;
+  flex: 1 1 auto;
+  width: 100%;
+  margin: 0 auto 0 auto !important;
+  max-height: 620px;
+  background-color: white;
+  height: 100%;
 
-  td {
-    line-height: 3rem;
-    p {
-      display: inline;
-      line-height: normal;
+  table {
+    border-collapse: collapse;
+    text-align: center;
+    vertical-align: middle !important;
+    margin: 0;
+    border-radius: 0;
+
+    thead tr > th {
+      background:#2a2929;
+      position: sticky;
+      padding-left:1.2rem;
+      padding-right:1.2rem;
+      z-index:2;
+      top: 0;
+      border-top: 0;
+      border-bottom: 1px solid #e3e6f0;
+      white-space: nowrap;
+    }
+
+    thead {
+      background-color: #2a2929;
+      color: $textColorTables;
+    }
+
+    thead tr > :first-child {
+      z-index:3 !important;
+      left:0 !important;
+      top:0 !important;
+    }
+
+    tbody tr > :first-child {
+      //background:#ddd;
+      position: sticky;
+      z-index:1;
+      left:0;
+    }
+
+    .long-cel-need {
+      min-width: 20rem;
+    }
+
+    td {
+      line-height: 3rem;
+      p {
+        display: inline;
+        line-height: normal;
+      }
     }
   }
 }
 
 .td-id{
   background-color: #2a2929 !important;
-  width: 2.4rem;
+  width: 2.2rem;
 }
 
-.btn-adicionar-item {
-  margin-top: 0.7rem;
+.body-register-screen {
+  //background-color: white;
+  background-image: url('../img/wave-right-vertical.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
-.container-body {
-  width: 95%;
+.container-register-body, .container-body-entitys {
+  padding: 0;
+  flex: 1 1 auto;
+  height: 50vh;
+  margin: 0 0 2rem 0;
+
+  .container-registers {
+    background-color: white;
+    border-radius: 0.4rem;
+    box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.3);
+    padding: 5rem;
+    width: 70%;
+    max-width: 50rem;
+    color: #5c5858;
+    //margin-top: 2rem;
+    //margin-bottom: 2rem;
+    overflow: auto;
+    height: 100%;
+
+    form {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        p {
+            margin: 0;
+        }
+    }
+  }
+
+}
+
+.container-body-entitys {
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+  }
+
+  h5 {
+    margin: 0;
+  }
 }
 
 .excluir-item-link {
@@ -53,5 +194,24 @@ table {
 }
 
 .id-cell {
-  color: white;
+  color: $textColorTables;
+}
+
+.nothing-to-list {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media(max-height: 768px) {
+  .table-entity-lists-wrapper {
+    max-height: 430px;
+  }
+}
+
+@media(max-height: 700px) {
+  .table-entity-lists-wrapper {
+    max-height: 320px;
+  }
 }

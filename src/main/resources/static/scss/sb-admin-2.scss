@@ -31,6 +31,14 @@
   color: $brown !important;
 }
 
+.text-total {
+  color: $purple !important;
+}
+
+.border-left-purple {
+  border-left: 0.25rem solid $purple !important;
+}
+
 #dashboard-info-cards {
     display: flex;
     flex-wrap: wrap;
@@ -128,4 +136,5 @@ body {
   flex-direction:column !important;
   height:100vh !important;
 }
+
 

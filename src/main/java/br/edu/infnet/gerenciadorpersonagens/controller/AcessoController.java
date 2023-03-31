@@ -64,7 +64,7 @@ public class AcessoController {
             return "redirect:/";
         } else {
             model.addAttribute("mensagem", "As credenciais para o email " + usuario.getEmail() + " não batem!");
-            return exibirTelaLogin();
+            return "/login";
         }
     }
 

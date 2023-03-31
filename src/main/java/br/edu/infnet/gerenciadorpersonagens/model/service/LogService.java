@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class LogService {
@@ -22,7 +24,11 @@ public class LogService {
     }
 
     public Collection<Log> obterLista() {
-        return (Collection<Log>) logRepository.findAll();
+
+        Collection<Log> logs = (Collection<Log>) logRepository.findAll();
+        Collections.reverse((List<Log>) logs);
+
+        return logs;
     }
 
     public void excluir(Integer id) {
@@ -38,6 +44,10 @@ public class LogService {
     }
 
     public Collection<Log> obterListaPorUsuario(Integer userId) {
-        return logRepository.findAllByUser(userId);
+
+        List<Log> logs = logRepository.findAllByUser(userId);
+        Collections.reverse(logs);
+
+        return logs;
     }
 }
