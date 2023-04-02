@@ -4,6 +4,7 @@ import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Aparencia;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Log;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Personagem;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AparenciaService;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AuthService;
 import br.edu.infnet.gerenciadorpersonagens.model.service.LogService;
@@ -11,12 +12,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Controller
@@ -82,8 +85,12 @@ public class AparenciaController {
         return "/aparencia/lista";
     }
 
+    @Transactional
     @GetMapping(value = "aparencia/{id}/excluir")
     public String excluir(@PathVariable Integer id, HttpSession session, HttpServletRequest request) {
+        if (!authService.isLoggedIn(session)) {
+            return "redirect:/login";
+        }
         if (!Objects.equals(authService.getLoggedUserType(session), authService.criadorUser)) {
             msg = "Você não tem permissão para excluir uma Aparência! Entre como um criador para isto.";
             return "redirect:/aparencia/lista";
@@ -91,6 +98,12 @@ public class AparenciaController {
         Criador criadorLogado = (Criador) authService.getSessionObject(session);
 
         Aparencia aparencia = aparenciaService.obterPorId(id);
+
+        List<Personagem> personagensAssociados = aparencia.getPersonagens();
+        for (Personagem personagem : personagensAssociados) {
+            personagem.getCaracteristicas().remove(aparencia);
+        }
+
         aparenciaService.excluir(id);
 
         String msgLog = "Excluída Aparência " + aparencia.getPontoDeDestaque() + " com id " + aparencia.getId();

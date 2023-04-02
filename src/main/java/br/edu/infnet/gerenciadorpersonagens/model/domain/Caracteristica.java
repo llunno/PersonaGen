@@ -23,8 +23,11 @@ public abstract class Caracteristica {
     @JoinColumn(name = "criador_id")
     private Criador criador;
 
-    @ManyToMany(mappedBy = "caracteristicas")
-    private List<Personagem> personagensAssociados;
+    @ManyToMany(mappedBy = "caracteristicas", cascade = CascadeType.DETACH)
+    private List<Personagem> personagens;
+
+    public Caracteristica() {
+    }
 
     public Caracteristica(String descricao, String pontoDeDestaque, String inspiracao) {
         this.descricao = descricao;
@@ -32,10 +35,9 @@ public abstract class Caracteristica {
         this.inspiracao = inspiracao;
     }
 
-    protected Caracteristica() {
-    }
-
     public abstract String formatarExibicao();
+
+    public abstract String formatTelaCadastroPersonagem();
 
     @Override
     public String toString() {

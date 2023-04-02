@@ -35,11 +35,13 @@
                 <label for="nivelAcesso" class="form-label">Nível de Acesso</label>
                 <input name="nivelAcesso" type="text" class="form-control" id="nivelAcesso" required>
             </div>
+            <c:import url="/WEB-INF/jsp/endereco/cadastro.jsp"/>
             <button type="submit" class="btn btn-secondary">Enviar</button>
         </form>
     </div>
 </div>
 <c:import url="/WEB-INF/jsp/footer.jsp"/>
 
+<script src="/js/user-register-validation.js"></script>
 </body>
 </html>

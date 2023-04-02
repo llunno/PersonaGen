@@ -5,6 +5,7 @@ import br.edu.infnet.gerenciadorpersonagens.model.service.CriadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Order(2)
 @Component
 public class CriadorLoader implements ApplicationRunner {
 

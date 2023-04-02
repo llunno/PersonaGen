@@ -41,6 +41,7 @@ public class AuthService {
     }
 
     public Usuario autenticar(Usuario usuario) {
+
         return usuarioService.autenticar(usuario);
     }
 

@@ -22,7 +22,7 @@
         <section class="nothing-to-list">
             <h3 class="text-in-field text-center">Listagem de Habilidades</h3>
             <div class="alert alert-info msg-tela-model" role="alert">
-                <strong>Atenção! </strong>Não existem Habilidades cadastradAs!
+                <strong>Atenção! </strong>Não existem Habilidades cadastradas!
             </div>
             <button class="btn btn-secondary btn-adicionar-item" onclick="adicionar()">Adicionar +</button>
         </section>

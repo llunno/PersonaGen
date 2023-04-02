@@ -1,4 +1,4 @@
-package br.edu.infnet.gerenciadorpersonagens.controller;
+package br.edu.infnet.gerenciadorpersonagens.controller.REST;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AuthService;
@@ -14,13 +14,13 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api/dashboard")
-public class DashboardDataController {
+public class APIDashboardData {
 
     private final AuthService authService;
     private final EntityServices entityServices;
 
     @Autowired
-    public DashboardDataController(AuthService authService, EntityServices entityServices) {
+    public APIDashboardData(AuthService authService, EntityServices entityServices) {
         this.authService = authService;
         this.entityServices = entityServices;
     }

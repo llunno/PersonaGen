@@ -44,6 +44,16 @@ public class Habilidade extends Caracteristica {
                 + ";" + maestria;
     }
 
+    public String formatTelaCadastroPersonagem() {
+
+        return "<strong>Nome</strong>: " + nome + ".<br>"
+                + "<strong>Tipo</strong>: " + tipo + ".<br>"
+                + "<strong>Maestria</strong>: " + maestria + ".<br>"
+                + "<strong>Descrição</strong>: " + getDescricao() + ".<br>"
+                + "<strong>Ponto de Destaque</strong>: " + getPontoDeDestaque() + ".<br>"
+                + "<strong>Inspiração</strong>: " + getInspiracao() + ".<br>";
+    }
+
     public void setTipo(String tipo) throws TipoHabilidadeInvalidoException {
         if (!tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[0]) &&
                 !tipo.equalsIgnoreCase(Utils.TIPO_HABILIDADE[1]) &&

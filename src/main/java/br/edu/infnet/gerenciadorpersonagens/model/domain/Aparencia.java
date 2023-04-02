@@ -55,6 +55,20 @@ public class Aparencia extends Caracteristica {
     }
 
     @Override
+    public String formatTelaCadastroPersonagem() {
+        return "<strong>Altura</strong>: " + altura + ".<br>"
+                + "<strong>Peso</strong>: " + peso + ".<br>"
+                + "<strong>Biotipo</strong>: " + biotipo + ".<br>"
+                + "<strong>Cor da Pele</strong>: " + corPele + ".<br>"
+                + "<strong>Cor dos Olhos</strong>: " + corOlhos + ".<br>"
+                + "<strong>Cor do Cabelo</strong>: " + corCabelo + ".<br>"
+                + "<strong>Tipo de Cabelo</strong>: " + tipoCabelo + ".<br>"
+                + "<strong>Descrição</strong>: " + getDescricao() + ".<br>"
+                + "<strong>Ponto de Destaque</strong>: " + getPontoDeDestaque() + ".<br>"
+                + "<strong>Inspiração</strong>: " + getInspiracao() + ".<br>";
+    }
+
+    @Override
     public String toString() {
         return super.toString()
                 + ";" + altura

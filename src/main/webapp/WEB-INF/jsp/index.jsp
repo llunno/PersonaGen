@@ -251,7 +251,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Criadores cadastrados
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Criadores
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -272,7 +272,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-brown text-uppercase mb-1">
-                                                Administradores Cadastrados</div>
+                                                Administradores</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">${listaAdministradores.size()}</div>
                                         </div>
                                         <div class="col-auto">

@@ -1,6 +1,7 @@
 package br.edu.infnet.gerenciadorpersonagens.controller;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Endereco;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AuthService;
 import br.edu.infnet.gerenciadorpersonagens.model.service.CriadorService;
 import br.edu.infnet.gerenciadorpersonagens.model.service.LogService;
@@ -59,8 +60,10 @@ public class CriadorController {
     }
 
     @PostMapping(value = "/criador/incluir")
-    public String incluir(Criador criador, HttpSession session, HttpServletRequest request) {
+    public String incluir(Criador criador, Endereco endereco, HttpSession session, HttpServletRequest request) {
+        criador.setEndereco(endereco);
         criadorService.incluir(criador);
+
         msg = "Criador " + criador.getNomeCompleto() + " incluido com sucesso!";
         return "redirect:/criador/lista";
     }
@@ -70,7 +73,9 @@ public class CriadorController {
         if (!(authService.isLoggedIn(session) || Objects.equals(authService.getLoggedUserType(session), authService.adminUser))) {
             return "redirect:/login";
         }
+
         Criador criador = criadorService.obterPorId(id);
+
         criadorService.excluir(id);
         msg = "Criador " + criador.getNomeCompleto() + " excluído com sucesso!";
         return "redirect:/criador/lista";

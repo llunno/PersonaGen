@@ -65,6 +65,21 @@ public class Personalidade extends Caracteristica{
     }
 
     @Override
+    public String formatTelaCadastroPersonagem() {
+        return "<strong>Palavra Definição</strong>: " + palavraDefinicao + ".<br>"
+                + "<strong>Tipo de Expressão</strong>: " + tipoExpressao + ".<br>"
+                + "<strong>Religião</strong>: " + religiao + ".<br>"
+                + "<strong>Temperamento</strong>: " + temperamento + ".<br>"
+                + "<strong>Qualidades</strong>: " + qualidades + ".<br>"
+                + "<strong>Defeitos</strong>: " + defeitos + ".<br>"
+                + "<strong>Interesses</strong>: " + interesses + ".<br>"
+                + "<strong>Desinteresses</strong>: " + desinteresses + ".<br>"
+                + "<strong>Descrição</strong>: " + getDescricao() + ".<br>"
+                + "<strong>Ponto de Destaque</strong>: " + getPontoDeDestaque() + ".<br>"
+                + "<strong>Inspiração</strong>: " + getInspiracao() + ".<br>";
+    }
+
+    @Override
     public String toString() {
         return super.toString()
                 + ";" + palavraDefinicao

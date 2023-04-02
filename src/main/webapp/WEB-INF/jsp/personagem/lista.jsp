@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils" %>
+<%@ page import="org.springframework.ui.Model" %>
 <html>
 <head>
     <title>Listagem de Personagens</title>
@@ -22,7 +23,7 @@
 
     <c:if test="${empty listaPersonagem}">
         <section class="nothing-to-list">
-            <h3 class="text-in-field text-center">Listagem de personagens</h3>
+            <h3 class="text-in-field text-center">Listagem de Personagens</h3>
             <div class="alert alert-info msg-tela-model" role="alert">
                 <strong>Atenção! </strong>Não existem personagens cadastrados!
             </div>
@@ -38,7 +39,7 @@
         </section>
         <div class="flat-table-background">
             <section class="table-entity-lists-wrapper" id="table-wrapper">
-                <table class="table table-striped">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -55,18 +56,19 @@
                     </thead>
                     <tbody>
                     <c:forEach var="personagem" items="${listaPersonagem}">
-                        <c:set var="caracteristicasConcat" value="${Utils.concatenarExibicaoLista(personagem.caracteristicas)}"/>
                         <tr>
-                            <td>${personagem.id}</td>
-                            <td>${personagem.nome}</td>
-                            <td>${personagem.idade}</td>
-                            <td>${personagem.especie}</td>
-                            <td>${personagem.genero}</td>
-                            <td>${caracteristicasConcat}</td>
-                            <td>${personagem.historia}</td>
-                            <td>${personagem.criador.nomeCompleto}</td>
-                            <td>${personagem.formatarData()}</td>
-                            <td><a href="/personagem/${personagem.id}/excluir" class="excluir-item-link">Excluir</a></td>
+                            <td class="td-id"><p class="id-cell">${personagem.id}</p></td>
+                            <td><p>${personagem.nome}</p></td>
+                            <td><p>${personagem.idade}</p></td>
+                            <td><p>${personagem.especie}</p></td>
+                            <td><p>${personagem.genero}</p></td>
+                            <td>
+                                <p>${personagem.caracteristicas.size()} registros</p>
+                            </td>
+                            <td class="long-cel-need"><p>${personagem.historia}</p></td>
+                            <td><p>${personagem.criador.nomeCompleto}</p></td>
+                            <td><p>${personagem.formatarData()}</p></td>
+                            <td><p><a href="/personagem/${personagem.id}/excluir" class="excluir-item-link">Excluir</a></p></td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -74,6 +76,26 @@
             </section>
         </div>
     </c:if>
+
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modalCaracteristicas" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalCaracteristicas">Características</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </div>
 
 <c:import url="/WEB-INF/jsp/footer.jsp"/>

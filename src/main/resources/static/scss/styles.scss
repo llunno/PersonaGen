@@ -1,5 +1,6 @@
 $textColorTables: #cccccc;
 
+
 .nav-entitys-menu {
   margin-bottom: 2.5rem;
   box-shadow: 0 1px 6px 4px rgba(0,0,0,0.3)
@@ -202,6 +203,21 @@ footer.sticky-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.label-box-caracteristicas-personagem {
+    margin-bottom: 0.5rem !important;
+    margin-top: 1rem !important;
+    font-weight: bold !important;
+}
+
+.form-caracteristicas-personagens {
+    margin-bottom: 1rem;
+    border: 1px solid #dddddd;
+    border-radius: 0.5rem;
+    padding: 2rem 2rem 2rem 3rem;
+    background-color: #9595950f;
+    box-shadow: 1px 1px 5px 0px #14141445;
 }
 
 @media(max-height: 768px) {

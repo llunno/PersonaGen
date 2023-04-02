@@ -6,10 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.UUID;
 
 @Repository
-public interface IPersonagemRepository extends CrudRepository<Personagem, UUID> {
+public interface IPersonagemRepository extends CrudRepository<Personagem, Integer> {
     @Query("from Personagem p where p.criador.id = :creatorId")
     List<Personagem> findAllByCreator(Integer creatorId);
 }

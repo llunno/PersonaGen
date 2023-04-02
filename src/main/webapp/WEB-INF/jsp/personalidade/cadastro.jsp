@@ -18,14 +18,14 @@
             <p>Selecione o tipo de expressão:</p>
             <div id="radio-tipoexpressao-personalidade">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="tipoExpressao" id="extrovertido" value="Extrovertido">
-                    <label class="form-check-label" for="extrovertido">
+                    <input class="form-check-input" type="radio" name="tipoExpressao" id="Extrovertido" value="Extrovertido">
+                    <label class="form-check-label" for="Extrovertido">
                         Extrovertido
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="tipoExpressao" id="Introvertido" value="Introvertido">
-                    <label class="form-check-label" for="extrovertido">
+                    <label class="form-check-label" for="Introvertido">
                         Introvertido
                     </label>
                 </div>

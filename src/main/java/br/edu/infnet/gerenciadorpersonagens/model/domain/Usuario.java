@@ -19,8 +19,13 @@ public class Usuario {
     private String senha;
     private String nomeCompleto;
     private String nickname;
-    @OneToMany(mappedBy = "usuario")
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Log> logs;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
 
     public Usuario() {}
 

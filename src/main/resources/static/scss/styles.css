@@ -180,6 +180,21 @@ footer.sticky-footer .copyright {
   align-items: center;
 }
 
+.label-box-caracteristicas-personagem {
+  margin-bottom: 0.5rem !important;
+  margin-top: 1rem !important;
+  font-weight: bold !important;
+}
+
+.form-caracteristicas-personagens {
+  margin-bottom: 1rem;
+  border: 1px solid #dddddd;
+  border-radius: 0.5rem;
+  padding: 2rem 2rem 2rem 3rem;
+  background-color: rgba(149, 149, 149, 0.0588235294);
+  box-shadow: 1px 1px 5px 0px rgba(20, 20, 20, 0.2705882353);
+}
+
 @media (max-height: 768px) {
   .table-entity-lists-wrapper {
     max-height: 430px;

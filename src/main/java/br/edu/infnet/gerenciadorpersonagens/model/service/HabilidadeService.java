@@ -1,14 +1,19 @@
 package br.edu.infnet.gerenciadorpersonagens.model.service;
 
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Caracteristica;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Habilidade;
 import br.edu.infnet.gerenciadorpersonagens.model.repository.IHabilidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Service
 public class HabilidadeService {
+
+    @Autowired
+    private CaracteristicaService caracteristicaService;
 
     @Autowired
     private IHabilidadeRepository habilidadeRepository;
@@ -31,5 +36,20 @@ public class HabilidadeService {
 
     public Collection<Habilidade> obterListaPorCriador(Integer creatorId) {
         return habilidadeRepository.findAllByCreator(creatorId);
+    }
+
+    public Collection<Habilidade> obterListaPorPersonagem(Integer personagemId) {
+
+        Collection<Caracteristica> caracteristicasPersonagem = caracteristicaService.obterListaPorPersonagem(personagemId);
+
+        Collection<Habilidade> habilidadesPersonagem = new ArrayList<>();
+
+        for (Caracteristica caracteristica : caracteristicasPersonagem) {
+            if (caracteristica instanceof Habilidade) {
+                habilidadesPersonagem.add((Habilidade) caracteristica);
+            }
+        }
+
+        return habilidadesPersonagem;
     }
 }

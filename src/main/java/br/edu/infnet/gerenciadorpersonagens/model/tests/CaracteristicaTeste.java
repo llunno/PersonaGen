@@ -10,6 +10,11 @@ public class CaracteristicaTeste {
             public String formatarExibicao() {
                 return "Dados de personalidade: " + getDescricao() + "\nPonto de Destaque: " + getPontoDeDestaque() + "\nInspiração: " + getInspiracao();
             }
+
+            @Override
+            public String formatTelaCadastroPersonagem() {
+                return null;
+            }
         };
 
         System.out.println(caract.formatarExibicao());

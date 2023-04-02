@@ -1,5 +1,6 @@
 package br.edu.infnet.gerenciadorpersonagens.model.auxiliar.loaders;
 
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Personalidade;
 import br.edu.infnet.gerenciadorpersonagens.model.service.PersonalidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,12 @@ public class PersonalidadeLoader implements ApplicationRunner {
                         new ArrayList<>(List.of(StringUtils.trimAllWhitespace(camposPorLinha[9]).split(","))),
                         new ArrayList<>(List.of(StringUtils.trimAllWhitespace(camposPorLinha[10]).split(",")))
                 );
+
+                Criador criador = new Criador();
+                criador.setId(Integer.parseInt(camposPorLinha[11]));
+                personalidade.setCriador(criador);
+
+
                 personalidadeService.incluir(personalidade);
                 System.out.println("Inclusão da personalidade " + personalidade.getPalavraDefinicao() + " realizada com sucesso!");
                 linha = leituraArquivo.readLine();

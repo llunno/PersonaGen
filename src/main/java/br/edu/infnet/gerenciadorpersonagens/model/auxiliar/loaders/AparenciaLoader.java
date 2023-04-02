@@ -1,6 +1,7 @@
 package br.edu.infnet.gerenciadorpersonagens.model.auxiliar.loaders;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Aparencia;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AparenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -43,6 +44,11 @@ public class AparenciaLoader implements ApplicationRunner {
                         camposPorLinha[8],
                         camposPorLinha[9]
                 );
+
+                Criador criador = new Criador();
+                criador.setId(Integer.parseInt(camposPorLinha[10]));
+                aparencia.setCriador(criador);
+
                 aparenciaService.incluir(aparencia);
                 System.out.println("Inclusão da aparência estilo " + aparencia.getInspiracao() + " realizada com sucesso!");
                 linha = leituraArquivo.readLine();

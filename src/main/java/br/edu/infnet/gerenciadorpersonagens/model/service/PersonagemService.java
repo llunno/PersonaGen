@@ -5,7 +5,6 @@ import br.edu.infnet.gerenciadorpersonagens.model.repository.IPersonagemReposito
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.UUID;
 
 @Service
 public class PersonagemService {
@@ -23,11 +22,11 @@ public class PersonagemService {
         return (Collection<Personagem>) personagemRepository.findAll();
     }
 
-    public void excluir(UUID id) {
+    public void excluir(Integer id) {
         personagemRepository.deleteById(id);
     }
 
-    public Personagem obterPorId(UUID id) {
+    public Personagem obterPorId(Integer id) {
         return personagemRepository.findById(id).orElse(null);
     }
 
