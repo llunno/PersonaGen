@@ -278,6 +278,17 @@ footer.sticky-footer {
   margin-bottom: 1rem;
 }
 
+#personagem-detalhes {
+  color: #4b538f!important;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    color: #363864 !important;
+    text-decoration: underline;
+  }
+}
+
 @media(max-height: 768px) {
   .table-entity-lists-wrapper {
     max-height: 420px;

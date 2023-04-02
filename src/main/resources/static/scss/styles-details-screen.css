@@ -1,0 +1,81 @@
+h1 {
+  text-align: center;
+  font-weight: bold;
+}
+
+h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+}
+
+h2, h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 1.1rem;
+}
+
+p {
+  font-style: italic;
+  font-size: 1.04rem;
+  margin: 0;
+}
+
+div.div-from-section {
+  display: flex;
+  justify-content: normal;
+  vertical-align: middle;
+  column-gap: 0.65rem;
+}
+
+.nav-entitys-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030 !important;
+}
+
+.container-registers {
+  display: flex;
+  flex-direction: column;
+}
+.container-registers > section {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.column-div-need {
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.titulo-capitulo:not(h3) {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.container-register-body {
+  margin-top: 6rem;
+}
+
+#habilidade-details-individual {
+  box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  border-radius: 0.4rem;
+  flex: 1 1 2rem;
+}
+
+#habilidades-wrapper {
+  display: flex;
+  margin-top: 1rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/*# sourceMappingURL=styles-details-screen.css.map */

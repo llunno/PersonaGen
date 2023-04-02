@@ -52,6 +52,7 @@
                         <th>Criador</th>
                         <th>Data de criação</th>
                         <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -68,6 +69,7 @@
                             <td class="long-cell-need-details"><p>${personagem.historia}</p></td>
                             <td><p>${personagem.criador.nomeCompleto}</p></td>
                             <td><p>${personagem.formatarData()}</p></td>
+                            <td><p><a class="detalhes-item-link" href="/personagem/${personagem.id}/detalhes" id="personagem-detalhes">Detalhes</a></p></td>
                             <td><p><a href="/personagem/${personagem.id}/excluir" class="excluir-item-link">Excluir</a></p></td>
                         </tr>
                     </c:forEach>
@@ -79,7 +81,7 @@
 
 
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modalCaracteristicas" aria-hidden="true">
+        <div class="modal fade" id="modalDetalhes" tabindex="-1" aria-labelledby="modalCaracteristicas" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

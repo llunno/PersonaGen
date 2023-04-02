@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -42,10 +41,10 @@ public class PersonalidadeLoader implements ApplicationRunner {
                         camposPorLinha[4],
                         camposPorLinha[5],
                         camposPorLinha[6],
-                        new ArrayList<>(List.of(StringUtils.trimAllWhitespace(camposPorLinha[7]).split(","))),
-                        new ArrayList<>(List.of(StringUtils.trimAllWhitespace(camposPorLinha[8]).split(","))),
-                        new ArrayList<>(List.of(StringUtils.trimAllWhitespace(camposPorLinha[9]).split(","))),
-                        new ArrayList<>(List.of(StringUtils.trimAllWhitespace(camposPorLinha[10]).split(",")))
+                        new ArrayList<>(List.of(camposPorLinha[7].trim().split(","))),
+                        new ArrayList<>(List.of(camposPorLinha[8].trim().split(","))),
+                        new ArrayList<>(List.of(camposPorLinha[9].trim().split(","))),
+                        new ArrayList<>(List.of(camposPorLinha[10].trim().split(",")))
                 );
 
                 Criador criador = new Criador();

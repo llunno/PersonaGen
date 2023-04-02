@@ -2,10 +2,7 @@ package br.edu.infnet.gerenciadorpersonagens.controller;
 
 import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.*;
-import br.edu.infnet.gerenciadorpersonagens.model.service.AuthService;
-import br.edu.infnet.gerenciadorpersonagens.model.service.CaracteristicaService;
-import br.edu.infnet.gerenciadorpersonagens.model.service.LogService;
-import br.edu.infnet.gerenciadorpersonagens.model.service.PersonagemService;
+import br.edu.infnet.gerenciadorpersonagens.model.service.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +26,16 @@ public class PersonagemController {
     private final AuthService authService;
     private final LogService logService;
     private final CaracteristicaService caracteristicaService;
+    private final EntityServices entityService;
     private static String msg;
 
     @Autowired
-    public PersonagemController(PersonagemService personagemService, AuthService authService, LogService logService, CaracteristicaService caracteristicaService) {
+    public PersonagemController(PersonagemService personagemService, AuthService authService, LogService logService, CaracteristicaService caracteristicaService, EntityServices entityService) {
         this.personagemService = personagemService;
         this.authService = authService;
         this.logService = logService;
         this.caracteristicaService = caracteristicaService;
+        this.entityService = entityService;
     }
 
     @GetMapping("/cadastro")
@@ -141,8 +140,12 @@ public class PersonagemController {
             return "redirect:/login";
         }
 
-        Personagem personagem = personagemService.obterPorId(id);
+        Personagem personagem = personagemService.obterPorId(id);;
+
         model.addAttribute("personagem", personagem);
+        model.addAttribute("personalidade", entityService.personalidadeService.obterPersonalidadePorPersonagem(personagem));
+        model.addAttribute("listaHabilidades", entityService.habilidadeService.obterHabilidadesPorPersonagem(personagem));
+        model.addAttribute("aparencia", entityService.aparenciaService.obterAparenciaPorPersonagem(personagem));
         return "/personagem/detalhes";
     }
 }

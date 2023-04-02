@@ -1,5 +1,7 @@
 package br.edu.infnet.gerenciadorpersonagens.model.service;
 
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Caracteristica;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Personagem;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Personalidade;
 import br.edu.infnet.gerenciadorpersonagens.model.repository.IPersonalidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +34,20 @@ public class PersonalidadeService {
 
     public Collection<Personalidade> obterListaPorCriador(Integer creatorId) {
         return personalidadeRepository.findAllByCreator(creatorId, Sort.by("tipoExpressao"));
+    }
+
+    public Personalidade obterPersonalidadePorPersonagem(Personagem personagem) {
+
+        Collection<Caracteristica> caracteristicas = personagem.getCaracteristicas();
+        Personalidade personalidade;
+
+        for (Caracteristica caracteristica : caracteristicas) {
+            if (caracteristica instanceof Personalidade) {
+                personalidade = (Personalidade) caracteristica;
+                return personalidade;
+            }
+        }
+
+        return null;
     }
 }
