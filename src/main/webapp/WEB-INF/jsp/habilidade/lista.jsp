@@ -71,7 +71,7 @@
                             <td>
                                 <p>${habilidade.inspiracao}</p>
                             </td>
-                            <td>
+                            <td class="long-cell-need-details">
                                 <p>${habilidade.descricao}</p>
                             </td>
                             <td>

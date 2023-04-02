@@ -4,6 +4,7 @@ import br.edu.infnet.gerenciadorpersonagens.model.domain.Caracteristica;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Habilidade;
 import br.edu.infnet.gerenciadorpersonagens.model.repository.IHabilidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class HabilidadeService {
     }
 
     public Collection<Habilidade> obterListaPorCriador(Integer creatorId) {
-        return habilidadeRepository.findAllByCreator(creatorId);
+        return habilidadeRepository.findAllByCreator(creatorId, Sort.by("nome"));
     }
 
     public Collection<Habilidade> obterListaPorPersonagem(Integer personagemId) {

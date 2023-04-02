@@ -3,6 +3,7 @@ package br.edu.infnet.gerenciadorpersonagens.model.service;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Administrador;
 import br.edu.infnet.gerenciadorpersonagens.model.repository.IAdministradorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -18,6 +19,10 @@ public class AdministradorService {
 
     public Collection<Administrador> obterLista() {
         return (Collection<Administrador>) administradorRepository.findAll();
+    }
+
+    public Collection<Administrador> obterListaOrdenada() {
+        return administradorRepository.findAll(Sort.by(Sort.Direction.ASC, "nomeCompleto"));
     }
 
     public void excluir(Integer id) {

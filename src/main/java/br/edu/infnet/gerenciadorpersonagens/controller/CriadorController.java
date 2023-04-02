@@ -48,7 +48,7 @@ public class CriadorController {
         Collection<Criador> lista;
 
         if (Objects.equals(authService.getLoggedUserType(session), authService.adminUser)) {
-            lista = criadorService.obterLista();
+            lista = criadorService.obterListaOrdenada();
         }
         else {
             return "redirect:/login";

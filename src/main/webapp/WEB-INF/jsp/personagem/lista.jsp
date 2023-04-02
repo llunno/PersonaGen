@@ -65,7 +65,7 @@
                             <td>
                                 <p>${personagem.caracteristicas.size()} registros</p>
                             </td>
-                            <td class="long-cel-need"><p>${personagem.historia}</p></td>
+                            <td class="long-cell-need-details"><p>${personagem.historia}</p></td>
                             <td><p>${personagem.criador.nomeCompleto}</p></td>
                             <td><p>${personagem.formatarData()}</p></td>
                             <td><p><a href="/personagem/${personagem.id}/excluir" class="excluir-item-link">Excluir</a></p></td>

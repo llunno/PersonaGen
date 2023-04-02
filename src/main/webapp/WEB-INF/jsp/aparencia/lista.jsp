@@ -87,7 +87,7 @@
               <td>
                 <p>${aparencia.inspiracao}</p>
               </td>
-              <td>
+              <td class="long-cell-need-details">
                 <p>${aparencia.descricao}</p>
               </td>
               <td><a href="/aparencia/${aparencia.id}/excluir" class="excluir-item-link">Excluir</a></td>

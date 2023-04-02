@@ -69,7 +69,7 @@ public class AdministradorController {
             return "redirect:/login";
         }
         else  {
-            lista = administradorService.obterLista();
+            lista = administradorService.obterListaOrdenada();
         }
         model.addAttribute("listaAdministrador", lista);
         model.addAttribute("mensagemInclusao", msg);

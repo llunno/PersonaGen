@@ -6,8 +6,9 @@
 body {
   background-color: #eaecf4;
   background-image: url("../img/white-horizontal-waves.jpg");
-  background-size: 100% 95%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-position: center;
   font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   display: flex;
@@ -48,13 +49,11 @@ footer.sticky-footer .copyright {
 
 .flat-table-background {
   border-radius: 0.3rem;
-  padding: 5px;
-  background-color: #2a2929;
-  box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.3);
   margin-left: 1rem;
   margin-right: 1rem;
   display: flex;
   flex-direction: column;
+  border: 3px solid rgb(50, 50, 50);
 }
 
 .table-entity-lists-wrapper {
@@ -62,8 +61,8 @@ footer.sticky-footer .copyright {
   flex: 1 1 auto;
   width: 100%;
   margin: 0 auto 0 auto !important;
-  max-height: 620px;
-  background-color: white;
+  max-height: 610px;
+  background-color: rgba(255, 255, 255, 0.4);
   height: 100%;
 }
 .table-entity-lists-wrapper table {
@@ -99,7 +98,12 @@ footer.sticky-footer .copyright {
   left: 0;
 }
 .table-entity-lists-wrapper table .long-cel-need {
+  min-width: 10rem;
+  max-width: 20rem;
+}
+.table-entity-lists-wrapper table .long-cell-need-details {
   min-width: 20rem;
+  max-width: 20rem;
 }
 .table-entity-lists-wrapper table td {
   line-height: 3rem;
@@ -118,15 +122,15 @@ footer.sticky-footer .copyright {
   background-image: url("../img/wave-right-vertical.jpg");
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 }
 
-.container-register-body, .container-body-entitys {
+.container-body-entitys {
   padding: 0;
   flex: 1 1 auto;
-  height: 50vh;
   margin: 0 0 2rem 0;
 }
-.container-register-body .container-registers, .container-body-entitys .container-registers {
+.container-body-entitys .container-registers {
   background-color: white;
   border-radius: 0.4rem;
   box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.3);
@@ -137,14 +141,41 @@ footer.sticky-footer .copyright {
   overflow: auto;
   height: 100%;
 }
-.container-register-body .container-registers form, .container-body-entitys .container-registers form {
+.container-body-entitys .container-registers form {
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.container-register-body .container-registers form p, .container-body-entitys .container-registers form p {
+.container-body-entitys .container-registers form p {
+  margin: 0;
+}
+
+.container-register-body {
+  padding: 0;
+  flex: 1 1 auto;
+  margin: 0 0 2rem 0;
+}
+.container-register-body .container-registers {
+  background-color: white;
+  border-radius: 0.4rem;
+  box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.3);
+  padding: 5rem;
+  width: 95%;
+  max-width: 70rem;
+  color: #5c5858;
+  overflow: auto;
+  height: 100%;
+}
+.container-register-body .container-registers form {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container-register-body .container-registers form p {
   margin: 0;
 }
 
@@ -187,22 +218,41 @@ footer.sticky-footer .copyright {
 }
 
 .form-caracteristicas-personagens {
-  margin-bottom: 1rem;
   border: 1px solid #dddddd;
   border-radius: 0.5rem;
   padding: 2rem 2rem 2rem 3rem;
   background-color: rgba(149, 149, 149, 0.0588235294);
   box-shadow: 1px 1px 5px 0px rgba(20, 20, 20, 0.2705882353);
+  flex: 1 1 20rem;
+}
+.form-caracteristicas-personagens:hover {
+  transform: scale(104%);
+  transition: 0.2s;
+  background-color: rgba(199, 205, 239, 0.4509803922);
+}
+.form-caracteristicas-personagens, .form-caracteristicas-personagens > * {
+  cursor: pointer;
+}
+.form-caracteristicas-personagens:active {
+  transform: scale(97%);
+  transition: 0.2s;
+}
+
+.personalidades-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 @media (max-height: 768px) {
   .table-entity-lists-wrapper {
-    max-height: 430px;
+    max-height: 420px;
   }
 }
 @media (max-height: 700px) {
   .table-entity-lists-wrapper {
-    max-height: 320px;
+    max-height: 310px;
   }
 }
 

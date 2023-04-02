@@ -3,6 +3,7 @@ package br.edu.infnet.gerenciadorpersonagens.model.service;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Aparencia;
 import br.edu.infnet.gerenciadorpersonagens.model.repository.IAparenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -30,6 +31,6 @@ public class AparenciaService {
     }
 
     public Collection<Aparencia> obterListaPorCriador(Integer creatorId) {
-        return aparenciaRepository.findAllByCreator(creatorId);
+        return aparenciaRepository.findAllByCreator(creatorId, Sort.by("biotipo"));
     }
 }

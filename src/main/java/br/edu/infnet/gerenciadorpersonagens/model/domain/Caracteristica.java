@@ -15,6 +15,7 @@ public abstract class Caracteristica {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(columnDefinition = "TEXT")
     private String descricao;
     private String pontoDeDestaque;
     private String inspiracao;

@@ -9,8 +9,9 @@ $textColorTables: #cccccc;
 body {
     background-color: #eaecf4;
     background-image: url('../img/white-horizontal-waves.jpg');
-    background-size: 100% 95%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-position: center;
     font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     display: flex;
@@ -53,13 +54,11 @@ footer.sticky-footer {
 
 .flat-table-background {
   border-radius: 0.3rem;
-  padding: 5px;
-  background-color: #2a2929;
-  box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.3);
   margin-left: 1rem;
   margin-right: 1rem;
   display: flex;
   flex-direction: column;
+  border: 3px solid rgb(50 50 50);
   //flex: 1 1 auto;
   //height: 100%;
 }
@@ -69,8 +68,8 @@ footer.sticky-footer {
   flex: 1 1 auto;
   width: 100%;
   margin: 0 auto 0 auto !important;
-  max-height: 620px;
-  background-color: white;
+  max-height: 610px;
+  background-color: rgb(255 255 255 / 40%);
   height: 100%;
 
   table {
@@ -111,7 +110,13 @@ footer.sticky-footer {
     }
 
     .long-cel-need {
-      min-width: 20rem;
+      min-width: 10rem;
+      max-width: 20rem;
+    }
+
+    .long-cell-need-details {
+        min-width: 20rem;
+        max-width: 20rem;
     }
 
     td {
@@ -134,12 +139,12 @@ footer.sticky-footer {
   background-image: url('../img/wave-right-vertical.jpg');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 }
 
-.container-register-body, .container-body-entitys {
+.container-body-entitys {
   padding: 0;
   flex: 1 1 auto;
-  height: 50vh;
   margin: 0 0 2rem 0;
 
   .container-registers {
@@ -156,18 +161,49 @@ footer.sticky-footer {
     height: 100%;
 
     form {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-        p {
-            margin: 0;
-        }
+      p {
+        margin: 0;
+      }
     }
   }
+}
 
+.container-register-body {
+  padding: 0;
+  flex: 1 1 auto;
+  margin: 0 0 2rem 0;
+
+  .container-registers {
+    background-color: white;
+    border-radius: 0.4rem;
+    box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.3);
+    padding: 5rem;
+    width: 95%;
+    max-width: 70rem;
+    color: #5c5858;
+    //margin-top: 2rem;
+    //margin-bottom: 2rem;
+    overflow: auto;
+    height: 100%;
+
+    form {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
 }
 
 .container-body-entitys {
@@ -212,22 +248,45 @@ footer.sticky-footer {
 }
 
 .form-caracteristicas-personagens {
-    margin-bottom: 1rem;
-    border: 1px solid #dddddd;
-    border-radius: 0.5rem;
-    padding: 2rem 2rem 2rem 3rem;
-    background-color: #9595950f;
-    box-shadow: 1px 1px 5px 0px #14141445;
+  border: 1px solid #dddddd;
+  border-radius: 0.5rem;
+  padding: 2rem 2rem 2rem 3rem;
+  background-color: #9595950f;
+  box-shadow: 1px 1px 5px 0px #14141445;
+  flex: 1 1 20rem;
+
+  &:hover {
+    transform: scale(104%);
+    transition: 0.2s;
+    background-color: #c7cdef73;
+  }
+
+  &, & > * {
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(97%);
+    transition: 0.2s;
+  }
+}
+
+.personalidades-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 @media(max-height: 768px) {
   .table-entity-lists-wrapper {
-    max-height: 430px;
+    max-height: 420px;
   }
 }
 
 @media(max-height: 700px) {
   .table-entity-lists-wrapper {
-    max-height: 320px;
+    max-height: 310px;
   }
 }
+

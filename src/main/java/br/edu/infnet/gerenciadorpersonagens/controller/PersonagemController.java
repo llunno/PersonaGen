@@ -134,4 +134,15 @@ public class PersonagemController {
         msg = "Personagem " + personagem.getNome() + " excluída com sucesso!";
         return "redirect:/personagem/lista";
     }
+
+    @GetMapping("/{id}/detalhes")
+    public String exibirDetalhes(@PathVariable Integer id, HttpSession session, Model model) {
+        if (!authService.isLoggedIn(session)) {
+            return "redirect:/login";
+        }
+
+        Personagem personagem = personagemService.obterPorId(id);
+        model.addAttribute("personagem", personagem);
+        return "/personagem/detalhes";
+    }
 }

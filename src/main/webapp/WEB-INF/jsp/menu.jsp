@@ -85,7 +85,7 @@
             </c:if>
             <c:if test="${not empty usuario}">
                 <button onclick="signOut()" class="btn btn-light btn-navbar">
-                    <i class="fa fa-sign-out"></i> Sair, ${usuario.email}
+                    <i class="fa fa-sign-out"></i> Sair, ${usuario.nomeCompleto}
                 </button>
             </c:if>
         </div>

@@ -2,6 +2,7 @@ package br.edu.infnet.gerenciadorpersonagens.model.service;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Personagem;
 import br.edu.infnet.gerenciadorpersonagens.model.repository.IPersonagemRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -31,7 +32,7 @@ public class PersonagemService {
     }
 
     public Collection<Personagem> obterListaPorCriador(Integer creatorId) {
-        return personagemRepository.findAllByCreator(creatorId);
+        return personagemRepository.findAllByCreator(creatorId, Sort.by("especie"));
     }
 
 }

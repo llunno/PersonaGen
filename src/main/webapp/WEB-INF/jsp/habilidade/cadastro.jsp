@@ -12,8 +12,8 @@
         <h2>Cadastro de Habilidade</h2>
         <form action="/habilidade/incluir" method="post">
             <div class="mb-3">
-                <label for="nomeInput" class="form-label">Nome Completo</label>
-                <input name="nome" type="text" class="form-control" id="nomeInput" required>
+                <label for="nomeInput" class="form-label">Nome</label>
+                <input name="nome" type="text" class="form-control" id="nomeInput" value="Tiro ao Alvo" required>
             </div>
             <h5 class="my-2">Selecione o tipo de habilidade:</h5>
             <div id="radiogroup-tipo-habilidade">
@@ -77,15 +77,15 @@
             </div>
             <div class="mb-3">
                 <label for="ponto-destaque" class="form-label">Ponto de Destaque</label>
-                <input name="pontoDeDestaque" type="text" class="form-control" id="ponto-destaque" required>
+                <input name="pontoDeDestaque" type="text" class="form-control" id="ponto-destaque" value="Alta Precisão" required>
             </div>
             <div class="mb-3">
                 <label for="inspiracao" class="form-label">Inspiração</label>
-                <input name="inspiracao" type="text" class="form-control" id="inspiracao" required>
+                <input name="inspiracao" type="text" class="form-control" id="inspiracao" value="Legolas" required>
             </div>
             <div class="mb-3">
                 <label for="descricao" class="form-label">Descrição</label>
-                <textarea name="descricao" class="form-control" id="descricao" rows="3" placeholder="Insira aqui uma descrição desta habilidade" required></textarea>
+                <textarea name="descricao" class="form-control" id="descricao" rows="3" placeholder="Insira aqui uma descrição desta habilidade" required>Resultado de treinamento intenso, possui precisão no tiro ao alvo impressionante, capaz de acertar alvos a grandes distâncias,com uma mira perfeita e uma pontaria incomparável.</textarea>
             </div>
             <button type="submit" class="btn btn-secondary">Enviar</button>
         </form>

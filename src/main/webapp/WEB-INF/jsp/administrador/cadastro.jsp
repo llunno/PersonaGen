@@ -13,27 +13,43 @@
         <form action="/administrador/incluir" method="post">
             <div class="mb-3">
                 <label for="nomeInput" class="form-label">Nome Completo</label>
-                <input name="nomeCompleto" type="text" class="form-control" id="nomeInput" required>
+                <input name="nomeCompleto" type="text" class="form-control" value="Fabio Henrique" id="nomeInput" required>
             </div>
             <div class="mb-3">
                 <label for="nickname" class="form-label">Nickname</label>
-                <input name="nickname" type="text" class="form-control" id="nickname" required>
+                <input name="nickname" type="text" class="form-control" value="fabinhr" id="nickname" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input name="email" type="text" class="form-control" id="email" required>
+                <input name="email" type="text" class="form-control" value="fabinhr@gmail.com" id="email" required>
             </div>
             <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
-                <input name="senha" type="password" class="form-control" id="senha" required>
+                <input name="senha" type="password" class="form-control"  id="senha" required>
             </div>
             <div class="mb-3">
                 <label for="cargo" class="form-label">Cargo</label>
-                <input name="cargo" type="text" class="form-control" id="cargo" required>
+                <input name="cargo" type="text" class="form-control" value="Administrador de banco de dados" id="cargo" required>
             </div>
-            <div class="mb-3">
-                <label for="nivelAcesso" class="form-label">Nível de Acesso</label>
-                <input name="nivelAcesso" type="text" class="form-control" id="nivelAcesso" required>
+            <div id="radiogroup-nivelAcesso-administrador mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="nivelAcesso" id="nivel1" value="Nível 1">
+                    <label class="form-check-label" for="nivel1">
+                       Nível 1
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="nivelAcesso" id="nivel2" value="Nível 2">
+                    <label class="form-check-label" for="nivel2">
+                        Nível 2
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="nivelAcesso" id="nivel 3" value="Nível 3">
+                    <label class="form-check-label" for="nivel 3">
+                        Nível 3
+                    </label>
+                </div>
             </div>
             <c:import url="/WEB-INF/jsp/endereco/cadastro.jsp"/>
             <button type="submit" class="btn btn-secondary">Enviar</button>
