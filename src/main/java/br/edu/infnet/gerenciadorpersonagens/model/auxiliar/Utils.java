@@ -9,6 +9,11 @@ public class Utils {
     public static final String[] TIPO_ACAO_LOG = new String[]{"Criação", "Exclusão", "Atualização", "LogIn", "LogOut"};
 
     public static String concatenarExibicaoLista(List<String> lista) {
+
+        if (lista == null || lista.isEmpty()) {
+            return "Não informado";
+        }
+
         StringBuilder stbuilder = new StringBuilder();
         for (String item : lista) {
             stbuilder.append(item).append(", ");
