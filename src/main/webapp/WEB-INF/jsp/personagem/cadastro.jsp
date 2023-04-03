@@ -69,7 +69,7 @@
                     <section class="personalidades-wrapper">
                     <c:forEach var="habilidade" items="${listaHabilidades}">
                         <div class="form-check ms-1 form-caracteristicas-personagens">
-                            <input class="form-check-input" type="checkbox" name="caracteristicas" id="${habilidade.id}" value="${habilidade.id}">
+                            <input class="form-check-input checkbox-radiotype-habilidade" type="checkbox" name="caracteristicas" id="${habilidade.id}" value="${habilidade.id}">
                             <label class="form-check-label" for="${habilidade.id}">
                                     ${habilidade.formatTelaCadastroPersonagem()}
                             </label>
@@ -111,7 +111,7 @@
                 <label for="historia">História:</label>
                 <textarea class="form-control mb-2" id="historia" name="historia" rows="5" required>Marthos era um elfo da floresta que passou sua vida inteira protegendo as terras em que nasceu. Desde jovem, ele foi treinado pelos melhores guerreiros da tribo, desenvolvendo habilidades incríveis com o arco e a espada.</textarea>
             </div>
-            <button ${toggleButton} type="submit" class="btn btn-secondary">Enviar</button>
+            <button ${toggleButton} type="submit" class="btn btn-secondary" id="btn-submit-personagem">Enviar</button>
         </form>
     </div>
 </div>

@@ -43,6 +43,15 @@ public class Personagem {
         this.historia = historia;
     }
 
+    public Personagem(String nome, int idade, boolean isHuman, String especie, String genero, String historia) {
+        this.nome = nome;
+        this.idade = idade;
+        this.isHuman = isHuman;
+        this.especie = especie;
+        this.genero = genero;
+        this.historia = historia;
+    }
+
     public String toString() {
         return String.format("%s",criador)
                 + String.format(";Total de características registradas: %s",caracteristicas.size())
