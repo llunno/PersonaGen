@@ -1,7 +1,10 @@
 package br.edu.infnet.gerenciadorpersonagens.model.auxiliar.loaders;
 
+import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Log;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Personalidade;
+import br.edu.infnet.gerenciadorpersonagens.model.service.LogService;
 import br.edu.infnet.gerenciadorpersonagens.model.service.PersonalidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -19,8 +22,14 @@ import java.util.List;
 @Component
 public class PersonalidadeLoader implements ApplicationRunner {
 
+    private final PersonalidadeService personalidadeService;
+    private final LogService logService;
+
     @Autowired
-    private PersonalidadeService personalidadeService;
+    public PersonalidadeLoader(PersonalidadeService personalidadeService, LogService logService) {
+        this.personalidadeService = personalidadeService;
+        this.logService = logService;
+    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -52,9 +61,13 @@ public class PersonalidadeLoader implements ApplicationRunner {
                 Criador criador = new Criador();
                 criador.setId(Integer.parseInt(camposPorLinha[11]));
                 personalidade.setCriador(criador);
-
-
                 personalidadeService.incluir(personalidade);
+
+                String msgLog = "Cadastrada personalidade " + personalidade.getPontoDeDestaque() + " com id " + personalidadeService.obterPorId(personalidade.getId()).getId();
+
+                Log log = new Log("192.168.29.107", Utils.TIPO_ACAO_LOG[0], msgLog, criador);
+                logService.incluir(log);
+
                 System.out.println("Inclusão da personalidade " + personalidade.getPalavraDefinicao() + " realizada com sucesso!");
                 linha = leituraArquivo.readLine();
             }

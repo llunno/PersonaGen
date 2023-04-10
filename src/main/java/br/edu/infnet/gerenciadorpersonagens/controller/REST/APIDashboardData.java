@@ -3,7 +3,8 @@ package br.edu.infnet.gerenciadorpersonagens.controller.REST;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AuthService;
 import br.edu.infnet.gerenciadorpersonagens.model.service.EntityServices;
-import com.google.gson.Gson;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,7 @@ public class APIDashboardData {
 
     @GetMapping(value = "/all")
     public String getDashboardData(HttpSession session) {
-        Gson gson = new Gson();
+        ObjectMapper mapper = new ObjectMapper();
         if (authService.isLoggedIn(session)) {
 
             int quantityPersonalidades = 0;
@@ -63,7 +64,11 @@ public class APIDashboardData {
             mapQuantidades.put("quantityCriadores", Integer.toString(quantityCriadores));
             mapQuantidades.put("quantityAdministradores", Integer.toString(quantityAdministradores));
 
-            return gson.toJson(mapQuantidades);
+            try {
+                return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(mapQuantidades);
+            } catch (JsonProcessingException e) {
+                return null;
+            }
         }
         return null;
     }

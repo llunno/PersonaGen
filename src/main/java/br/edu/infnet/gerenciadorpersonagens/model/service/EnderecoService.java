@@ -11,12 +11,13 @@ import java.util.Collection;
 @Service
 public class EnderecoService {
 
-    private final WebClient webClient = WebClient.create("https://viacep.com.br/ws/");
+    private final WebClient webClient;
     private final IEnderecoRepository enderecoRepository;
 
     @Autowired
     public EnderecoService(IEnderecoRepository enderecoRepository) {
         this.enderecoRepository = enderecoRepository;
+        this.webClient = WebClient.create("https://viacep.com.br/ws/");
     }
 
     public Endereco buscarEndereco(String cep) {

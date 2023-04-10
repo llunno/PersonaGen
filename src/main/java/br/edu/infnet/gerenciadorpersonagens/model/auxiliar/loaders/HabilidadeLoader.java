@@ -1,8 +1,11 @@
 package br.edu.infnet.gerenciadorpersonagens.model.auxiliar.loaders;
 
+import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Habilidade;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Log;
 import br.edu.infnet.gerenciadorpersonagens.model.service.HabilidadeService;
+import br.edu.infnet.gerenciadorpersonagens.model.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -17,8 +20,14 @@ import java.io.IOException;
 @Component
 public class HabilidadeLoader implements ApplicationRunner {
 
+    private final HabilidadeService habilidadeService;
+    private final LogService logService;
+
     @Autowired
-    private HabilidadeService habilidadeService;
+    public HabilidadeLoader(HabilidadeService habilidadeService, LogService logService) {
+        this.habilidadeService = habilidadeService;
+        this.logService = logService;
+    }
 
 
     @Override
@@ -47,6 +56,12 @@ public class HabilidadeLoader implements ApplicationRunner {
                 criador.setId(Integer.parseInt(camposPorLinha[6]));
                 habilidade.setCriador(criador);
                 habilidadeService.incluir(habilidade);
+
+                String msgLog = "Cadastrada Habilidade " + habilidade.getPontoDeDestaque() + " com id " + habilidadeService.obterPorId(habilidade.getId()).getId();
+
+                Log log = new Log("192.168.29.107", Utils.TIPO_ACAO_LOG[0], msgLog, criador);
+                logService.incluir(log);
+
                 System.out.println("Inclusão da habilidade " + habilidade.getNome() + " realizada com sucesso!");
                 linha = leituraArquivo.readLine();
             }

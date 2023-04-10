@@ -6,11 +6,8 @@ function consultarCEP() {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                if (data === undefined || data == null) {
-                    document.querySelector("#logradouro").value = "CEP não encontrado";
-                    document.querySelector("#bairro").value = "CEP não encontrado";
-                    document.querySelector("#cidade").value = "CEP não encontrado";
-                    document.querySelector("#estado").value = "CEP não encontrado";
+                if (data.error) {
+                    limparFormulario()
                 } else {
                     document.querySelector("#logradouro").value = data.logradouro;
                     document.querySelector("#bairro").value = data.bairro;
