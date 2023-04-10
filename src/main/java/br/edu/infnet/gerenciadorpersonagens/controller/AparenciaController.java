@@ -4,7 +4,6 @@ import br.edu.infnet.gerenciadorpersonagens.model.auxiliar.Utils;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Aparencia;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Log;
-import br.edu.infnet.gerenciadorpersonagens.model.domain.Personagem;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AparenciaService;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AuthService;
 import br.edu.infnet.gerenciadorpersonagens.model.service.LogService;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Objects;
 
 @Controller
@@ -99,9 +97,9 @@ public class AparenciaController {
 
         Aparencia aparencia = aparenciaService.obterPorId(id);
 
-        List<Personagem> personagensAssociados = aparencia.getPersonagens();
-        for (Personagem personagem : personagensAssociados) {
-            personagem.getCaracteristicas().remove(aparencia);
+        if (aparencia.getPersonagens() != null && !aparencia.getPersonagens().isEmpty()) {
+            msg = "Não é possível excluir uma aparência que está associada a um personagem!";
+            return "redirect:/aparencia/lista";
         }
 
         aparenciaService.excluir(id);

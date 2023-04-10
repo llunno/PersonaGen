@@ -97,6 +97,12 @@ public class PersonalidadeController {
         Criador criadorLogado = (Criador) authService.getSessionObject(session);
 
         Personalidade personalidade = personalidadeService.obterPorId(id);
+
+        if (personalidade.getPersonagens() != null && !personalidade.getPersonagens().isEmpty()) {
+            msg = "Não é possível excluir uma personalidade que está associada a um personagem!";
+            return "redirect:/personalidade/lista";
+        }
+
         personalidadeService.excluir(id);
 
         List<Personagem> personagensAssociados = personalidade.getPersonagens();

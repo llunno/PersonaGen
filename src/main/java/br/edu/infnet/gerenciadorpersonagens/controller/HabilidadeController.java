@@ -98,9 +98,15 @@ public class HabilidadeController {
             msg = "Você não tem permissão para excluir uma Habilidade! Entre como um criador para isto.";
             return "redirect:/habilidade/lista";
         }
+
         Criador criadorLogado = (Criador) authService.getSessionObject(session);
 
         Habilidade habilidade = habilidadeService.obterPorId(id);
+
+        if (habilidade.getPersonagens() != null && !habilidade.getPersonagens().isEmpty()) {
+            msg = "Não é possível excluir uma habilidade que está associada a um personagem!";
+            return "redirect:/habilidade/lista";
+        }
 
         List<Personagem> personagensAssociados = habilidade.getPersonagens();
         for (Personagem personagem : personagensAssociados) {
