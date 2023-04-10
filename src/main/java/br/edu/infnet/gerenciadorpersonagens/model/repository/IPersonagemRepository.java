@@ -12,4 +12,7 @@ import java.util.List;
 public interface IPersonagemRepository extends CrudRepository<Personagem, Integer> {
     @Query("from Personagem p where p.criador.id = :creatorId")
     List<Personagem> findAllByCreator(Integer creatorId, Sort sort);
+
+    @Query("from Personagem p")
+    List<Personagem> findAllSorted(Sort sort);
 }

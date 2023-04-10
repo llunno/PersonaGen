@@ -20,7 +20,7 @@ public class PersonagemService {
     }
 
     public Collection<Personagem> obterLista() {
-        return (Collection<Personagem>) personagemRepository.findAll();
+        return personagemRepository.findAllSorted(Sort.by("especie"));
     }
 
     public void excluir(Integer id) {

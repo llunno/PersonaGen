@@ -21,7 +21,7 @@ public class AparenciaService {
     }
 
     public Collection<Aparencia> obterLista() {
-        return (Collection<Aparencia>) aparenciaRepository.findAll();
+        return aparenciaRepository.findAllSorted(Sort.by("biotipo"));
     }
 
     public void excluir(Integer id) {

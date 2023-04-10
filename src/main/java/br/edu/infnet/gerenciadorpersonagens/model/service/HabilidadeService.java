@@ -26,7 +26,7 @@ public class HabilidadeService {
     }
 
     public Collection<Habilidade> obterLista() {
-        return (Collection<Habilidade>) habilidadeRepository.findAll();
+        return habilidadeRepository.findAllSorted(Sort.by("maestria"));
     }
 
     public void excluir(Integer id) {
@@ -38,7 +38,7 @@ public class HabilidadeService {
     }
 
     public Collection<Habilidade> obterListaPorCriador(Integer creatorId) {
-        return habilidadeRepository.findAllByCreator(creatorId, Sort.by("nome"));
+        return habilidadeRepository.findAllByCreator(creatorId, Sort.by("maestria"));
     }
 
     public Collection<Habilidade> obterHabilidadesPorPersonagem(Personagem personagem) {

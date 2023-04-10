@@ -21,7 +21,7 @@ public class PersonalidadeService {
     }
 
     public Collection<Personalidade> obterLista() {
-        return (Collection<Personalidade>) personalidadeRepository.findAll();
+        return personalidadeRepository.findAllSorted(Sort.by("tipoExpressao"));
     }
 
     public void excluir(Integer id) {

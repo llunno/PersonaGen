@@ -12,4 +12,7 @@ import java.util.List;
 public interface IAparenciaRepository extends CrudRepository<Aparencia, Integer> {
     @Query("from Aparencia a where a.criador.id = :creatorId")
     public List<Aparencia> findAllByCreator(Integer creatorId, Sort sort);
+
+    @Query("from Aparencia a")
+    List<Aparencia> findAllSorted(Sort sort);
 }

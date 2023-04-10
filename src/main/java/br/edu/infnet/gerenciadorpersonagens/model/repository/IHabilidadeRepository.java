@@ -13,4 +13,7 @@ public interface IHabilidadeRepository extends CrudRepository<Habilidade, Intege
 
     @Query("from Habilidade h where h.criador.id = :creatorId")
     public List<Habilidade> findAllByCreator(Integer creatorId, Sort sort);
+
+    @Query("from Habilidade h")
+    List<Habilidade> findAllSorted(Sort sort);
 }
