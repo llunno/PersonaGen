@@ -1,10 +1,10 @@
-joao.silva@example.com;senha123;João da Silva;joaosilva;Gerente de Vendas;Nível 3
-maria.rodrigues@example.com;abc123;Maria Rodrigues;mariarodrigues;Gerente de Recursos Humanos;Nível 3
-gustavo.silveira@example.com;minhasenha123;Gustavo Silveira;gustavosilveira;Gerente de Marketing;Nível 2
-ana.pereira@example.com;123456;Ana Pereira;anapereira;Gerente de Finanças;Nível 2
-pedro.alves@example.com;minhasenhasecreta;Pedro Alves;pedroalves;Analista de Sistemas;Nível 1
-julia.fernandes@example.com;senha123;Julia Fernandes;juliafernandes;Gerente de Marketing;Nível 2
-victor.silva@example.com;abc123;Victor Silva;victorsilva;Analista de Recursos Humanos;Nível 1
-roberta.almeida@example.com;senha123;Roberta Almeida;robertaalmeida;Analista Financeiro;Nível 1
-thiago.oliveira@example.com;minhasenha;Thiago Oliveira;tholiveira;Social Media Marketing;Nível 1
-carla.machado@example.com;senha123456;Carla Machado;carlamachado;Gerente de Produção;Nível 3
+joao.silva@example.com;senha123;João da Silva;joaosilva;Gerente de Vendas;Nível 3;11
+maria.rodrigues@example.com;abc123;Maria Rodrigues;mariarodrigues;Gerente de Recursos Humanos;Nível 3;12
+gustavo.silveira@example.com;minhasenha123;Gustavo Silveira;gustavosilveira;Gerente de Marketing;Nível 2;13
+ana.pereira@example.com;123456;Ana Pereira;anapereira;Gerente de Finanças;Nível 2;14
+pedro.alves@example.com;minhasenhasecreta;Pedro Alves;pedroalves;Analista de Sistemas;Nível 1;15
+julia.fernandes@example.com;senha123;Julia Fernandes;juliafernandes;Gerente de Marketing;Nível 2;16
+victor.silva@example.com;abc123;Victor Silva;victorsilva;Analista de Recursos Humanos;Nível 1;17
+roberta.almeida@example.com;senha123;Roberta Almeida;robertaalmeida;Analista Financeiro;Nível 1;18
+thiago.oliveira@example.com;minhasenha;Thiago Oliveira;tholiveira;Social Media Marketing;Nível 1;19
+carla.machado@example.com;senha123456;Carla Machado;carlamachado;Gerente de Produção;Nível 3;20

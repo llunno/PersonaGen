@@ -6,6 +6,7 @@ import br.edu.infnet.gerenciadorpersonagens.model.service.PersonalidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Order(5)
 @Component
 public class PersonalidadeLoader implements ApplicationRunner {
 

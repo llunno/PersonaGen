@@ -1,7 +1,9 @@
 package br.edu.infnet.gerenciadorpersonagens.model.auxiliar.loaders;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Criador;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Endereco;
 import br.edu.infnet.gerenciadorpersonagens.model.service.CriadorService;
+import br.edu.infnet.gerenciadorpersonagens.model.service.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -18,8 +20,14 @@ import java.util.List;
 @Component
 public class CriadorLoader implements ApplicationRunner {
 
+    private final CriadorService criadorService;
+    private final EnderecoService enderecoService;
+
     @Autowired
-    CriadorService criadorService;
+    public CriadorLoader(CriadorService criadorService, EnderecoService enderecoService) {
+        this.criadorService = criadorService;
+        this.enderecoService = enderecoService;
+    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -44,7 +52,10 @@ public class CriadorLoader implements ApplicationRunner {
                         new ArrayList<>(List.of(camposPorLinha[5].split(",")))
 
                 );
-                criadorService.incluir(criador);
+                Endereco endereco = enderecoService.obterPorId(Integer.valueOf(camposPorLinha[6]));
+                Criador criadorRetornadoDB = criadorService.incluir(criador);
+                criadorRetornadoDB.setEndereco(endereco);
+                criadorService.incluir(criadorRetornadoDB);
                 System.out.println("Inclusão do Criador " + criador.getNomeCompleto() + " realizada com sucesso!");
                 linha = leituraArquivo.readLine();
             }

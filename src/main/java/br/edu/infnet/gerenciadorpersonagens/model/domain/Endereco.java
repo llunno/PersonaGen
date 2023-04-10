@@ -1,9 +1,6 @@
 package br.edu.infnet.gerenciadorpersonagens.model.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -23,4 +20,19 @@ public class Endereco {
     private String bairro;
     private String localidade;
     private String uf;
+
+    @OneToOne(mappedBy = "endereco")
+    private Usuario usuario;
+
+    public Endereco() {
+    }
+
+    public Endereco(String cep, String logradouro, String complemento, String bairro, String localidade, String uf) {
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.localidade = localidade;
+        this.uf = uf;
+    }
 }

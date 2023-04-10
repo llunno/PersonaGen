@@ -1,7 +1,9 @@
 package br.edu.infnet.gerenciadorpersonagens.model.auxiliar.loaders;
 
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Administrador;
+import br.edu.infnet.gerenciadorpersonagens.model.domain.Endereco;
 import br.edu.infnet.gerenciadorpersonagens.model.service.AdministradorService;
+import br.edu.infnet.gerenciadorpersonagens.model.service.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -16,8 +18,14 @@ import java.io.IOException;
 @Component
 public class AdministradorLoader implements ApplicationRunner {
 
+    private final AdministradorService administradorService;
+    private final EnderecoService enderecoService;
+
     @Autowired
-    private AdministradorService administradorService;
+    public AdministradorLoader(AdministradorService administradorService, EnderecoService enderecoService) {
+        this.administradorService = administradorService;
+        this.enderecoService = enderecoService;
+    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -40,7 +48,10 @@ public class AdministradorLoader implements ApplicationRunner {
                         camposPorLinha[4],
                         camposPorLinha[5]
                 );
-                administradorService.incluir(admin);
+                Endereco endereco = enderecoService.obterPorId(Integer.valueOf(camposPorLinha[6]));
+                Administrador administradorRetornadoDB = administradorService.incluir(admin);
+                administradorRetornadoDB.setEndereco(endereco);
+                administradorService.incluir(administradorRetornadoDB);
                 System.out.println("Inclusão do administrador " + admin.getNomeCompleto() + " realizada com sucesso!");
                 linha = leituraArquivo.readLine();
             }

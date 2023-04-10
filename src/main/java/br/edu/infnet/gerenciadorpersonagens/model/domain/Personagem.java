@@ -31,18 +31,6 @@ public class Personagem {
 
     public Personagem() {}
 
-    public Personagem(Integer id, Criador criador, List<Caracteristica> caracteristicas, String nome, int idade, boolean isHuman, String especie, String genero, String historia) {
-        this.id = id;
-        this.criador = criador;
-        this.caracteristicas = caracteristicas;
-        this.nome = nome;
-        this.idade = idade;
-        this.isHuman = isHuman;
-        this.especie = especie;
-        this.genero = genero;
-        this.historia = historia;
-    }
-
     public Personagem(String nome, int idade, boolean isHuman, String especie, String genero, String historia) {
         this.nome = nome;
         this.idade = idade;
