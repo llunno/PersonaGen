@@ -80,6 +80,7 @@ public class AparenciaController {
         }
         model.addAttribute("listaAparencia", lista);
         model.addAttribute("mensagemInclusao", msg);
+        msg = null;
         return "/aparencia/lista";
     }
 

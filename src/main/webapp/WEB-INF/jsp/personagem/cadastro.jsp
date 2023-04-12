@@ -27,8 +27,8 @@
             <div class="form-group mb-3">
                 <label for="isHuman">É humano?</label>
                 <select class="form-control" id="isHuman" name="isHuman">
-                    <option value="true">Sim</option>
                     <option value="false" selected>Não</option>
+                    <option value="true">Sim</option>
                 </select>
             </div>
             <section class="d-flex justify-content-between align-items-center gap-2">

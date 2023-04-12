@@ -3,6 +3,7 @@ package br.edu.infnet.gerenciadorpersonagens.model.service;
 import br.edu.infnet.gerenciadorpersonagens.model.domain.Caracteristica;
 import br.edu.infnet.gerenciadorpersonagens.model.repository.ICaracteristicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -38,6 +39,6 @@ public class CaracteristicaService {
     }
 
     public Collection<Caracteristica> obterListaPorCriador(Integer creatorId) {
-        return caracteristicaRepository.findAllByCreator(creatorId);
+        return caracteristicaRepository.findAllByCreator(creatorId, Sort.by("descricao"));
     }
 }

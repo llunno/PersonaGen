@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Controller
 @RequestMapping("/personagem")
@@ -50,20 +47,23 @@ public class PersonagemController {
         Integer criadorLogadoId = ((Criador) authService.getSessionObject(session)).getId();
 
         List<Caracteristica> listaCaracteristicas = (List<Caracteristica>) caracteristicaService.obterListaPorCriador(criadorLogadoId);
-        List<Caracteristica> listaPersonalidades = new ArrayList<>();
-        List<Caracteristica> listaHabilidades = new ArrayList<>();
-        List<Caracteristica> listaAparencias = new ArrayList<>();
+        List<Personalidade> listaPersonalidades = new ArrayList<>();
+        List<Habilidade> listaHabilidades = new ArrayList<>();
+        List<Aparencia> listaAparencias = new ArrayList<>();
 
         for (Caracteristica caracteristica : listaCaracteristicas) {
             if (caracteristica instanceof Personalidade) {
-                listaPersonalidades.add(caracteristica);
+                listaPersonalidades.add((Personalidade) caracteristica);
             } else if (caracteristica instanceof Habilidade) {
-                listaHabilidades.add(caracteristica);
+                listaHabilidades.add((Habilidade) caracteristica);
             } else if (caracteristica instanceof Aparencia) {
-                listaAparencias.add(caracteristica);
+                listaAparencias.add((Aparencia) caracteristica);
             }
         }
 
+        listaPersonalidades.sort(Comparator.comparing(Personalidade::getPalavraDefinicao));
+        listaHabilidades.sort(Comparator.comparing(Habilidade::getNome));
+        listaAparencias.sort(Comparator.comparing(Aparencia::getBiotipo));
 
         model.addAttribute("listaPersonalidades", listaPersonalidades);
         model.addAttribute("listaHabilidades", listaHabilidades);
@@ -88,6 +88,7 @@ public class PersonagemController {
         }
         model.addAttribute("listaPersonagem", lista);
         model.addAttribute("mensagemInclusao", msg);
+        msg = null;
         return "/personagem/lista";
     }
 

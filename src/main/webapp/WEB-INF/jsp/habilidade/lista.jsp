@@ -12,7 +12,7 @@
 <div class="container-fluid container-body-entitys">
     <c:if test="${not empty mensagemInclusao}">
         <c:if test="${not empty listaHabilidades}">
-            <div class="alert alert-success msg-tela-model" role="alert">
+            <div class="alert alert-success msg-tela-model fade-list" role="alert">
                 <p class="m-0">${mensagemInclusao}</p>
             </div>
         </c:if>
@@ -89,6 +89,7 @@
 
 <c:import url="/WEB-INF/jsp/footer.jsp"/>
 
+<script src="/js/lists-script.js"></script>
 <script>
     function adicionar() {
         window.location.href = "/habilidade/cadastro";

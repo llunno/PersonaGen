@@ -20,7 +20,7 @@ public class PersonagemService {
     }
 
     public Collection<Personagem> obterLista() {
-        return personagemRepository.findAllSorted(Sort.by("especie"));
+        return personagemRepository.findAllSorted(Sort.by("nome"));
     }
 
     public void excluir(Integer id) {
@@ -32,7 +32,7 @@ public class PersonagemService {
     }
 
     public Collection<Personagem> obterListaPorCriador(Integer creatorId) {
-        return personagemRepository.findAllByCreator(creatorId, Sort.by("especie"));
+        return personagemRepository.findAllByCreator(creatorId, Sort.by("nome"));
     }
 
 }

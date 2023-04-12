@@ -15,16 +15,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
-@SessionAttributes("usuario")
 public class AcessoController {
 
     private final UsuarioService usuarioService;
     private final AuthService authService;
     private final LogService logService;
+    private static String msg;
 
     @Autowired
     public AcessoController(UsuarioService usuarioService, AuthService authService, LogService logService) {
@@ -39,21 +38,24 @@ public class AcessoController {
     }
 
     @PostMapping(value="/login")
-    public String login(Usuario usuario, Model model, HttpServletRequest request) {
+    public String login(Usuario usuario, Model model, HttpServletRequest request, HttpSession session) {
 
         Usuario userToLogin = authService.autenticar(usuario);
         if (userToLogin != null) {
             if (userToLogin instanceof Administrador admin) {
                 System.out.println("Administrador logado: " + admin);
                 model.addAttribute("usuario", admin);
+                session.setAttribute("usuario", admin);
             }
             else if (userToLogin instanceof Criador criador) {
                 System.out.println("Criador logado: " + criador);
                 model.addAttribute("usuario", criador);
+                session.setAttribute("usuario", criador);
             }
             else {
                 System.out.println("Usuário logado: " + userToLogin);
                 model.addAttribute("usuario", userToLogin);
+                session.setAttribute("usuario", userToLogin);
             }
 
             String msgLog = "Efetuado login como " + userToLogin.getNomeCompleto() + " com id " + usuarioService.obterPorId(userToLogin.getId()).getId();
@@ -63,7 +65,9 @@ public class AcessoController {
 
             return "redirect:/";
         } else {
-            model.addAttribute("mensagem", "As credenciais para o email " + usuario.getEmail() + " não batem!");
+            msg = "As credenciais para o email " + usuario.getEmail() + " são inválidas! Verifique o email ou senha e tente novamente.";
+            model.addAttribute("mensagem", msg);
+            msg = null;
             return "/login";
         }
     }

@@ -56,6 +56,7 @@ public class CriadorController {
 
         model.addAttribute("listaCriadores", lista);
         model.addAttribute("mensagemInclusao", msg);
+        msg = null;
         return "/criador/lista";
     }
 

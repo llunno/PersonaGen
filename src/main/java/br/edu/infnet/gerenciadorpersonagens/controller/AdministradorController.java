@@ -73,6 +73,7 @@ public class AdministradorController {
         }
         model.addAttribute("listaAdministrador", lista);
         model.addAttribute("mensagemInclusao", msg);
+        msg = null;
         return "/administrador/lista";
     }
 

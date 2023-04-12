@@ -15,7 +15,7 @@
 
     <c:if test="${not empty mensagemInclusao}">
         <c:if test="${not empty listaPersonagem}">
-            <div class="alert alert-success msg-tela-model text-in-field" role="alert">
+            <div class="alert alert-success msg-tela-model text-in-field fade-list" role="alert">
                 <p class="m-0">${mensagemInclusao}</p>
             </div>
         </c:if>
@@ -78,30 +78,11 @@
             </section>
         </div>
     </c:if>
-
-
-
-        <div class="modal fade" id="modalDetalhes" tabindex="-1" aria-labelledby="modalCaracteristicas" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalCaracteristicas">Características</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 </div>
 
 <c:import url="/WEB-INF/jsp/footer.jsp"/>
 
+<script src="/js/lists-script.js"></script>
 <script>
     function adicionar() {
         window.location.href = "/personagem/cadastro";

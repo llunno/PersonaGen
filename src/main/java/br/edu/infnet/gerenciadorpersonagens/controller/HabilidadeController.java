@@ -85,6 +85,7 @@ public class HabilidadeController {
 
         model.addAttribute("listaHabilidades", lista);
         model.addAttribute("mensagemInclusao", msg);
+        msg = null;
         return "/habilidade/lista";
     }
 

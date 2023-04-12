@@ -81,6 +81,7 @@ public class PersonalidadeController {
         }
         model.addAttribute("listaPersonalidade", lista);
         model.addAttribute("mensagemInclusao", msg);
+        msg = null;
         return "/personalidade/lista";
     }
 
