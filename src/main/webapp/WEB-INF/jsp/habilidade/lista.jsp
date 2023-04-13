@@ -77,7 +77,7 @@
                             <td>
                                 <p>${habilidade.criador.nomeCompleto}</p>
                             </td>
-                            <td><a href="/habilidade/${habilidade.id}/excluir" class="excluir-item-link">Excluir</a></td>
+                            <td><a href="/habilidade/${habilidade.id}/excluir" class="excluir-item-link fas fa-trash-can"></a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

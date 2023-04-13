@@ -72,7 +72,7 @@
                             <td class="long-cel-need">
                                 <p>${interessesConcat}</p>
                             </td>
-                            <td><a href="/criador/${criador.id}/excluir" class="excluir-item-link">Excluir</a></td>
+                            <td><a href="/criador/${criador.id}/excluir" class="excluir-item-link fas fa-trash-can"></a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

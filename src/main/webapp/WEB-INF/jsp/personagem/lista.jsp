@@ -70,7 +70,7 @@
                             <td><p>${personagem.criador.nomeCompleto}</p></td>
                             <td><p>${personagem.formatarData()}</p></td>
                             <td><p><a class="detalhes-item-link" href="/personagem/${personagem.id}/detalhes" id="personagem-detalhes">Detalhes</a></p></td>
-                            <td><p><a href="/personagem/${personagem.id}/excluir" class="excluir-item-link">Excluir</a></p></td>
+                            <td><p><a href="/personagem/${personagem.id}/excluir" class="excluir-item-link fas fa-trash-can"></a></p></td>
                         </tr>
                     </c:forEach>
                     </tbody>

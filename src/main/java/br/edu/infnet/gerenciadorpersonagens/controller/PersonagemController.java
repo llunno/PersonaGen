@@ -119,7 +119,7 @@ public class PersonagemController {
             return "redirect:/login";
         }
         if (!Objects.equals(authService.getLoggedUserType(session), authService.criadorUser)) {
-            msg = "Você não tem permissão para excluir uma Aparência! Entre como um criador para isto.";
+            msg = "Você não tem permissão para excluir um Personagem! Entre como um criador para isto.";
             return "redirect:/personagem/lista";
         }
         Criador criadorLogado = (Criador) authService.getSessionObject(session);

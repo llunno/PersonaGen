@@ -98,7 +98,7 @@
                             <td class="long-cell-need-details">
                                 <p>${personalidade.descricao}</p>
                             </td>
-                            <td><a href="/personalidade/${personalidade.id}/excluir" class="excluir-item-link">Excluir</a></td>
+                            <td><a href="/personalidade/${personalidade.id}/excluir" class="excluir-item-link fas fa-trash-can"></a></td>
                         </tr>
                     </c:forEach>
                     </tbody>
